@@ -1,0 +1,13 @@
+class Page < ActiveRecord::Base
+  def body_with_contents
+    body.gsub(/(\{asset: ([\w.]+)\})/) do |s|
+      url = $2
+      file_asset = FileAsset.find_by_attachment_file_name(url)
+      if file_asset.nil?
+        "http://missing.jpg?#{url}"
+      else
+        file_asset.attachment.url(:original, false)
+      end
+    end
+  end
+end

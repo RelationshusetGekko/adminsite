@@ -1,0 +1,42 @@
+#header
+  #header_left
+    %h3 
+      Edit 
+      = @page.title
+  #header_right
+    %nbsp
+
+#wrapper
+  = error_messages_for :page
+
+  - form_for([:admin, @page]) do |f|
+    #page-edit
+      %p
+        %b
+          Title
+        %br
+          = f.text_field :title
+      %p
+        %b
+          Url
+        %br
+          = f.text_field :url  
+      %p
+        %b
+          Body 
+        %br
+          ~ f.text_area :body, {:style=>'width:550px;'}
+      
+      %p
+        = submit_tag "Update"
+    #page-assets-list
+      %h2 Assets
+      %table
+        - @file_assets.each do |asset|
+          %tr
+            %td= asset.attachment_file_name
+            
+    .clear
+      &nbsp;
+
+  = link_to 'Back', admin_pages_path

@@ -1,0 +1,57 @@
+Adminsite
+=========
+
+This is a basic Circle Admin Backend interface.
+
+This support a series of named spaced (yoursite.com/admin/) backend
+with these features:
+
+- login for admin (with openid)
+- simple cms for pages (handle html xml files)
+- simple cms for file assets (handles images and swf file)
+
+As long as we don't make a GEM out of it you need the following in your environment.rb:
+
+config.gem 'authlogic'
+config.gem 'liquid'
+config.gem 'rack', :version => '>= 1.0.0'
+config.gem 'haml'
+config.gem "ruby-openid", :lib => 'openid'
+config.gem "jacobat-authlogic-oid", :lib => "authlogic_openid"
+config.gem "rack-openid", :lib => "rack/openid"
+config.gem "paperclip"
+
+or use this for Paperclip
+config.gem "paperclip-cloudfiles", :lib => 'paperclip', :source => "http://gemcutter.org/"
+
+Install the open_id plugin
+git://github.com/rails/open_id_authentication.git
+
+Add these routes:
+map.root    :controller => 'contents', :action => 'show', :page_url => 'index'
+map.connect ':page_url', :controller => 'contents', :action => 'show'
+map.connect ':page_url.:format', :controller => 'contents', :action => 'show'
+map.connect ':page_url/:id', :controller => 'contents', :action => 'show'
+
+Setup
+=======
+To start do a:
+
+rake adminsite:sync
+rake db:migrate
+rake adminsite:setup
+
+This creates a standard admin with these credentials:
+login    -> admin
+password -> password
+
+Example
+========
+1) Remove index.html from public
+2) Start your server
+3) Log in at http://localhost:3000/admin with admin / password
+4) Create a new page with:
+  - name: index page
+  - url:  index.html
+  - body: "hello world"
+5) open http://localhost:3000/

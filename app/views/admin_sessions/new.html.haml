@@ -1,0 +1,19 @@
+#header
+  #header_left
+    %h3
+      &nbsp;
+#wrapper
+  #login-box
+    - form_for @admin_session, :url => admin_session_path, :id => "loginform" do |f|
+      %p
+        %label
+          Username:
+          %br
+          = f.text_field :login
+      %p
+        %label
+          Password:
+          %br
+          = f.password_field :password
+      %p{:class=>"submit"}
+        %input{:type=>"submit", :name=>"wp-submit", :id=>"wp-submit", :value=>"Log In", :tabindex=>"100"}

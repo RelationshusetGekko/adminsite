@@ -1,0 +1,25 @@
+#header
+  #header_left
+    %h3 Listing File Assets
+  #header_right
+
+#wrapper
+  %h2 Add new asset
+
+  = error_messages_for :asset
+
+  - form_for(:file_asset, @file_asset, :url => admin_file_assets_path, :html => { :multipart => true }) do |f|
+    %p
+      %b File
+      = f.file_field :attachment
+    %p
+      = submit_tag 'Add'
+  
+  %table
+    %tr
+      %th
+      %th Filename
+    - @file_assets.each do |asset|
+      %tr
+        %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
+        %td= link_to image_tag('admin/cross.png'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete

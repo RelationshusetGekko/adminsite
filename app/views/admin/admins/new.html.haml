@@ -1,0 +1,36 @@
+#header
+  #header_left
+    %h3 
+      New administrator
+  #header_right
+    %nbsp
+
+#wrapper
+  = error_messages_for :admin
+
+  - form_for([:admin, @admin], :url => admin_admins_path) do |f| 
+    %p
+      %b
+        Login
+      %br
+        = f.text_field :login
+    %p
+      %b
+        Password
+      %br
+      = f.password_field :password
+    %p
+      %b
+        Password confirmation
+      %br
+      = f.password_field :password_confirmation
+    %p
+      %b
+        Open id
+      %br
+        = f.text_field :openid_identifier
+      
+    %p
+      = submit_tag "Create" 
+
+  = link_to 'Back', admin_admins_path
