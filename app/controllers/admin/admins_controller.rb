@@ -1,4 +1,5 @@
 class Admin::AdminsController < Admin::BaseController
+  unloadable
   protect_from_forgery :except => :update
 
   def index

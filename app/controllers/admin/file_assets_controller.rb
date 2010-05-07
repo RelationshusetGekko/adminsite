@@ -1,4 +1,5 @@
 class Admin::FileAssetsController < Admin::BaseController
+  unloadable
   def index
     @file_assets = FileAsset.all
     @file_asset = FileAsset.new

@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class AdminApplicationController < ActionController::Base
+  unloadable
   helper :all, "admin/adminsite_application"
   helper_method :current_admin_session, :current_admin
   filter_parameter_logging :password, :password_confirmation
