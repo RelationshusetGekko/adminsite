@@ -1,6 +1,5 @@
 class ContentsController < ApplicationController
   before_filter :set_p3p
-  caches_page :show
   
   def show
     respond_to do |format|
@@ -11,6 +10,7 @@ class ContentsController < ApplicationController
   end
   
   private
+
   def set_p3p
     response.headers['P3P'] = 'CP="CAO PSA OUR"'
   end
