@@ -1,4 +1,10 @@
 class Page < ActiveRecord::Base
+
+  def render(liquid_params)
+    template = Liquid::Template.parse(body_with_contents)
+    template.render(liquid_params.stringify_keys)
+  end
+
   def body_with_contents
     body.gsub(/(\{asset: ([\w.]+)\})/) do |s|
       url = $2

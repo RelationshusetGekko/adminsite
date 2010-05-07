@@ -18,7 +18,7 @@ class ContentsController < ApplicationController
   def retrive_page_or_404(url,id)
     page = Page.find_by_url(url) || Page.find_by_url("#{url}.html")
     unless page.nil?
-      content = page.body_with_contents
+      content = page.render(liquid_params)
       render :text => content
       return
     else
@@ -29,5 +29,9 @@ class ContentsController < ApplicationController
       end
     end
     render :file => "#{RAILS_ROOT}/public/404.html", :status => 404
+  end
+  
+  def liquid_params
+    { :user => @user }
   end
 end
