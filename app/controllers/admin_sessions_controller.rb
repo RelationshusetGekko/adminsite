@@ -1,4 +1,5 @@
 class AdminSessionsController < AdminApplicationController
+  unloadable
   before_filter :require_no_admin, :only => [:new, :create]
   before_filter :require_admin, :only => :destroy
   layout 'admin'
