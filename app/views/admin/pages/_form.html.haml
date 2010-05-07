@@ -1,0 +1,24 @@
+%p
+  %b
+    Title
+  %br
+    = f.text_field :title
+%p
+  %b
+    Requires login
+    = f.check_box :requires_login
+%p
+  %b
+    Can be cached
+    = f.check_box :cacheable
+
+%p
+  %b
+    Url
+  %br
+    = f.text_field :url
+%p
+  %b
+    Body 
+  %br
+    ~ f.text_area :body, {:style=>'width:550px;'}

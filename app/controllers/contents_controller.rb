@@ -27,6 +27,12 @@ class ContentsController < ApplicationController
       end
       content = page.render(content_params)
       render :text => content
+      if page.cacheable?
+        cache_page
+        logger.info("Caching page: #{page.url}")
+      else
+        logger.info("Not caching page: #{page.url}")
+      end
       return
     else
       # find a custom 404 page in CMS

@@ -9,23 +9,7 @@
   = error_messages_for :page
 
   - form_for([:admin, @page], :url => admin_pages_path) do |f| 
-    %p
-      %b
-        Title
-      %br
-        = f.text_field :title
-    %p
-      %b
-        Url
-      %br
-      = f.text_field :url
-    %p
-      %b
-        Body 
-      %br
-        = f.text_area :body, {:style=>'width:850px;'}
-      
-    %p
+    #page-edit
+      = render(:partial => 'form', :locals => {:f => f})
       = submit_tag "Create" 
-
-  = link_to 'Back', admin_pages_path
+      = link_to 'Back', admin_pages_path

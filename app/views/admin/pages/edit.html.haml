@@ -11,24 +11,9 @@
 
   - form_for([:admin, @page]) do |f|
     #page-edit
-      %p
-        %b
-          Title
-        %br
-          = f.text_field :title
-      %p
-        %b
-          Url
-        %br
-          = f.text_field :url  
-      %p
-        %b
-          Body 
-        %br
-          ~ f.text_area :body, {:style=>'width:550px;'}
-      
-      %p
-        = submit_tag "Update"
+      = render(:partial => 'form', :locals => {:f => f})
+      = submit_tag "Update"
+      = link_to 'Back', admin_pages_path
     #page-assets-list
       %h2 Assets
       %table
@@ -38,5 +23,3 @@
             
     .clear
       &nbsp;
-
-  = link_to 'Back', admin_pages_path
