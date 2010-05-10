@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   unloadable
   before_filter :set_p3p
-  
+
   def show
     respond_to do |format|
       format.html { retrive_page_or_404(params[:page_url],params[:id]) }
@@ -9,16 +9,22 @@ class ContentsController < ApplicationController
       format.xml  { retrive_page_or_404("#{params[:page_url]}.xml",params[:id])}
     end
   end
-  
+
   private
 
   def set_p3p
     response.headers['P3P'] = 'CP="CAO PSA OUR"'
   end
-  
+
   def retrive_page_or_404(url,id)
     page = Page.find_by_url(url) || Page.find_by_url("#{url}.html")
     unless page.nil?
+      if page.requires_login
+        unless require_user
+          return
+        end
+      end
+
       content_params = { :authenticity_token => form_authenticity_token }
       begin
         content_params.merge!(liquid_params)
@@ -44,5 +50,5 @@ class ContentsController < ApplicationController
     end
     render :file => "#{RAILS_ROOT}/public/404.html", :status => 404
   end
-  
+
 end

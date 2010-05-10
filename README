@@ -45,6 +45,28 @@ This creates a standard admin with these credentials:
 login    -> admin
 password -> password
 
+Protected pages
+===============
+If you want protected pages you need to add in ApplicationController a require_user method:
+
+This method should return false if no user is logged in or true if there is a user logged in
+
+ex. using authlogic:
+
+def require_user
+  unless current_user
+    flash[:notice] = "You must be logged in to access this page"
+    redirect_to "/"
+    return false
+  end
+  return true
+end
+
+def current_user
+  # Place here you authentication code
+end
+
+
 Example
 ========
 1) Remove index.html from public
