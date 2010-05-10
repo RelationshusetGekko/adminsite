@@ -3,7 +3,7 @@ class PageLayout < ActiveRecord::Base
   validates_presence_of  :title
 
   def render(args)
-    # Liquid::Template.parse(self.body.to_s).render(args.stringify_keys)
+    Liquid::Template.parse(self.body.to_s).render(args.stringify_keys)
   end
 
 end

@@ -1,5 +1,7 @@
 class Page < ActiveRecord::Base
   belongs_to :page_layout
+  validates_presence_of :page_layout
+  
   class << self
     def cleanup_all_cached
       cache_dir = ActionController::Base.page_cache_directory
@@ -9,10 +11,18 @@ class Page < ActiveRecord::Base
       logger.info("Page cache has been wiped out: deleted all cached pages.")
     end
   end
+  
+  def render(args)
+    page_layout.render(layout_args(args))
+  end
 
-  def render(liquid_params)
-    template = Liquid::Template.parse(body_with_contents)
-    template.render(liquid_params.stringify_keys)
+  def layout_args(args)
+    args.stringify_keys.merge(:content_for_template => content_for_template(args))
+  end
+
+  def content_for_template(liquid_params)
+    liquid_template = Liquid::Template.parse(body_with_contents)
+    liquid_template.render(liquid_params.stringify_keys)
   end
 
   def body_with_contents
