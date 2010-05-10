@@ -6,7 +6,7 @@ class Admin::PageLayoutsController < Admin::BaseController
   end
   
   def new
-    @page_layout = PageLayout.new
+    @page_layout = PageLayout.new(:body => "{{content_for_template}}")
   end
   
   def edit
