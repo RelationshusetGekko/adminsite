@@ -4,6 +4,11 @@
   %br
     = f.text_field :title
 %p
+  %b 
+    Layout
+  %br
+  = f.select(:page_layout_id, PageLayout.find(:all).collect {|h| [ h.title, h.id ] })
+%p
   %b
     Requires login
     = f.check_box :requires_login
@@ -16,7 +21,7 @@
   %b
     Url
   %br
-    = f.text_field :url
+  = f.text_field :url
 %p
   %b
     Body 

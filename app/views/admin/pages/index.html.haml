@@ -11,6 +11,7 @@
       %th Url
       %th Requires login
       %th Can be cached
+      %th Layout
       %th &nbsp;
       %th &nbsp;
     - for page in @pages
@@ -19,6 +20,7 @@
         %td= h page.url
         %td= page.requires_login ? "YES" : "NO"
         %td= page.cacheable ? "YES" : "NO"
+        %td= page.page_layout.title if page.page_layout.present?
         %td= link_to image_tag('admin/pencil.png'), edit_admin_page_path(page)
         %td= link_to image_tag('admin/cross.png'), [:admin, page], :confirm => 'Are you sure?', :method => :delete
 

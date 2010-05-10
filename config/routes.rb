@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :admins, :except => :show
     admin.resources :file_assets
+    admin.resources :page_layouts
     admin.resources :pages
     admin.resources :exports
     admin.resources :users

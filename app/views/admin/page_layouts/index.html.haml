@@ -1,0 +1,18 @@
+#header
+  #header_left
+    %h3 Listing page layouts
+  #header_right
+    = image_tag('admin/add.png')
+    = link_to 'New page layout', new_admin_page_layout_path
+      
+#wrapper
+  %table
+    %tr
+      %th Title
+      %th &nbsp;
+      %th &nbsp;
+    - for page_layout in @page_layouts
+      %tr
+        %td= h page_layout.title
+        %td= link_to image_tag('admin/pencil.png'), edit_admin_page_layout_path(page_layout)
+        %td= link_to image_tag('admin/cross.png'), [:admin, page_layout], :confirm => 'Are you sure?', :method => :delete

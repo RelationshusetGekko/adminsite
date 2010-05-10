@@ -14,12 +14,11 @@
       = render(:partial => 'form', :locals => {:f => f})
       = submit_tag "Update"
       = link_to 'Back', admin_pages_path
-    #page-assets-list
-      %h2 Assets
-      %table
-        - @file_assets.each do |asset|
-          %tr
-            %td= asset.attachment_file_name
-            
-    .clear
-      &nbsp;
+  = render(:partial => 'admin/shared/syntax_help')
+  #page-assets-list
+    %h2 Assets
+    %table
+      - @file_assets.each do |asset|
+        %tr
+          %td= asset.attachment_file_name
+  .clear &nbsp;

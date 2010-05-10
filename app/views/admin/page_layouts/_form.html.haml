@@ -1,0 +1,11 @@
+%p
+  %b
+    Title
+  %br
+    = f.text_field :title
+
+%p
+  %b
+    Body (remember to insert {{content_for_template}})
+  %br
+    = f.text_area :body, {:style=>'width:550px;'}

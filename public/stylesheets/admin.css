@@ -268,9 +268,9 @@ a:hover img {
 	width:560px;
 	float:left;
 }
-#page-assets-list{
+#page-assets-list, #syntax-help{
 	width:290px;
-	padding:5px;
+	padding:9px;
 	float:left;
 	margin-left:10px;
 	background-color: #eeeeee;

@@ -1,4 +1,14 @@
 class Page < ActiveRecord::Base
+  belongs_to :page_layout
+  class << self
+    def cleanup_all_cached
+      cache_dir = ActionController::Base.page_cache_directory
+      Page.all.each do |p|
+        FileUtils.rm("#{cache_dir}/#{p.url}") if File.exist?("#{cache_dir}/#{p.url}")
+      end
+      logger.info("Page cache has been wiped out: deleted all cached pages.")
+    end
+  end
 
   def render(liquid_params)
     template = Liquid::Template.parse(body_with_contents)
