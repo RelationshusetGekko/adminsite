@@ -11,4 +11,15 @@ class FileAsset < ActiveRecord::Base
   end
 
   has_attached_file :attachment, STORAGE
+
+  class << self
+    def attachment_url_for(name)
+      asset = find_by_attachment_file_name(name)
+      if asset.nil?
+        "http://missing.jpg?#{name}"
+      else
+        asset.attachment.url(:original, false)
+      end
+    end
+  end
 end
