@@ -16,6 +16,12 @@ class ContentsController < ApplicationController
     response.headers['P3P'] = 'CP="CAO PSA OUR"'
   end
 
+  def content_params
+    { :authenticity_token => form_authenticity_token,
+      :notice => flash[:notice],
+      :error  => flash[:error] }
+  end
+
   def retrive_page_or_404(url,id)
     page = Page.find_by_url(url) || Page.find_by_url("#{url}.html")
     unless page.nil?
@@ -25,7 +31,6 @@ class ContentsController < ApplicationController
         end
       end
 
-      content_params = { :authenticity_token => form_authenticity_token }
       begin
         content_params.merge!(liquid_params)
       rescue NameError => e
