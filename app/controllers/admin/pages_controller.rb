@@ -26,6 +26,7 @@ class Admin::PagesController < Admin::BaseController
   
   def update
     @page = Page.find(params[:id])
+    @file_assets = FileAsset.all
     if @page.update_attributes(params[:page])
       flash[:notice] = 'Page was successfully updated.'
       cleanup_cached_page(@page.url)
