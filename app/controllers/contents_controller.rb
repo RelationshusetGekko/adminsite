@@ -31,13 +31,15 @@ class ContentsController < ApplicationController
         end
       end
 
+      liquid_attributes = {}
       begin
-        content_params.merge!(liquid_params)
+        liquid_attributes = content_params.merge(liquid_params)
       rescue NameError => e
         Rails.logger.warn("WARNING: #{e.message}")
         Rails.logger.warn("Please define liquid_params in your application controller")
       end
-      content = page.render(content_params)
+      Rails.logger.debug("Content params: #{liquid_attributes.inspect}")
+      content = page.render(liquid_attributes)
       render :text => content
       if page.cacheable?
         cache_page
