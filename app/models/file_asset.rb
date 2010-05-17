@@ -6,7 +6,7 @@ class FileAsset < ActiveRecord::Base
                 :cloudfiles_credentials => "config/mosso_cloudfiles.yml",
                 :path => "assets/:id/:filename" }
   rescue
-    STORAGE = { :path => ":rails_root/public/system/flash/:filename",
+    STORAGE = { :path => ":rails_root/public/system/assets/:filename",
                 :url  => "/system/flash/:filename" }
   end
 

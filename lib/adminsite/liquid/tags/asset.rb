@@ -1,7 +1,7 @@
 class Asset < Liquid::Tag
   def initialize(tag_name, asset_name, tokens)
     super
-    @asset_name = asset_name
+    @asset_name = asset_name.strip
   end
 
   def render(context)
