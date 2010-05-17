@@ -7,7 +7,7 @@ class FileAsset < ActiveRecord::Base
                 :path => "assets/:id/:filename" }
   rescue
     STORAGE = { :path => ":rails_root/public/system/assets/:filename",
-                :url  => "/system/flash/:filename" }
+                :url  => "/system/assets/:filename" }
   end
 
   has_attached_file :attachment, STORAGE
