@@ -1,26 +1,25 @@
 #syntax-help
   %h2 Liquid parameters
   %p
-    %a{:url => "http://www.liquidmarkup.org/", :target=>"_blank"}
+    %a{ :href => "http://www.liquidmarkup.org/", :target => "_blank" }<
       Liquid template language
-    is available, so if you have a user 
-    %i object 
-    available you can do something like this
-    %pre
-      {{ user.first_name }}
+    is available, so if you have a user
+    %em object
+    available you can do something like this:
+    %pre {{ user.first_name }}
     Or if you have a collection of objects like
     %i products
     you can:
-    ~ "<pre>{% for product in products %}\n  {{product.title}}\n{% endfor %}</pre>"
+    ~ "<pre>{% for product in products %}\n  {{ product.title }}\n{% endfor %}</pre>"
 
-  %h2 Including Assets
-  %p 
-    You can include assets using this syntax
+  %h2 Including assets
+  %p
+    You can include assets using this syntax:
     %pre &lt;img src="{% asset logo.jpg %}" /&gt;
-    This of requires you have uploaded a logo.jpg
+    This requires you have uploaded a logo.jpg
     %br
-    %b
-      NOTE: 
+    %strong
+      NOTE:
     if you are uploading on Cloudfile CDN, the syntax above will
     replace the path with Cloudfile url.
   
