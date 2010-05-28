@@ -9,10 +9,12 @@
   %table
     %tr
       %th Title
+      %th Last Update
       %th &nbsp;
       %th &nbsp;
     - for page_layout in @page_layouts
       %tr
         %td= h page_layout.title
+        %td= h page_layout.updated_at
         %td= link_to image_tag('admin/pencil.png'), edit_admin_page_layout_path(page_layout)
         %td= link_to image_tag('admin/cross.png'), [:admin, page_layout], :confirm => 'Are you sure?', :method => :delete
