@@ -1,6 +1,5 @@
 Adminsite
 =========
-
 This is a basic Circle Admin Backend interface.
 
 This support a series of named spaced (yoursite.com/admin/) backend
@@ -10,28 +9,21 @@ with these features:
 - simple cms for pages (handle html xml files)
 - simple cms for file assets (handles images and swf file)
 
-As long as we don't make a GEM out of it you need the following in your environment.rb:
 
-config.gem 'authlogic'
-config.gem 'liquid'
-config.gem 'rack', :version => '>= 1.0.0'
-config.gem 'haml'
-config.gem "ruby-openid", :lib => 'openid'
-config.gem "jacobat-authlogic-oid", :lib => "authlogic_openid"
-config.gem "rack-openid", :lib => "rack/openid"
-config.gem "paperclip"
+Install
+=======
+Add this in your environment.rb:
+config.gem 'adminsite'
 
-or use this for Paperclip
-config.gem "paperclip-cloudfiles", :lib => 'paperclip', :source => "http://gemcutter.org/"
+Add this line to your Rakefile:
+require 'adminsite/tasks'
 
-Install the open_id plugin
-git://github.com/rails/open_id_authentication.git
-
-Add these routes:
+Add these routes into routes.rb:
 map.root    :controller => 'contents', :action => 'show', :page_url => 'index'
 map.connect ':page_url', :controller => 'contents', :action => 'show'
 map.connect ':page_url.:format', :controller => 'contents', :action => 'show'
 map.connect ':page_url/:id', :controller => 'contents', :action => 'show'
+
 
 Setup
 =======
@@ -44,6 +36,40 @@ rake adminsite:setup
 This creates a standard admin with these credentials:
 login    -> admin
 password -> password
+
+
+How does it work.
+================
+1) Remove index.html from public
+2) Start your server
+3) Log in at http://localhost:3000/admin with admin / password
+4) Create a new page with:
+   - name: index page
+   - url:  index.html
+   - body: "hello world"
+5) open http://localhost:3000/
+
+
+Mosso Cloud Files
+=================
+
+If you want to use mosso cloud files support you should add a config/mosso_cloudfiles.yaml that should look like this
+
+development:
+  username: circlerd
+  api_key: SECRET_API 
+test:
+  username: katherine
+  api_key: test
+production:
+  username: circlerd
+  api_key: SECRET_API 
+
+SECRET_API is defined into the mosso control panel and in all the project we have with mosso suport
+
+Add this into you production.rb
+PAPERCLIP_CONTAINER = "my_project_container"
+Be sure that "my_project_container" exists for your account
 
 Protected pages
 ===============
@@ -66,14 +92,3 @@ def current_user
   # Place here you authentication code
 end
 
-
-Example
-========
-1) Remove index.html from public
-2) Start your server
-3) Log in at http://localhost:3000/admin with admin / password
-4) Create a new page with:
-  - name: index page
-  - url:  index.html
-  - body: "hello world"
-5) open http://localhost:3000/
