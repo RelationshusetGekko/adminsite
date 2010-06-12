@@ -9,8 +9,8 @@ class AdminsiteGenerator < Rails::Generator::Base
       m.template 'routes.rb', 'config/routes.rb'
       File.delete("public/index.html") if File.exist?("public/index.html")
       m.rake "adminsite:sync", :generate_only => true
-      m.rake "db:migrate"
-      m.rake "adminsite:setup"
+      m.rake "db:migrate", :generate_only => true
+      m.rake "adminsite:setup", :generate_only => true
     end
   end
 end

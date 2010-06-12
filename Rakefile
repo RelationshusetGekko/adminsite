@@ -32,7 +32,7 @@ begin
     s.homepage = "http://www.crd.dk"
     s.description = "Adminsite plugin"
     s.authors = ["Liborio Cannici"]
-    s.files =  FileList["[A-Z]*", "{app,config,db,public,lib}/**/*", 'lib/jeweler/templates/.gitignore']
+    s.files =  FileList["[A-Z]*", "{app,config,db,public,lib,generators}/**/*", 'lib/jeweler/templates/.gitignore']
     # s.add_dependency 'schacon-git'
     s.add_dependency 'authlogic'
     s.add_dependency 'haml'
