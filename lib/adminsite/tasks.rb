@@ -20,6 +20,14 @@ namespace :adminsite do
     Admin.create!(:login                 => login,
                   :password              => password,
                   :password_confirmation => password)
-    puts "Created administrator with login: #{login} and password: #{password}"
+    puts "#{'*'*70}"
+    puts "Done! You can access the admin interface at http://yourapp_url/admin"
+    puts "I have created an administrator with these credentials:"
+    puts "login:    #{login}"
+    puts "password: #{password}"
+    puts ""
+    puts "For Mosso Cloud Files integration and Protected pages"
+    puts "please refer to the README file in this gem root folder"
+    puts "#{'*'*70}"
   end
 end

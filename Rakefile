@@ -38,10 +38,15 @@ begin
 
     Thank you for installing Circle Adminsite
 
-    Once you have installed this gem just get 
-    into your app root and type:
+    Once you have installed this gem
+    include it into your app with:
+    config.gem "adminsite"
     
+    Then from your app root type:
     script/generate adminsite
+    
+    For Mosso Cloud Files integration and Protected pages
+    please refer to the README file in this gem root folder
 
   #{'*'*60}
   POST_INSTALL_MESSAGE
