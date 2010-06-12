@@ -8,14 +8,15 @@ namespace :adminsite do
   end
 
   desc "Setup an admin account"
-  login = "admin"
-  if Rails.env.development?
-    password = "password"
-  else
-    password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
-  end
-  
   task :setup => :environment do
+    
+    login = "admin"
+    if Rails.env.development?
+      password = "password"
+    else
+      password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
+    end
+    
     Admin.create!(:login                 => login,
                   :password              => password,
                   :password_confirmation => password)
