@@ -29,13 +29,14 @@ begin
     # s.executables = "jeweler"
     s.summary = "Adminsite"
     s.email = "lic@crd.dk"
-    s.homepage = ""
+    s.homepage = "http://www.crd.dk"
     s.description = "Adminsite plugin"
     s.authors = ["Liborio Cannici"]
     s.files =  FileList["[A-Z]*", "{app,config,db,public,lib}/**/*", 'lib/jeweler/templates/.gitignore']
     # s.add_dependency 'schacon-git'
     s.add_dependency 'authlogic'
     s.add_dependency 'haml'
+    s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
   end
 rescue LoadError
