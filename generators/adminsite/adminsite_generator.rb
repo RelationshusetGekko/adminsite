@@ -1,0 +1,16 @@
+require File.expand_path(File.dirname(__FILE__) + "/lib/insert_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "/lib/rake_commands.rb")
+
+class AdminsiteGenerator < Rails::Generator::Base
+  def manifest
+    puts "Setting up Adminsite to work with your Rails #{Rails.version} app"
+    record do |m|
+      m.append_to 'Rakefile', IO.read(source_path('rakefile_hook.rb'))
+      m.template 'routes.rb', 'config/routes.rb'
+      File.delete("public/index.html") if File.exist?("public/index.html")
+      m.rake "adminsite:sync", :generate_only => true
+      m.rake "db:migrate"
+      m.rake "adminsite:setup"
+    end
+  end
+end
