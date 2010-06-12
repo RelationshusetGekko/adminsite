@@ -7,6 +7,10 @@ class AdminsiteGenerator < Rails::Generator::Base
     record do |m|
       m.append_to 'Rakefile', IO.read(source_path('rakefile_hook.rb'))
       m.template 'routes.rb', 'config/routes.rb'
+
+      FileUtils.mkdir_p 'lib/recipes'
+      m.template 'application.rb', 'lib/recipes/application.rb'
+
       File.delete("public/index.html") if File.exist?("public/index.html")
       m.rake "adminsite:sync", :generate_only => true
       m.rake "db:migrate", :generate_only => true

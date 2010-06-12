@@ -33,12 +33,31 @@ begin
     s.description = "Adminsite plugin"
     s.authors = ["Liborio Cannici"]
     s.files =  FileList["[A-Z]*", "{app,config,db,public,lib,generators}/**/*", 'lib/jeweler/templates/.gitignore']
-    # s.add_dependency 'schacon-git'
+    s.post_install_message = <<-POST_INSTALL_MESSAGE
+  #{'*'*60}
+
+    Thank you for installing Circle Adminsite
+
+    Once you have installed this gem just get 
+    into your app root and type:
+    
+    script/generate adminsite
+
+  #{'*'*60}
+  POST_INSTALL_MESSAGE
     s.add_dependency 'authlogic'
     s.add_dependency 'haml'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
   end
+  
+  desc 'Copy gem file on gems.crd.dk'
+  task :publish do
+    version = File.read('VERSION').strip
+    puts "Publishing version #{version} on gems.crd.dk"
+    system "scp pkg/adminsite-#{version}.gem gems.crd.dk:/usr/local/www/rubygems/gems/."
+  end
+  
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
