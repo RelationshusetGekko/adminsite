@@ -39,7 +39,7 @@ How does it work.
 Mosso Cloud Files
 =================
 If you want to use mosso cloud files support you should add a 
-config/mosso_cloudfiles.yaml that should look like this:
+config/mosso_cloudfiles.yml that should look like this:
 
 development:
   username: circlerd
@@ -54,9 +54,12 @@ production:
 SECRET_API is defined into the mosso control panel and in all 
 the project we have with mosso integration (copy it from one of them)
 
-Add this into you production.rb
+Add this into you config/environments/production.rb
 PAPERCLIP_CONTAINER = "my_project_container"
 Be sure that "my_project_container" exists for your account
+
+Add this line into your config/environment.rb
+gem.require 'cloudfiles'
 
 
 Protected pages
