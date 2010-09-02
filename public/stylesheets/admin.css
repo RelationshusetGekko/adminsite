@@ -195,7 +195,7 @@ padding-left: 18px;
       }
     #tabsB a {
       float:left;
-      background:url("/images/admin/tableftB.gif") no-repeat left top;
+      background:url("/images/admin/tableftB.png") no-repeat left top;
       margin:0;
       padding:0 0 0 4px;
       text-decoration:none;
@@ -203,7 +203,7 @@ padding-left: 18px;
     #tabsB a span {
       float:left;
       display:block;
-      background:url("/images/admin/tabrightB.gif") no-repeat right top;
+      background:url("/images/admin/tabrightB.png") no-repeat right top;
       padding:5px 15px 4px 6px;
       color:#666;
       }
