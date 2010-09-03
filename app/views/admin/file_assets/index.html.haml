@@ -14,7 +14,7 @@
       = f.file_field :attachment
     %p
       = submit_tag 'Add'
-  
+
   %table
     %tr
       %th
@@ -22,4 +22,4 @@
     - @file_assets.each do |asset|
       %tr
         %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
-        %td= link_to image_tag('admin/cross.png'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete
+        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete

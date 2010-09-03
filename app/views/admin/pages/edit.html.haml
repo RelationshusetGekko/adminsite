@@ -1,24 +1,23 @@
 #header
   #header_left
-    %h3 
-      Edit 
+    %h3
+      Edit
       = @page.title
   #header_right
-    %nbsp
 
 #wrapper
   = error_messages_for :page
 
   - form_for([:admin, @page]) do |f|
     #page-edit
-      = render(:partial => 'form', :locals => {:f => f})
+      = render :partial => 'form', :locals => {:f => f}
       = submit_tag "Update"
       = link_to 'Back', admin_pages_path
-  = render(:partial => 'admin/shared/syntax_help')
+  = render :partial => 'admin/shared/syntax_help'
   #page-assets-list
     %h2 Assets
     %table
       - @file_assets.each do |asset|
         %tr
           %td= asset.attachment_file_name
-  .clear &nbsp;
+  .clear

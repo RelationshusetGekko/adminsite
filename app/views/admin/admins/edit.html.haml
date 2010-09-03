@@ -1,36 +1,35 @@
 #header
   #header_left
-    %h3 
-      Edit 
+    %h3
+      Edit
       = @admin.login
   #header_right
-    %nbsp
 
 #wrapper
   = error_messages_for :admin
 
   - form_for([:admin, @admin]) do |f|
     %p
-      %b
+      %label
         Login
-      %br
+        %br
         = f.text_field :login
     %p
-      %b
+      %label
         New password
-      %br
-      = f.password_field :password
+        %br
+        = f.password_field :password
     %p
-      %b
+      %label
         Password confirmation
-      %br
-      = f.password_field :password_confirmation
+        %br
+        = f.password_field :password_confirmation
     %p
-      %b
-        Open Id
-      %br
+      %label
+        OpenId
+        %br
         = f.text_field :openid_identifier
-        
     %p
       = submit_tag "Update"
+
   = link_to 'Back', admin_admins_path

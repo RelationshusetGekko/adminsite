@@ -4,10 +4,11 @@
 
 #wrapper
   = error_messages_for :page_layout
+
   - form_for([:admin, @page_layout]) do |f|
     #page-edit
-      = render(:partial => 'form', :locals => {:f => f})
-      = submit_tag "Update" 
+      = render :partial => 'form', :locals => {:f => f}
+      = submit_tag "Update"
       = link_to 'Back', admin_page_layouts_path
-  = render(:partial => 'admin/shared/syntax_help')
-  .clear &nbsp;
+  = render :partial => 'admin/shared/syntax_help'
+  .clear

@@ -9,7 +9,7 @@
     = javascript_include_tag :defaults, :cache => 'admin'
     = yield :head
   %body
-    / Disabled until we get a proper topbar
+    -# Disabled until we get a proper topbar
     #top-logo
       %img{:src=>"/images/admin/logo.gif"}
     = render(:partial => 'admin/shared/menu') if current_admin.present?

@@ -82,8 +82,8 @@ hr{
   border-bottom: 10px solid #f5f5f5;
   background: #f5f5f5;
   width: 100%;
-  left: 0px;
-  bottom: 0px;
+  left: 0;
+  bottom: 0;
   text-align:center;
   color: #aaa;
   font-size: 10px;
@@ -181,7 +181,7 @@ padding-left: 18px;
       font-size:93%;
       line-height:normal;
     border-bottom:1px solid #999999;
-    margin-bottom: 0px;
+    margin-bottom: 0;
       }
     #tabsB ul {
         margin:0;
@@ -228,7 +228,7 @@ padding-left: 18px;
   }
 
 img {
-  border: 0px;
+  border: 0;
   text-decoration: none;
 }
 
@@ -243,10 +243,7 @@ a:hover img {
   margin-bottom: 10px;
 }
 
-.notice img {
-  vertical-align: bottom;
-}
-
+.notice img,
 #header_right img {
   vertical-align: bottom;
 }
@@ -262,7 +259,7 @@ a:hover img {
 	font-family: Georgia,"Times New Roman",Times,serif;
 	font-size:25px;
 	color:#585858;
-	margin: 8px 0px 10px 19px;
+	margin: 8px 0 10px 19px;
 }
 #page-edit{
 	width:560px;

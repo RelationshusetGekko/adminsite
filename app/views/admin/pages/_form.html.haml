@@ -1,29 +1,28 @@
 %p
-  %b
+  %label
     Title
-  %br
+    %br
     = f.text_field :title
 %p
-  %b 
+  %label
     Layout
-  %br
-  = f.select(:page_layout_id, PageLayout.find(:all).collect {|h| [ h.title, h.id ] })
+    %br
+    = f.select(:page_layout_id, PageLayout.find(:all).collect {|h| [ h.title, h.id ] })
 %p
-  %b
+  %label
     Requires login
     = f.check_box :requires_login
 %p
-  %b
+  %label
     Can be cached
     = f.check_box :cacheable
-
 %p
-  %b
+  %label
     Url
-  %br
-  = f.text_field :url
+    %br
+    = f.text_field :url
 %p
-  %b
-    Body 
-  %br
-    ~ f.text_area :body, {:style=>'width:550px;'}
+  %label
+    Body
+    %br
+    ~ f.text_area :body, { :style => 'width:550px' }

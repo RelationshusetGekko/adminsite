@@ -2,19 +2,19 @@
   #header_left
     %h3 Listing page layouts
   #header_right
-    = image_tag('admin/add.png')
+    = image_tag('admin/add.png', :size => '16x16')
     = link_to 'New page layout', new_admin_page_layout_path
-      
+
 #wrapper
   %table
     %tr
       %th Title
       %th Last Update
-      %th &nbsp;
-      %th &nbsp;
-    - for page_layout in @page_layouts
+      %th
+      %th
+    - @page_layouts.each do |page_layout|
       %tr
         %td= h page_layout.title
         %td= h page_layout.updated_at
-        %td= link_to image_tag('admin/pencil.png'), edit_admin_page_layout_path(page_layout)
-        %td= link_to image_tag('admin/cross.png'), [:admin, page_layout], :confirm => 'Are you sure?', :method => :delete
+        %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_page_layout_path(page_layout)
+        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, page_layout], :confirm => 'Are you sure?', :method => :delete
