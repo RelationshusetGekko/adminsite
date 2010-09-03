@@ -315,7 +315,7 @@ table.statistics tr.total td {
 
 form#loginform, form#new_admin_session{
 	margin-left: 8px;
-	padding: 16px 16px 40px 16px;
+	padding: 0.9em;
 	font-weight: normal;
 	-moz-border-radius: 11px;
 	-khtml-border-radius: 11px;
@@ -361,10 +361,14 @@ form .forgetmenot label {
 }
 
 form .submit { float: right; }
+form#new_admin_session .submit { float: none; text-align: right; }
 
 form p { margin-bottom: 24px; }
 
-#login-box { width: 320px; margin: 7em auto; }
+#login-box {
+  width: 18em;
+  margin: 7em auto 0;
+}
 
 #admin_session_login, 
 #admin_session_password, 

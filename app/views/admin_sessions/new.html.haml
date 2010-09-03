@@ -15,5 +15,5 @@
           Password:
           %br
           = f.password_field :password
-      %p{:class=>"submit"}
-        %input{:type=>"submit", :name=>"wp-submit", :id=>"wp-submit", :value=>"Log In", :tabindex=>"100"}
+      %p.submit
+        %input#wp-submit{ :type => "submit", :name => "wp-submit", :value => "Log In", :tabindex => "100" }
