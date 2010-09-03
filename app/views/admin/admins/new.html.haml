@@ -23,11 +23,6 @@
         %br
         = f.password_field :password_confirmation
     %p
-      %label
-        OpenId
-        %br
-        = f.text_field :openid_identifier
-    %p
       = submit_tag "Create"
 
   = link_to 'Back', admin_admins_path

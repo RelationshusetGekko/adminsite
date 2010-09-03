@@ -29,12 +29,7 @@ class AdminSessionsController < AdminApplicationController
   private
   # Track failed login attempts
   def note_failed_signin
-    if params[:open_id_complete].present?
-      flash[:error] = "Couldn't log you in as '#{params[:openid1_claimed_id]}'"
-      logger.warn "Failed login for '#{params[:openid1_claimed_id]}' from #{request.remote_ip} at #{Time.now.utc}"
-    else
-      flash[:error] = "Couldn't log you in as '#{params[:admin_session][:login]}'"
-      logger.warn "Failed login for '#{params[:admin_session][:login]}' from #{request.remote_ip} at #{Time.now.utc}"
-    end
+    flash[:error] = "Couldn't log you in as '#{params[:admin_session][:login]}'"
+    logger.warn "Failed login for '#{params[:admin_session][:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end
