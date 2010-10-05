@@ -1,0 +1,13 @@
+NAME
+     exporter - generates a new exporter for a defined class
+
+SYNOPSIS
+     exporter
+
+DESCRIPTION
+     generates a new exporter for a defined class
+
+EXAMPLE
+      ./script/generate exporter [ClassName]
+
+     This will generates a new exporter for the defined class
