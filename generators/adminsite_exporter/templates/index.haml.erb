@@ -1,0 +1,24 @@
+#header
+  #header_left
+    %h3 <%= class_name %> exports
+  #header_right
+
+#wrapper
+  - form_tag(admin_<%= file_name %>_exports_path, :method=>:post) do
+    %b Select the export you want to generate:
+    = select_tag "export_name_scope", options_for_select(@export_name_scopes)
+    = select_tag "file_type", options_for_select(@file_types)
+    &nbsp;&nbsp;
+    = submit_tag "Generate export"
+
+  - @file_types.each do |file_type|
+    %h2= file_type
+    %table
+      %tr
+        %th Filename
+        %th
+      - <%= class_name %>Export.generated_export_files(file_type).each do |export|
+        - basename = File.basename(export, ".#{file_type}")
+        %tr
+          %td= link_to "#{basename}.#{file_type}", admin_<%= file_name %>_export_path("#{basename}_#{file_type}")
+          %td= link_to image_tag('admin/cross.png'), admin_<%= file_name %>_export_path("#{basename}_#{file_type}"), :confirm => 'Are you sure?', :method => :delete

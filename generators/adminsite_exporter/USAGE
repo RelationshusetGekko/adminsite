@@ -10,4 +10,4 @@ DESCRIPTION
 EXAMPLE
       ./script/generate exporter [ClassName]
 
-     This will generates a new exporter for the defined class
+     This will generates a new exporter for the defined class to be used in Adminsite

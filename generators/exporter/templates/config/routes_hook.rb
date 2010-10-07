@@ -1,1 +1,0 @@
-admin.resources :exports
