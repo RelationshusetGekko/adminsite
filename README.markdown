@@ -23,7 +23,7 @@ features:
 
     `./script/generate adminsite`
 
-3. There is no 3  
+3. There is no 3
 You are ready to go!
 
 
@@ -36,6 +36,24 @@ How does it work.
    - url:  index.html
    - body: "hello world"
 4. open `http://localhost:3000/`
+
+Adminsite Exporter Generators
+=============================
+You can generate an exporter based on a model. The generator takes care of all
+the process including adding a new tab in the menu and needed routes.
+
+You might want to adjust what the exports should contains,
+you can define multiple style, look in the generated controllers and classes.
+
+1. Run
+
+    `./script/generate admisite_exporter Customer`
+
+2. Add the proper menu item in you view/admin/shared/_menu.html.haml file
+
+    `=menu\_item("Customer Exports", admin\_customer\_exports\_path)`
+
+Where Customer is only an example.
 
 Mosso Cloud Files
 =================
@@ -84,7 +102,7 @@ ex. using Authlogic:
       end
       return true
     end
-    
+
     def current_user
       # Place you authentication code here
     end

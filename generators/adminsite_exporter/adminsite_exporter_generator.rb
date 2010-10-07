@@ -10,6 +10,7 @@ class AdminsiteExporterGenerator < Rails::Generator::NamedBase
       m.directory "app/views/admin/#{file_name}"
       m.template  "exports.rb", "app/views/admin/#{file_name}/exports.rb"
       route_namespaced_resources :admin, "#{file_name}_exports"
+      menu_tab_creation_message
     end
   end
 
@@ -30,6 +31,17 @@ class AdminsiteExporterGenerator < Rails::Generator::NamedBase
     path = destination_path(relative_destination)
     content = File.read(path).gsub(regexp, *args, &block)
     File.open(path, 'wb') { |file| file.write(content) }
+  end
+
+  def menu_tab_creation_message
+    puts "\n\n"
+    puts "#{'*'*60}"
+    puts "You can now add a tab in the top menu if you want."
+    puts "be sure you have a menu file in:"
+    puts "view/admin/shared/_menu.html.haml"
+    puts "and add this line:"
+    puts "=menu_item('#{class_name} Exports', admin_#{file_name}_exports_path)"
+    puts "#{'*'*60}"
   end
 
 end
