@@ -41,10 +41,10 @@ begin
     Once you have installed this gem
     include it into your app with:
     config.gem "adminsite"
-    
+
     Then from your app root type:
     script/generate adminsite
-    
+
     For Mosso Cloud Files integration and Protected pages
     please refer to the README file in this gem root folder
 
@@ -54,15 +54,16 @@ begin
     s.add_dependency 'haml'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
+    s.add_dependency 'simple_xlsx_writer'
   end
-  
+
   desc 'Copy gem file on gems.crd.dk'
   task :publish do
     version = File.read('VERSION').strip
     puts "Publishing version #{version} on gems.crd.dk"
     system "scp pkg/adminsite-#{version}.gem gems.crd.dk:/usr/local/www/rubygems/gems/."
   end
-  
+
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end

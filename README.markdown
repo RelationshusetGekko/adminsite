@@ -53,6 +53,10 @@ you can define multiple style, look in the generated controllers and classes.
 
     `=menu\_item("Customer Exports", admin\_customer\_exports\_path)`
 
+3. Based on you app setup you might need to add to environments.rb
+
+   `config.gem 'simple\_xlsx\_writer', :lib => 'simple\_xlsx'`
+
 Where Customer is only an example.
 
 Mosso Cloud Files
