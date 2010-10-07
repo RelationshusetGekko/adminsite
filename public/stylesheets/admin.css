@@ -18,17 +18,17 @@ input {
 }
 
 #flashnotice{
-	padding: 12px 6px 6px 20px;
-	background: #99CC00;
-	color: #ffffff;
-	font-weight: bold;
+  padding: 12px 6px 6px 20px;
+  background: #99CC00;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 #flasherror{
-	padding: 12px 6px 6px 20px;
-	background: #ff5555;
-	color: #ffffff;
-	font-weight: bold;
+  padding: 12px 6px 6px 20px;
+  background: #ff5555;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 #notice {
@@ -46,9 +46,9 @@ input {
 }
 
 hr{
-	border:dashed black; 
-	border-width:1px 0 0; 
-	height:0;
+  border:dashed black;
+  border-width:1px 0 0;
+  height:0;
 }
 
 #header {
@@ -248,24 +248,24 @@ a:hover img {
   margin-bottom: 10px;
 }
 #top-logo{
-	font-family: Georgia,"Times New Roman",Times,serif;
-	font-size:25px;
-	color:#585858;
-	margin: 8px 0 10px 19px;
+  font-family: Georgia,"Times New Roman",Times,serif;
+  font-size:25px;
+  color:#585858;
+  margin: 8px 0 10px 19px;
 }
 #page-edit{
-	width:560px;
-	float:left;
+  width:560px;
+  float:left;
 }
 #page-assets-list, #syntax-help{
-	width:290px;
-	padding:9px;
-	float:left;
-	margin-left:10px;
-	background-color: #eeeeee;
+  width:290px;
+  padding:9px;
+  float:left;
+  margin-left:10px;
+  background-color: #eeeeee;
 }
 .clear{
-	clear:both;
+  clear:both;
 }
 table {
   margin: 0 0 1em;
@@ -303,50 +303,50 @@ table.statistics tr.total td {
 
 
 form#loginform, form#new_admin_session{
-	margin-left: 8px;
-	padding: 0.9em;
-	font-weight: normal;
-	-moz-border-radius: 11px;
-	-khtml-border-radius: 11px;
-	-webkit-border-radius: 11px;
-	border-radius: 5px;
-	background: #fff;
-	border: 1px solid #e5e5e5;
-	-moz-box-shadow: rgba(200,200,200,1) 0 4px 18px;
-	-webkit-box-shadow: rgba(200,200,200,1) 0 4px 18px;
-	-khtml-box-shadow: rgba(200,200,200,1) 0 4px 18px;
-	box-shadow: rgba(200,200,200,1) 0 4px 18px;
+  margin-left: 8px;
+  padding: 0.9em;
+  font-weight: normal;
+  -moz-border-radius: 11px;
+  -khtml-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  -moz-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+  -webkit-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+  -khtml-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+  box-shadow: rgba(200,200,200,1) 0 4px 18px;
 }
 
 #login-box form .submit input {
-	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
-	padding: 3px 10px;
-	border: none;
-	font-size: 12px;
-	border-width: 1px;
-	border-style: solid;
-	-moz-border-radius: 11px;
-	-khtml-border-radius: 11px;
-	-webkit-border-radius: 11px;
-	border-radius: 11px;
-	cursor: pointer;
-	text-decoration: none;
-	margin-top: -3px;
-	text-shadow: rgba(0,0,0,0.3) 0 -1px 0;
+  font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+  padding: 3px 10px;
+  border: none;
+  font-size: 12px;
+  border-width: 1px;
+  border-style: solid;
+  -moz-border-radius: 11px;
+  -khtml-border-radius: 11px;
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: -3px;
+  text-shadow: rgba(0,0,0,0.3) 0 -1px 0;
 }
 
 #login-box  form p {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 label {
-	color: #777;
-	font-size: 13px;
+  color: #777;
+  font-size: 13px;
 }
 
 form .forgetmenot label {
-	font-size: 11px;
-	line-height: 19px;
+  font-size: 11px;
+  line-height: 19px;
 }
 
 form .submit { float: right; }
@@ -359,7 +359,7 @@ form p { margin-bottom: 24px; }
   margin: 7em auto 0;
 }
 
-#admin_session_login, 
+#admin_session_login,
 #admin_session_password {
   -moz-background-clip:border;
   -moz-background-inline-policy:continuous;

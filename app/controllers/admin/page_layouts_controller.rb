@@ -4,15 +4,15 @@ class Admin::PageLayoutsController < Admin::BaseController
   def index
     @page_layouts = PageLayout.find(:all, :order => "title ASC")
   end
-  
+
   def new
     @page_layout = PageLayout.new(:body => "{{content_for_template}}")
   end
-  
+
   def edit
     @page_layout = PageLayout.find(params[:id])
   end
-  
+
   def create
     @page_layout = PageLayout.new(params[:page_layout])
     if @page_layout.save
@@ -22,7 +22,7 @@ class Admin::PageLayoutsController < Admin::BaseController
       render :action => "new"
     end
   end
-  
+
   def update
     @page_layout = PageLayout.find(params[:id])
     if @page_layout.update_attributes(params[:page_layout])

@@ -28,7 +28,7 @@ module Admin::AdminsiteApplicationHelper
     }
     link_to_remote(text, options, html_options)
   end
-  
+
   def destination_list_for(day, locale)
     list = day.destinations.with_locale(locale)
     return "none" if list.empty?
@@ -39,13 +39,13 @@ module Admin::AdminsiteApplicationHelper
       return partial_list
     end
   end
-  
+
   def tr_line_for(user, att, txt_label=nil)
     txt_label = att.to_s.humanize if txt_label.nil?
     val = user[att] || user.send(att)
     "<tr><td><b>#{txt_label}</b></td><td>#{val}</td></tr>"
   end
-  
+
   def readiness_group_delta(after, before)
     bgcolor = ""
     bgcolor = "#a9ff9e" if after>before

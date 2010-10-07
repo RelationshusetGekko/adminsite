@@ -6,7 +6,7 @@ class AdminSessionsController < AdminApplicationController
   def new
     @admin_session = AdminSession.new
   end
-  
+
   def create
     @admin_session = AdminSession.new(params[:admin_session])
     @admin_session.save do |result|
@@ -19,13 +19,13 @@ class AdminSessionsController < AdminApplicationController
       end
     end
   end
-  
+
   def destroy
     current_admin_session.destroy
     flash[:notice] = "Logout successful!"
     redirect_back_or_default new_admin_session_url
   end
-  
+
   private
   # Track failed login attempts
   def note_failed_signin

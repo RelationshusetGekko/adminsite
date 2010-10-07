@@ -4,7 +4,7 @@ namespace :app do
   task :setup_admin_site do
     run_with_rake 'adminsite:setup'
   end
-  
+
   def run_with_rake(task_name)
     rake = fetch(:rake, 'rake')
     run "cd #{current_path} && " +

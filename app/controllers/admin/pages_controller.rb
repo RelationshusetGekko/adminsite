@@ -4,7 +4,7 @@ class Admin::PagesController < Admin::BaseController
   def index
     @pages = Page.find(:all, :order => "title ASC")
   end
-  
+
   def new
     @page = Page.new
   end
@@ -13,7 +13,7 @@ class Admin::PagesController < Admin::BaseController
     @page = Page.find(params[:id])
     @file_assets = FileAsset.all
   end
-  
+
   def create
     @page = Page.new(params[:page])
     if @page.save
@@ -23,7 +23,7 @@ class Admin::PagesController < Admin::BaseController
       render :action => "new"
     end
   end
-  
+
   def update
     @page = Page.find(params[:id])
     @file_assets = FileAsset.all
@@ -42,7 +42,7 @@ class Admin::PagesController < Admin::BaseController
     @page.destroy
     redirect_to(admin_pages_path)
   end
-  
+
   private
   def cleanup_cached_page(file_name)
     cache_dir = ActionController::Base.page_cache_directory

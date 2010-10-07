@@ -7,7 +7,7 @@ class CreatePageLayouts < ActiveRecord::Migration
     end
     add_column :pages, :page_layout_id, :integer
   end
-  
+
   def self.down
     remove_column :pages, :page_layout_id
     drop_table :page_layouts

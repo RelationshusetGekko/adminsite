@@ -12,10 +12,10 @@ class CreateAdmins < ActiveRecord::Migration
       t.string   :last_login_ip
       t.string   :current_login_ip
       t.string   :openid_identifier
-      
+
       t.timestamps
     end
-    
+
     add_index :admins, :openid_identifier
     add_index :admins, :login
     add_index :admins, :persistence_token

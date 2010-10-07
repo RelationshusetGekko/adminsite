@@ -10,8 +10,8 @@ class Admin::FileAssetsController < Admin::BaseController
     if existing_files = FileAsset.find_by_attachment_file_name(filename)
       # "Overwrite" existing by removing them
       existing_files.destroy
-    end 
-    
+    end
+
     @file_asset = FileAsset.new(params[:file_asset])
     if @file_asset.save!
       flash[:notice] = 'File was successfully uploaded.'
@@ -27,7 +27,7 @@ class Admin::FileAssetsController < Admin::BaseController
     redirect_to admin_file_assets_path
     cleanup_cached_pages
   end
-  
+
   private
   def cleanup_cached_pages
     cache_dir = ActionController::Base.page_cache_directory

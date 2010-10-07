@@ -3,7 +3,7 @@ class Page < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :page_layout
   validates_presence_of :url
-  
+
   class << self
     def cleanup_all_cached
       cache_dir = ActionController::Base.page_cache_directory
@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
       logger.info("Page cache has been wiped out: deleted all cached pages.")
     end
   end
-  
+
   def render(args)
     page_layout.render(layout_args(args))
   end
