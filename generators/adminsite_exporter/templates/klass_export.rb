@@ -46,7 +46,7 @@ class <%= class_name %>Export
 
     def default_path_to_export
       Rails.root.join("db",
-                      "exports",
+                      "data_exports",
                       "<%= file_name %>_exports")
     end
 
