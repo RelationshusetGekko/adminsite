@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + "../adminsite/lib/insert_commands.rb")
-require File.expand_path(File.dirname(__FILE__) + "../adminsite/lib/rake_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "/../adminsite/lib/insert_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "/../adminsite/lib/rake_commands.rb")
 
 class AdminsiteExporterGenerator < Rails::Generator::NamedBase
   def manifest
