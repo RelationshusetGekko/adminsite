@@ -1,3 +1,6 @@
+require File.expand_path(File.dirname(__FILE__) + "../adminsite/lib/insert_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "../adminsite/lib/rake_commands.rb")
+
 class AdminsiteExporterGenerator < Rails::Generator::NamedBase
   def manifest
     puts "Setting up Adminsite to export #{class_name}"
@@ -10,6 +13,8 @@ class AdminsiteExporterGenerator < Rails::Generator::NamedBase
       m.directory "app/models/#{file_name}"
       m.template  "exports.rb", "app/models/#{file_name}/exports.rb"
       route_namespaced_resources :admin, "#{file_name}_exports"
+      m.append_to "Rakefile", 'task "resque:setup" => :environment'
+      m.template  "file_export_timeformats.rb", "config/initializers/file_export_timeformats.rb"
       menu_tab_creation_message
     end
   end
