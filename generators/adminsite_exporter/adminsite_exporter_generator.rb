@@ -7,8 +7,8 @@ class AdminsiteExporterGenerator < Rails::Generator::NamedBase
       m.directory "app/views/admin/#{file_name}_exports"
       m.template  "index.haml.erb", "app/views/admin/#{file_name}_exports/index.haml"
       m.template  "klass_export.rb", "app/models/#{file_name}_export.rb"
-      m.directory "app/views/admin/#{file_name}"
-      m.template  "exports.rb", "app/views/admin/#{file_name}/exports.rb"
+      m.directory "app/models/#{file_name}"
+      m.template  "exports.rb", "app/models/#{file_name}/exports.rb"
       route_namespaced_resources :admin, "#{file_name}_exports"
       menu_tab_creation_message
     end
