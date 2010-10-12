@@ -1,5 +1,5 @@
-require File.expand_path(File.dirname(__FILE__) + "/lib/insert_commands.rb")
-require File.expand_path(File.dirname(__FILE__) + "/lib/rake_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "/../lib/insert_commands.rb")
+require File.expand_path(File.dirname(__FILE__) + "/../lib/rake_commands.rb")
 
 class AdminsiteGenerator < Rails::Generator::Base
   def manifest
