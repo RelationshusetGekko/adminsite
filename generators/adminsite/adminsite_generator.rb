@@ -8,6 +8,9 @@ class AdminsiteGenerator < Rails::Generator::Base
       m.append_to 'Rakefile', IO.read(source_path('rakefile_hook.rb'))
       m.template 'routes.rb', 'config/routes.rb'
 
+      FileUtils.mkdir_p 'views/admin/shared'
+      m.template '_menu.haml', 'views/admin/shared/_menu.haml'
+
       FileUtils.mkdir_p 'lib/recipes'
       m.template 'application.rb', 'lib/recipes/application.rb'
 
