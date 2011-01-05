@@ -1,4 +1,4 @@
-class CreateAdmins < ActiveRecord::Migration
+class CreateAdminsiteTables < ActiveRecord::Migration
   def self.up
     create_table :admins do |t|
       t.string   :login,             :default => nil, :null => true
