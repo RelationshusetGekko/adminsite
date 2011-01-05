@@ -50,7 +50,7 @@ begin
 
   #{'*'*60}
   POST_INSTALL_MESSAGE
-    s.add_dependency 'authlogic'
+    s.add_dependency 'authlogic', '>2.1.6'
     s.add_dependency 'haml'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
