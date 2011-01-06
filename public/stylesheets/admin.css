@@ -195,15 +195,17 @@ div.progressBar div.background {
 .menu ul {
   list-style: none;
   margin: 0;
-  padding: 0.2em 0;
+  padding: 0;
 }
 .menu ul li {
-  display: inline;
+  float: left;
   margin: 0;
+  margin-right: 0.5em;
   padding: 0;
 }
 .menu ul li a {
   background-color: #eee;
+  display: block;
   margin: 0;
   padding: 0.2em 0.5em;
   text-decoration: none;
@@ -236,7 +238,6 @@ div.progressBar div.background {
 }
 #admin_menu ul {
   float: left;
-  margin: 0 0.2em;
 }
 #admin_menu ul li a {
   border-radius: 0 0 4px 4px;
