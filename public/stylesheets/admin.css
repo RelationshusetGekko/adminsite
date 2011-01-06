@@ -64,7 +64,7 @@ hr{
 #header_left {
   float: left;
 }
-#header_left h3 {
+#header_left h2 {
   font-size: 15px;
   margin: 0;
   padding: 0;
@@ -273,11 +273,15 @@ a:hover img {
   margin-right: 10px;
   margin-bottom: 10px;
 }
-#top-logo{
-  font-family: Georgia,"Times New Roman",Times,serif;
-  font-size:25px;
-  color:#585858;
-  margin: 8px 0 10px 19px;
+h1{
+  background: url(/images/admin/logo.png) no-repeat;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: normal;
+  padding-left: 124px;
+  min-height: 34px;
+  color: #585858;
+  margin: 20px;
 }
 #page-edit{
   width:560px;
