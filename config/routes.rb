@@ -1,18 +1,19 @@
-ActionController::Routing::Routes.draw do |map|
-  map.with_options :controller => 'admin_sessions' do |admin_sessions|
-    admin_sessions.logout           '/logout',       :action => 'destroy'
-    admin_sessions.login            '/login',        :action => 'new'
-    admin_sessions.resource :admin_session, :only => [:new, :create, :destroy]
+Rails.application.routes.draw do
+
+  namespace :admin do
+    resources :admins, :except => :show
+    resources :file_assets
+    resources :page_layouts
+    resources :pages
+    resources :exports
+    resources :users
+    resources :statistics
   end
-  map.namespace :admin do |admin|
-    admin.resources :admins, :except => :show
-    admin.resources :file_assets
-    admin.resources :page_layouts
-    admin.resources :pages
-    admin.resources :exports
-    admin.resources :users
-    admin.resources :statistics
-  end
-  map.resource :admin_session
-  map.admin_login "/admin", :controller => "admin_sessions", :action => "new"
+
+  match '/logout' => 'admin_sessions#destroy', :as => 'logout'
+  match '/admin' => 'admin_sessions#new', :as => 'admin_login'
+  resource :admin_session
+
+  root  :to => 'contents#show', :page_url => 'index'
+  match '/:page_url(.:format)(/:id)' => 'contents#show'
 end
