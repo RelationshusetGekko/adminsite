@@ -5,7 +5,6 @@ class AdminApplicationController < ActionController::Base
   unloadable
   helper :all, "admin/adminsite_application"
   helper_method :current_admin_session, :current_admin
-  filter_parameter_logging :password, :password_confirmation
   layout 'admin'
   before_filter :require_admin
 
