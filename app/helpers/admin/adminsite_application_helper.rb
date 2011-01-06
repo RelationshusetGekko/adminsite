@@ -7,7 +7,7 @@ module Admin::AdminsiteApplicationHelper
 
   def menu_item(label,url)
     current = %Q{id="current"} if url == request.fullpath
-    raw %Q{<li #{h current}><a href="#{h url}"><span>#{h label}</span></a></li>}
+    raw %Q{<li #{h current}><a href="#{h url}">#{h label}</a></li>}
   end
   # SORTABLE TABLE
   def sort_th_class_helper(text, param)

@@ -2,7 +2,7 @@ body, input, select {
   margin: 0;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   font-size: 11px;
-  color: #111111;
+  color: #222222;
 }
 
 input {
@@ -98,8 +98,7 @@ pre {
   font-size: 11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
+a { color: #222; }
 a:hover { color: #fff; background-color:#000; }
 
 .fieldWithErrors {
@@ -164,60 +163,43 @@ div.progressBar div.background {
 
 
 /* MENU */
-/*- Menu Tabs J--------------------------- */
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.2em 0;
+}
+.menu ul li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.menu ul li a {
+  background-color: #eee;
+  margin: 0;
+  padding: 0.2em 0.5em;
+  text-decoration: none;
+}
+.menu ul li a:hover {
+  color: #fff;
+  background-color: #000;
+}
+#admin_menu {
+  background: #ffffff;
+  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#admin_menu ul {
+  float: left;
+  margin: 0 0.2em;
+}
+#admin_menu ul li a {
+  border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  -webkit-border-radius: 0 0 4px 4px;
+}
 
-    #tabsB {
-      float:left;
-      width:100%;
-      background:#FFF;
-      font-size:93%;
-      line-height:normal;
-    border-bottom:1px solid #999999;
-    margin-bottom: 0;
-      }
-    #tabsB ul {
-        margin:0;
-        padding:10px 10px 0 16px;
-        list-style:none;
-      }
-    #tabsB li {
-      display:inline;
-      margin:0;
-      padding:0;
-      }
-    #tabsB a {
-      float:left;
-      background:url("/images/admin/tableftB.png") no-repeat left top;
-      margin:0;
-      padding:0 0 0 4px;
-      text-decoration:none;
-      }
-    #tabsB a span {
-      float:left;
-      display:block;
-      background:url("/images/admin/tabrightB.png") no-repeat right top;
-      padding:5px 15px 4px 6px;
-      color:#666;
-      }
-    /* Commented Backslash Hack hides rule from IE5-Mac \*/
-    #tabsB a span {float:none;}
-    /* End IE5-Mac hack */
-    #tabsB a:hover span {
-      color:#000;
-      }
-    #tabsB a:hover {
-      background-position:0% -42px;
-      }
-    #tabsB a:hover span {
-      background-position:100% -42px;
-      }
-
-  #tabsB #current a {
-      background-position:0% -42px;
-  }
-  #tabsB #current a span {
-      background-position:100% -42px;
-  }
 
 img {
   border: 0;
