@@ -70,8 +70,28 @@ hr{
   padding: 0;
 }
 #header_right {
-  float: right;
+  float: left;
+  clear: left;
+  font-size: 85%;
+  margin-top: 0.2em;
 }
+#header_right a {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  display: block;
+  float: left;
+  margin-right: 0.5em;
+  padding-top:    0.2em;
+  padding-right:  0.2em;
+  padding-bottom: 0.2em;
+  text-decoration: none;
+}
+#header_right a:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .clearfix {
   zoom: 1;
 }
