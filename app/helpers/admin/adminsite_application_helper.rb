@@ -5,9 +5,16 @@ module Admin::AdminsiteApplicationHelper
     raw ['<ul>', msgs, '</ul>'].flatten.join
   end
 
-  def menu_item(label, url, klass = nil)
+  def menu_item(label, url, current_controller = '', klass = nil)
     current = %Q{id="current"} if url == request.fullpath
-    klass_string = %Q{class="#{klass}"} if klass.present?
-    raw "<li #{h [current, klass_string].join(' ')}><a href='#{h url}'>#{h label}</a></li>"
+    klass_string = %Q{class="#{klasses(current_controller, klass)}"} if klass.present?
+    raw "<li #{[current, klass_string].join(' ')}><a href='#{h url}'>#{h label}</a></li>"
+  end
+
+  def klasses(current_controller, klass)
+    [].tap do |result|
+      result << klass    if klass.present?
+      result << 'active' if current_controller == controller.controller_name
+    end.join(' ')
   end
 end

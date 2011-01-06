@@ -180,16 +180,22 @@ div.progressBar div.background {
   text-decoration: none;
 }
 .menu ul li a:hover {
-  color: #fff;
-  background-color: #000;
+  color: #000;
+  background-color: #aaa;
 }
-.menu ul li a.log_out {
-  background-color: #bf1b17;
-  color: #fff;
+.menu ul li.active a {
+  background-color: #aaa;
+  box-shadow: 0 1px 2px #000 inset;
+  -moz-box-shadow: 0 1px 2px #000 inset;
 }
-.menu ul li a.log_out:hover {
-  color: #fff;
-  background-color: #000;
+.menu ul li a.active:hover {
+  background-color: #666;
+}
+.menu ul li.log_out a {
+  background-color: #f00006;
+}
+.menu ul li.log_out a:hover {
+  background-color: #ac0000;
 }
 
 #admin_menu {

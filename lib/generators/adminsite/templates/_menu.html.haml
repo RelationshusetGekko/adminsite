@@ -1,7 +1,7 @@
 #admin_menu.menu
   %ul
-    =menu_item('Administrators', admin_admins_path)
-    =menu_item('Page Layouts', admin_page_layouts_path)
-    =menu_item('Pages', admin_pages_path)
-    =menu_item('File Assets', admin_file_assets_path)
-    =menu_item('Log out', logout_path, 'log_out')
+    = menu_item 'Administrators', admin_admins_path,       'admins'
+    = menu_item 'Page Layouts',   admin_page_layouts_path, 'page_layouts'
+    = menu_item 'Pages',          admin_pages_path,        'pages'
+    = menu_item 'File Assets',    admin_file_assets_path,  'file_assets'
+    = menu_item 'Log out',        logout_path,             '', 'log_out'
