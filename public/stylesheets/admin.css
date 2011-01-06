@@ -183,6 +183,15 @@ div.progressBar div.background {
   color: #fff;
   background-color: #000;
 }
+.menu ul li a.log_out {
+  background-color: #bf1b17;
+  color: #fff;
+}
+.menu ul li a.log_out:hover {
+  color: #fff;
+  background-color: #000;
+}
+
 #admin_menu {
   background: #ffffff;
   float: right;
