@@ -1,25 +1,23 @@
-#header
-  #header_left
-    %h3 Listing File Assets
-  #header_right
+- content_for :header_left do
+  Listing File Assets
 
-#wrapper
-  %h2 Add new asset
+%p
+  %b Add new asset
 
-  = error_messages_for @file_asset
+= error_messages_for @file_asset
 
-  = form_for(:file_asset, @file_asset, :url => admin_file_assets_path, :html => { :multipart => true }) do |f|
-    %p
-      %b File
-      = f.file_field :attachment
-    %p
-      = submit_tag 'Add'
+= form_for(:file_asset, @file_asset, :url => admin_file_assets_path, :html => { :multipart => true }) do |f|
+  %p
+    %b File
+    = f.file_field :attachment
+  %p
+    = submit_tag 'Add'
 
-  %table
+%table
+  %tr
+    %th
+    %th Filename
+  - @file_assets.each do |asset|
     %tr
-      %th
-      %th Filename
-    - @file_assets.each do |asset|
-      %tr
-        %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
-        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete
+      %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
+      %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete

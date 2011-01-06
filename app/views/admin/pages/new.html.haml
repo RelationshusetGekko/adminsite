@@ -1,16 +1,12 @@
-#header
-  #header_left
-    %h3
-      New page
-  #header_right
+- content_for :header_left do
+  New page
 
-#wrapper
-  = error_messages_for @page
+= error_messages_for @page
 
-  = form_for([:admin, @page], :url => admin_pages_path) do |f|
-    #page-edit
-      = render(:partial => 'form', :locals => {:f => f})
-      = submit_tag "Create"
-      = link_to 'Back', admin_pages_path
-  = render :partial => 'admin/shared/syntax_help'
-  .clear
+= form_for([:admin, @page], :url => admin_pages_path) do |f|
+  #page-edit
+    = render(:partial => 'form', :locals => {:f => f})
+    = submit_tag "Create"
+    = link_to 'Back', admin_pages_path
+= render :partial => 'admin/shared/syntax_help'
+.clear

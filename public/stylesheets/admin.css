@@ -52,28 +52,37 @@ hr{
 }
 
 #header {
- background-image:url(/images/admin/back_top.gif);
- margin: 0;
- padding: 0;
- width: 100%;
- height: 100px;
- clear:both;
+  margin: 0;
+  clear: both;
+  padding: 20px;
+  bottom: 40px;
+  background-color: #e7e7e7;
+  background: -moz-linear-gradient(bottom, #fff, #f0f0f0 17%, #fff 18%, #c0c0c0 19%, #e7e7e7 20%, #e7e7e7);
+  background: -webkit-gradient(linear, left bottom, left top, from(#fff), color-stop(17%,#f0f0f0), color-stop(18%,#fff), color-stop(19%,#c0c0c0), color-stop(20%,#e7e7e7), to(#e7e7e7));
+  border-top: 6px solid #595959;
 }
-
 #header_left {
- background-image:url(/images/admin/back_top.gif);
- float: left;
- padding: 21px 0 0 20px;
- margin: 0;
- height: 79px;
+  float: left;
 }
-
+#header_left h3 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
 #header_right {
- background-image:url(/images/admin/back_top.gif);
- float: right;
- text-align: right;
- padding: 35px 50px 20px 0;
- margin: 0
+  float: right;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.clearfix:after {
+  clear: both;
 }
 
 #footer {

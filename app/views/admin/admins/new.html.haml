@@ -1,28 +1,25 @@
-#header
-  #header_left
-    %h3 New administrator
-  #header_right
+- content_for :header_left do
+  New administrator
 
-#wrapper
-  = error_messages_for @admin
+= error_messages_for @admin
 
-  = form_for([:admin, @admin], :url => admin_admins_path) do |f|
-    %p
-      %label
-        Login
-        %br
-        = f.text_field :login
-    %p
-      %label
-        Password
-        %br
-        = f.password_field :password
-    %p
-      %label
-        Password confirmation
-        %br
-        = f.password_field :password_confirmation
-    %p
-      = submit_tag "Create"
+= form_for([:admin, @admin], :url => admin_admins_path) do |f|
+  %p
+    %label
+      Login
+      %br
+      = f.text_field :login
+  %p
+    %label
+      Password
+      %br
+      = f.password_field :password
+  %p
+    %label
+      Password confirmation
+      %br
+      = f.password_field :password_confirmation
+  %p
+    = submit_tag "Create"
 
-  = link_to 'Back', admin_admins_path
+= link_to 'Back', admin_admins_path

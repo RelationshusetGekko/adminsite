@@ -1,19 +1,17 @@
-#header
-  #header_left
-    %h3 Listing administrators
-  #header_right
-    = form_for(:admin, :url => "#{admin_admins_path}.yaml", :html => { :multipart => true }) do |f|
-      = image_tag('admin/add.png', :size => '16x16')
-      = link_to 'New administrator', new_admin_admin_path
+- content_for :header_left do
+  Listing administrators
+- content_for :header_right do
+  = form_for(:admin, :url => "#{admin_admins_path}.yaml", :html => { :multipart => true }) do |f|
+    = image_tag('admin/add.png', :size => '16x16')
+    = link_to 'New administrator', new_admin_admin_path
 
-#wrapper
-  %table
+%table
+  %tr
+    %th Login
+    %th
+    %th
+  - @admins.each do |admin|
     %tr
-      %th Login
-      %th
-      %th
-    - @admins.each do |admin|
-      %tr
-        %td= h admin.login
-        %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_admin_path(admin)
-        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, admin], :confirm => 'Are you sure?', :method => :delete
+      %td= h admin.login
+      %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_admin_path(admin)
+      %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, admin], :confirm => 'Are you sure?', :method => :delete

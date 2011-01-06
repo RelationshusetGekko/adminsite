@@ -1,28 +1,26 @@
-#header
-  #header_left
-    %h3 Listing pages
-  #header_right
-    = image_tag('admin/add.png', :size => '16x16')
-    = link_to 'New page', new_admin_page_path
+- content_for :header_left do
+  Listing pages
+- content_for :header_right do
+  = image_tag('admin/add.png', :size => '16x16')
+  = link_to 'New page', new_admin_page_path
 
-#wrapper
-  %table
+%table
+  %tr
+    %th Title
+    %th Url
+    %th Requires login
+    %th Can be cached
+    %th Layout
+    %th Last Update
+    %th
+    %th
+  - @pages.each do |page|
     %tr
-      %th Title
-      %th Url
-      %th Requires login
-      %th Can be cached
-      %th Layout
-      %th Last Update
-      %th
-      %th
-    - @pages.each do |page|
-      %tr
-        %td= h page.title
-        %td= h page.url
-        %td= page.requires_login ? "YES" : "NO"
-        %td= page.cacheable ? "YES" : "NO"
-        %td= page.page_layout.title if page.page_layout.present?
-        %td= h page.updated_at
-        %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_page_path(page)
-        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, page], :confirm => 'Are you sure?', :method => :delete
+      %td= h page.title
+      %td= h page.url
+      %td= page.requires_login ? "YES" : "NO"
+      %td= page.cacheable ? "YES" : "NO"
+      %td= page.page_layout.title if page.page_layout.present?
+      %td= h page.updated_at
+      %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_page_path(page)
+      %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, page], :confirm => 'Are you sure?', :method => :delete

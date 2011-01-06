@@ -1,31 +1,26 @@
-#header
-  #header_left
-    %h3
-      Edit
-      = @admin.login
-  #header_right
+- content_for :header_left do
+  Edit
+  = @admin.login
 
-#wrapper
-  = error_messages_for @admin
+= error_messages_for @admin
 
+= form_for([:admin, @admin]) do |f|
+  %p
+    %label
+      Login
+      %br
+      = f.text_field :login
+  %p
+    %label
+      New password
+      %br
+      = f.password_field :password
+  %p
+    %label
+      Password confirmation
+      %br
+      = f.password_field :password_confirmation
+  %p
+    = submit_tag "Update"
 
-  = form_for([:admin, @admin]) do |f|
-    %p
-      %label
-        Login
-        %br
-        = f.text_field :login
-    %p
-      %label
-        New password
-        %br
-        = f.password_field :password
-    %p
-      %label
-        Password confirmation
-        %br
-        = f.password_field :password_confirmation
-    %p
-      = submit_tag "Update"
-
-  = link_to 'Back', admin_admins_path
+= link_to 'Back', admin_admins_path

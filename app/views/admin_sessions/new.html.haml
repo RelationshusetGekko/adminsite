@@ -1,19 +1,14 @@
-#header
-  #header_left
-    %h3
-
-#wrapper
-  #login-box
-    = form_for @admin_session, :url => admin_session_path, :id => "loginform" do |f|
-      %p
-        %label
-          Username:
-          %br
-          = f.text_field :login
-      %p
-        %label
-          Password:
-          %br
-          = f.password_field :password
-      %p.submit
-        %input{ :type => "submit", :value => "Log In" }
+#login-box
+  = form_for @admin_session, :url => admin_session_path, :id => "loginform" do |f|
+    %p
+      %label
+        Username:
+        %br
+        = f.text_field :login
+    %p
+      %label
+        Password:
+        %br
+        = f.password_field :password
+    %p.submit
+      %input{ :type => "submit", :value => "Log In" }

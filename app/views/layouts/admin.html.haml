@@ -21,4 +21,12 @@
         %br
         =flash[:error]
 
-    = yield
+    #header
+      #header_left
+        %h3
+          = yield :header_left
+      #header_right
+        = yield :header_right
+      .clearfix
+    #wrapper
+      = yield
