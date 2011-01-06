@@ -1,11 +1,31 @@
-body, input, select {
+body, input, select, textarea, button {
   margin: 0;
-  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-  font-size: 11px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #222222;
 }
 
-input {
+body {
+  font: 13px/1.231 sans-serif;
+  *font-size: small;
+}
+select, input, textarea, button {
+  font: 99% sans-serif;
+}
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+::-moz-selection {
+  background: #FF5E99;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #FF5E99;
+  color: #fff;
+  text-shadow: none;
+}
+a:hover, a:active {
+  outline: none;
 }
 
 #error {
@@ -65,7 +85,7 @@ hr{
   float: left;
 }
 #header_left h2 {
-  font-size: 15px;
+  font-size: 135%;
   margin: 0;
   padding: 0;
 }
@@ -190,7 +210,6 @@ div.progressBar div.background {
   text-decoration: line-through;
 }
 
-
 /* MENU */
 .menu ul {
   list-style: none;
@@ -276,12 +295,10 @@ a:hover img {
 }
 h1{
   background: url(/images/admin/logo.png) no-repeat;
-  font-family: Georgia, serif;
-  font-size: 16px;
+  font-size: 135%;
   font-weight: normal;
   padding-left: 124px;
   min-height: 34px;
-  color: #585858;
   margin: 20px;
 }
 #page-edit{
