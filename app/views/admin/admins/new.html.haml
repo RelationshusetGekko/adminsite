@@ -4,9 +4,9 @@
   #header_right
 
 #wrapper
-  = error_messages_for :admin
+  = error_messages_for @admin
 
-  - form_for([:admin, @admin], :url => admin_admins_path) do |f|
+  = form_for([:admin, @admin], :url => admin_admins_path) do |f|
     %p
       %label
         Login

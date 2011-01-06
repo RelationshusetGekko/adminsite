@@ -2,7 +2,7 @@
   #header_left
     %h3 Listing administrators
   #header_right
-    - form_for(:admin, :url => "#{admin_admins_path}.yaml", :html => { :multipart => true }) do |f|
+    = form_for(:admin, :url => "#{admin_admins_path}.yaml", :html => { :multipart => true }) do |f|
       = image_tag('admin/add.png', :size => '16x16')
       = link_to 'New administrator', new_admin_admin_path
 

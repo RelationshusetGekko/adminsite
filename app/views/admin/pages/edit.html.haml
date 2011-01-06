@@ -6,9 +6,9 @@
   #header_right
 
 #wrapper
-  = error_messages_for :page
+  = error_messages_for @page
 
-  - form_for([:admin, @page]) do |f|
+  = form_for([:admin, @page]) do |f|
     #page-edit
       = render :partial => 'form', :locals => {:f => f}
       = submit_tag "Update"

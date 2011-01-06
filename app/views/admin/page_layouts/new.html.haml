@@ -5,9 +5,9 @@
   #header_right
 
 #wrapper
-  = error_messages_for :page_layout
+  = error_messages_for @page_layout
 
-  - form_for([:admin, @page_layout], :url => admin_page_layouts_path) do |f|
+  = form_for([:admin, @page_layout], :url => admin_page_layouts_path) do |f|
     #page-edit
       = render(:partial => 'form', :locals => {:f => f})
       = submit_tag "Create"

@@ -3,9 +3,9 @@
     %h3 Editing page layout
 
 #wrapper
-  = error_messages_for :page_layout
+  = error_messages_for @page_layout
 
-  - form_for([:admin, @page_layout]) do |f|
+  = form_for([:admin, @page_layout]) do |f|
     #page-edit
       = render :partial => 'form', :locals => {:f => f}
       = submit_tag "Update"

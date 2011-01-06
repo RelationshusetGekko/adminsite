@@ -4,7 +4,7 @@
 
 #wrapper
   #login-box
-    - form_for @admin_session, :url => admin_session_path, :id => "loginform" do |f|
+    = form_for @admin_session, :url => admin_session_path, :id => "loginform" do |f|
       %p
         %label
           Username:

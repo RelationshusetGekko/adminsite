@@ -1,11 +1,17 @@
 module Admin::AdminsiteApplicationHelper
+  def error_messages_for(obj)
+    return if obj.errors.nil?
+    msgs = obj.errors.full_messages.collect{|msg| "<li>#{ h msg }</li>" }
+    raw ['<ul>', msgs, '</ul>'].flatten.join
+  end
+
   def menu_item(label,url)
-    current = "id=\"current\"" if url == request.request_uri
-    "<li #{current}><a href='#{url}'><span>#{label}</span></a></li>"
+    current = %Q{id="current"} if url == request.fullpath
+    raw %Q{<li #{h current}><a href="#{h url}"><span>#{h label}</span></a></li>}
   end
   # SORTABLE TABLE
   def sort_th_class_helper(text, param)
-    "<th #{sort_td_class_helper(param)}>#{sort_link_helper(text, param)}</th>"
+    raw "<th #{h sort_td_class_helper(param)}>#{h sort_link_helper(text, param)}</th>"
   end
   def sort_td_class_helper(param)
     result = 'class="sortup"' if params[:sort] == param
