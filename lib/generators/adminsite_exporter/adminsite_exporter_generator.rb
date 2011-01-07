@@ -20,18 +20,4 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
       "    = menu_item '#{class_name} exports', admin_#{file_name}_exports_path, '#{file_name}_exports'\n"
     end
   end
-
-  def after_generate
-    puts "\n\n"
-    puts "#{'*'*60}"
-    puts "You can now add a tab in the top menu if you want."
-    puts "be sure you have a menu file in:"
-    puts "view/admin/shared/_menu.html.haml"
-    puts "and add this line:"
-    puts "=menu_item('#{class_name} Exports', admin_#{file_name}_exports_path)"
-    puts "#{'*'*60}"
-  end
-
-  private
-
 end
