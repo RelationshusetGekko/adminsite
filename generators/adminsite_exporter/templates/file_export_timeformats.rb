@@ -1,1 +1,0 @@
-Time::DATE_FORMATS[:file_timestamp] = "%Y%m%d_%H%M%S"
