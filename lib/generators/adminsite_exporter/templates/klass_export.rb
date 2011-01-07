@@ -51,7 +51,7 @@ class <%= class_name %>Export
     end
 
     def generated_export_files(ext)
-      Dir.glob("#{default_path_to_export}/*.#{ext}")
+      Dir.glob("#{default_path_to_export}/*.#{ext}").reverse
     end
 
     def filename(file_type)
