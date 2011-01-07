@@ -1,6 +1,6 @@
 class Admin::PagesController < Admin::BaseController
   unloadable
-  layout 'admin'
+
   def index
     @pages = Page.find(:all, :order => "title ASC")
   end

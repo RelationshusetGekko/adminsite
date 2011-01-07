@@ -1,6 +1,6 @@
 class Admin::PageLayoutsController < Admin::BaseController
   unloadable
-  layout 'admin'
+
   def index
     @page_layouts = PageLayout.find(:all, :order => "title ASC")
   end
