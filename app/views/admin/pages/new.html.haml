@@ -1,5 +1,7 @@
 - content_for :header_left do
   New page
+- content_for :header_right do
+  = link_to_back 'Back', admin_pages_path
 
 = error_messages_for @page
 
@@ -7,6 +9,5 @@
   #page-edit
     = render(:partial => 'form', :locals => {:f => f})
     = submit_tag "Create"
-    = link_to 'Back', admin_pages_path
 = render :partial => 'admin/shared/syntax_help'
 .clear

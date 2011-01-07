@@ -1,5 +1,7 @@
 - content_for :header_left do
   New administrator
+- content_for :header_right do
+  = link_to_back 'Back', admin_admins_path
 
 = error_messages_for @admin
 
@@ -21,5 +23,3 @@
       = f.password_field :password_confirmation
   %p
     = submit_tag "Create"
-
-= link_to 'Back', admin_admins_path

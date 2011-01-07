@@ -1,8 +1,7 @@
 - content_for :header_left do
   Listing page layouts
 - content_for :header_right do
-  = image_tag('admin/add.png', :size => '16x16')
-  = link_to 'New page layout', new_admin_page_layout_path
+  = link_to_add 'New page layout', new_admin_page_layout_path
 
 %table
   %tr

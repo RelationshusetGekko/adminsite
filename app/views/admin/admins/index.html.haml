@@ -1,8 +1,7 @@
 - content_for :header_left do
   Listing administrators
 - content_for :header_right do
-  = image_tag('admin/add.png', :size => '16x16')
-  = link_to 'New administrator', new_admin_admin_path
+  = link_to_add 'New administrator', new_admin_admin_path
 
 %table
   %tr

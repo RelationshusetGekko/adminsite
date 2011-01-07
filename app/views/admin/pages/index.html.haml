@@ -1,8 +1,7 @@
 - content_for :header_left do
   Listing pages
 - content_for :header_right do
-  = image_tag('admin/add.png', :size => '16x16')
-  = link_to 'New page', new_admin_page_path
+  = link_to_add 'New page', new_admin_page_path
 
 %table
   %tr

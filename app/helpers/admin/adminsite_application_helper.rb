@@ -17,4 +17,12 @@ module Admin::AdminsiteApplicationHelper
       result << 'active' if current_controller == controller.controller_name
     end.join(' ')
   end
+
+  def link_to_back(text, path)
+    link_to text, path, :class => 'back'
+  end
+
+  def link_to_add(text, path)
+    link_to text, path, :class => 'add'
+  end
 end

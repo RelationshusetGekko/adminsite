@@ -97,19 +97,29 @@ hr{
 }
 #header_right a {
   background-color: rgba(0, 0, 0, 0.2);
+  background-repeat: no-repeat;
+  background-position: left center;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   display: block;
   float: left;
   margin-right: 0.5em;
-  padding-top:    0.2em;
-  padding-right:  0.2em;
-  padding-bottom: 0.2em;
+  padding: 0.2em;
   text-decoration: none;
 }
 #header_right a:hover {
   background-color: rgba(0, 0, 0, 0.7);
+}
+#header_right a.add,
+#header_right a.back {
+  padding-left: 18px;
+}
+#header_right a.add {
+  background-image: url(/images/admin/add.png);
+}
+#header_right a.back {
+  background-image: url(/images/admin/arrow_left.png);
 }
 
 .clearfix {
