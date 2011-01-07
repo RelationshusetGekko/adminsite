@@ -55,7 +55,7 @@ class ContentsController < ApplicationController
         render :text => page.body, :status => 404 and return
       end
     end
-    render :file => "#{RAILS_ROOT}/public/404.html", :status => 404
+    render :file => Rails.root.join('public', '404.html'), :status => 404
   end
 
 end
