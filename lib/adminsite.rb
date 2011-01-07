@@ -3,7 +3,7 @@ require "rails"
 require 'paperclip'
 require 'liquid'
 require 'adminsite/liquid/tags/asset'
-require 'authlogic'
+require 'devise'
 require 'haml'
 
 module Adminsite
