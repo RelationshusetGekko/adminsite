@@ -39,14 +39,17 @@ begin
     Thank you for installing Circle Adminsite
 
     Once you have installed this gem
-    include it into your app with:
-    config.gem "adminsite"
+    include it into your app Gemfile with:
+    gem 'adminsite'
 
     Then from your app root type:
-    script/generate adminsite
+    rails generate adminsite
 
     For Mosso Cloud Files integration and Protected pages
     please refer to the README file in this gem root folder
+
+    Export generator is also available:
+    rails generate adminsite_exporter Product
 
   #{'*'*60}
   POST_INSTALL_MESSAGE
