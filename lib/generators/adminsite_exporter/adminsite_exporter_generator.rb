@@ -3,12 +3,10 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
 
   def run_generation
     puts "Setting up Adminsite to export #{class_name} "
-    empty_directory "app/controllers/admin"
+
     template  "klass_exports_controller.rb", "app/controllers/admin/#{file_name}_exports_controller.rb"
-    empty_directory "app/views/admin/#{file_name}_exports"
     template  "index.haml.erb", "app/views/admin/#{file_name}_exports/index.html.haml"
     template  "klass_export.rb", "app/models/#{file_name}_export.rb"
-    empty_directory "app/models/#{file_name}"
     template  "exports.rb", "app/models/#{file_name}/exports.rb"
     inject_into_class "app/models/#{file_name}.rb", class_name do
       "  include #{class_name}::Exports\n"
