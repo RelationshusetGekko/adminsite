@@ -6,7 +6,7 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
     empty_directory "app/controllers/admin"
     template  "klass_exports_controller.rb", "app/controllers/admin/#{file_name}_exports_controller.rb"
     empty_directory "app/views/admin/#{file_name}_exports"
-    template  "index.haml.erb", "app/views/admin/#{file_name}_exports/index.haml"
+    template  "index.haml.erb", "app/views/admin/#{file_name}_exports/index.html.haml"
     template  "klass_export.rb", "app/models/#{file_name}_export.rb"
     empty_directory "app/models/#{file_name}"
     template  "exports.rb", "app/models/#{file_name}/exports.rb"
@@ -18,8 +18,8 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
     end
     append_file "Rakefile", 'task "resque:setup" => :environment'
     template  "file_export_timeformats.rb", "config/initializers/file_export_timeformats.rb"
-    inject_into_file "app/views/admin/shared/_menu.haml", :before => /=menu_item\('\Log out\', logout_path\)\s*\n/ do
-      "    =menu_item('#{class_name} Exports', admin_#{file_name}_exports_path)\n    "
+    inject_into_file "app/views/admin/shared/_menu.haml", :before => /^.*destroy_admin_session_path/ do
+      "    = menu_item '#{class_name} exports', admin_#{file_name}_exports_path, '#{file_name}_exports'\n"
     end
   end
 
