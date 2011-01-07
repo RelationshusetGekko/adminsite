@@ -37,18 +37,17 @@ a:hover, a:active {
   margin-bottom:8px;
 }
 
-#flashnotice{
-  padding: 12px 6px 6px 20px;
-  background: #99CC00;
+#flashnotice, #flasherror {
+  padding: 6px 20px;
   color: #ffffff;
   font-weight: bold;
 }
 
-#flasherror{
-  padding: 12px 6px 6px 20px;
+#flashnotice {
+  background: #99CC00;
+}
+#flasherror {
   background: #ff5555;
-  color: #ffffff;
-  font-weight: bold;
 }
 
 #notice {
