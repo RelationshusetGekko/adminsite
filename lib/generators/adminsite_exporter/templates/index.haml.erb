@@ -15,11 +15,13 @@
     %table
       %tr
         %th Filename
+        %th Age
         %th
       - <%= class_name %>Export.generated_export_files(file_type).each do |export|
         - basename = File.basename(export, ".#{file_type}")
         %tr
           %td= link_to "#{basename}.#{file_type}", admin_<%= file_name %>_export_path("#{basename}_#{file_type}")
+          %td= time_ago_in_words File.mtime(export)
           %td= link_to image_tag('admin/cross.png'), admin_<%= file_name %>_export_path("#{basename}_#{file_type}"), :confirm => 'Are you sure?', :method => :delete
   - else
     %p
