@@ -1,5 +1,5 @@
 - content_for :header_left do
-  Edit admin “#{@admin.login}”
+  Edit admin “#{@admin.email}”
 - content_for :header_right do
   = link_to_back 'Back', admin_admins_path
 
@@ -8,9 +8,9 @@
 = form_for([:admin, @admin]) do |f|
   %p
     %label
-      Login
+      E-mail
       %br
-      = f.text_field :login
+      = f.text_field :email
   %p
     %label
       New password

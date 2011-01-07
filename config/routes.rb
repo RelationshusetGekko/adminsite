@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admin,
+             :controllers => { :sessions => "admin_sessions" }
+
   namespace :admin do
     resources :admins, :except => :show
     resources :file_assets
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
     resources :exports
     resources :users
     resources :statistics
+    root      :to => 'pages#index'
   end
 
   root  :to => 'contents#show', :page_url => 'index'

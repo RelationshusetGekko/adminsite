@@ -14,9 +14,10 @@
     - if flash[:notice]
       #flashnotice
         = flash[:notice]
-    - if flash[:error]
+    - if flash[:error] || flash[:alert]
       #flasherror
         = flash[:error]
+        =flash[:alert]
 
     #header
       #header_left

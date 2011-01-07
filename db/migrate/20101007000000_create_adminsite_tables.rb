@@ -1,43 +1,23 @@
 class CreateAdminsiteTables < ActiveRecord::Migration
   def self.up
-    create_table :admins do |t|
-      t.string   :login,             :default => nil, :null => true
-      t.string   :crypted_password,  :default => nil, :null => true
-      t.string   :password_salt,     :default => nil, :null => true
-      t.string   :persistence_token,                  :null => false
-      t.integer  :login_count,       :default => 0,   :null => false
-      t.datetime :last_request_at
-      t.datetime :last_login_at
-      t.datetime :current_login_at
-      t.string   :last_login_ip
-      t.string   :current_login_ip
-      t.string   :openid_identifier
+    create_table(:admins) do |t|
+      t.database_authenticatable :null => false
+      t.recoverable
+      t.rememberable
+      t.trackable
+
+      # t.confirmable
+      # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
+      # t.token_authenticatable
+
+      t.string :openid_identifier
       t.timestamps
     end
-    add_index :admins, :openid_identifier
-    add_index :admins, :login
-    add_index :admins, :persistence_token
-    add_index :admins, :last_request_at
 
-    create_table :sessions do |t|
-      t.string :session_id, :null => false
-      t.text :data
-      t.timestamps
-    end
-    add_index :sessions, :session_id
-    add_index :sessions, :updated_at
-
-    create_table :open_id_authentication_associations, :force => true do |t|
-      t.integer :issued, :lifetime
-      t.string :handle, :assoc_type
-      t.binary :server_url, :secret
-    end
-
-    create_table :open_id_authentication_nonces, :force => true do |t|
-      t.integer :timestamp, :null => false
-      t.string :server_url, :null => true
-      t.string :salt,       :null => false
-    end
+    add_index :admins, :email,                :unique => true
+    add_index :admins, :reset_password_token, :unique => true
+    # add_index :admins, :confirmation_token,   :unique => true
+    # add_index :admins, :unlock_token,         :unique => true
 
     create_table :file_assets do |t|
       t.string   :attachment_file_name

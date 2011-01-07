@@ -10,20 +10,20 @@ namespace :adminsite do
   desc "Setup an admin account"
   task :setup => :environment do
 
-    login = "admin"
+    email = "admin@crd.dk"
     if Rails.env.development?
       password = "password"
     else
       password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
     end
 
-    Admin.create!(:login                 => login,
+    Admin.create!(:email                 => email,
                   :password              => password,
                   :password_confirmation => password)
     puts "#{'*'*70}"
     puts "Done! You can access the admin interface at http://yourapp_url/admin"
     puts "I have created an administrator with these credentials:"
-    puts "login:    #{login}"
+    puts "e-mail:   #{email}"
     puts "password: #{password}"
     puts ""
     puts "For Mosso Cloud Files integration and Protected pages"

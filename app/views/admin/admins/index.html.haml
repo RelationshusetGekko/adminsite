@@ -5,11 +5,11 @@
 
 %table
   %tr
-    %th Login
+    %th E-mail
     %th
     %th
   - @admins.each do |admin|
     %tr
-      %td= h admin.login
+      %td= h admin.email
       %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_admin_path(admin)
       %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, admin], :confirm => 'Are you sure?', :method => :delete
