@@ -7,6 +7,7 @@ class Admin::PagesController < Admin::BaseController
 
   def new
     @page = Page.new
+    @file_assets = FileAsset.all
   end
 
   def edit

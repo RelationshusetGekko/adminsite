@@ -1,0 +1,6 @@
+#page-assets-list
+  %h2 Assets
+  %table
+    - @file_assets.each do |asset|
+      %tr
+        %td= asset.attachment_file_name
