@@ -50,8 +50,8 @@ begin
 
   #{'*'*60}
   POST_INSTALL_MESSAGE
-    s.add_dependency 'authlogic', '>2.1.6'
-    s.add_dependency 'haml'
+    s.add_dependency 'devise', '>= 1.1.5'
+    s.add_dependency 'haml', '>= 3.0.25'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
     s.add_dependency 'simple_xlsx_writer'
