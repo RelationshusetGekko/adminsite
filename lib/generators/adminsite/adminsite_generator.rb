@@ -5,6 +5,7 @@ class AdminsiteGenerator < Rails::Generators::Base
     template 'application.rb', 'lib/recipes/application.rb'
     template '_menu.html.haml', 'app/views/admin/shared/_menu.haml'
     remove_file 'public/index.html'
+    remove_file 'app/views/layouts/application.html.erb'
 
     rake "adminsite:sync",  :generate_only => true
     rake "db:migrate",      :generate_only => true
