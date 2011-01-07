@@ -11,18 +11,20 @@
 
 - @file_types.each do |file_type|
   %h2= file_type
-  - if <%= class_name %>Export.generated_export_files(file_type).any?
+  - exports = <%= class_name %>Export.generated_export_files(file_type)
+  - if exports.any?
     %table
       %tr
         %th Filename
         %th Age
         %th
-      - <%= class_name %>Export.generated_export_files(file_type).each do |export|
+      - exports.each do |export|
         - basename = File.basename(export, ".#{file_type}")
+        - file_path = admin_<%= file_name %>_export_path("#{basename}_#{file_type}")
         %tr
-          %td= link_to "#{basename}.#{file_type}", admin_<%= file_name %>_export_path("#{basename}_#{file_type}")
+          %td= link_to "#{basename}.#{file_type}", file_path
           %td= time_ago_in_words File.mtime(export)
-          %td= link_to image_tag('admin/cross.png'), admin_<%= file_name %>_export_path("#{basename}_#{file_type}"), :confirm => 'Are you sure?', :method => :delete
+          %td= link_to image_tag('admin/cross.png'), file_path, :confirm => 'Are you sure?', :method => :delete
   - else
     %p
       No exports yet
