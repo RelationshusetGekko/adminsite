@@ -1,6 +1,5 @@
 - content_for :header_left do
-  Edit
-  = @admin.login
+  Edit admin “#{@admin.login}”
 - content_for :header_right do
   = link_to_back 'Back', admin_admins_path
 

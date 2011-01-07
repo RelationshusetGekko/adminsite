@@ -1,14 +1,11 @@
 - content_for :header_left do
-  Listing File Assets
-
-%p
-  %b Add new asset
+  Listing file assets
 
 = error_messages_for @file_asset
 
 = form_for(:file_asset, @file_asset, :url => admin_file_assets_path, :html => { :multipart => true }) do |f|
   %p
-    %b File
+    %b New file asset
     = f.file_field :attachment
   %p
     = submit_tag 'Add'

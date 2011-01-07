@@ -7,7 +7,7 @@
 
 = form_for([:admin, @page_layout], :url => admin_page_layouts_path) do |f|
   #page-edit
-    = render(:partial => 'form', :locals => {:f => f})
+    = render :partial => 'form', :locals => { :f => f }
     = submit_tag "Create"
 = render :partial => 'admin/shared/syntax_help'
 .clear
