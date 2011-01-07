@@ -6,8 +6,8 @@ class AdminsiteGenerator < Rails::Generators::Base
     template 'application.rb', 'lib/recipes/application.rb'
     template 'routes.rb', 'config/routes.rb'
 
-    FileUtils.mkdir_p 'views/admin/shared'
-    template '_menu.html.haml', 'views/admin/shared/_menu.haml'
+    FileUtils.mkdir_p 'app/views/admin/shared'
+    template '_menu.html.haml', 'app/views/admin/shared/_menu.haml'
 
     File.delete("public/index.html") if File.exist?("public/index.html")
 
