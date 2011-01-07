@@ -10,7 +10,7 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
     template  "klass_export.rb", "app/models/#{file_name}_export.rb"
     empty_directory "app/models/#{file_name}"
     template  "exports.rb", "app/models/#{file_name}/exports.rb"
-    inject_into_class "app/models/product.rb", class_name do
+    inject_into_class "app/models/#{file_name}.rb", class_name do
       "  include #{class_name}::Exports\n"
     end
     inject_into_file "config/routes.rb", :after => /\.routes\.draw do\s*\n/ do
