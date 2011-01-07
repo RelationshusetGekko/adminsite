@@ -12,7 +12,7 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
       "  include #{class_name}::Exports\n"
     end
     inject_into_file "config/routes.rb", :after => /\.routes\.draw do\s*\n/ do
-      "  namespace :admin do resources :#{file_name}_exports end\n"
+      "  namespace :admin do\n    resources :#{file_name}_exports\n  end\n"
     end
     append_file "Rakefile", 'task "resque:setup" => :environment'
     template  "file_export_timeformats.rb", "config/initializers/file_export_timeformats.rb"
