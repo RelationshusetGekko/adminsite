@@ -26,8 +26,8 @@ class Admin::FileAssetsController < Admin::BaseController
       end
     end
 
-    flash[:notice] = "File(s) #{success_files.join(', ')} were successfully uploaded." if success_files.present?
-    flash[:errors] = "File(s) #{failure_files.join(', ')} were not uploaded."          if failure_files.present?
+    flash[:notice] = "File(s) #{success_files.join(', ')} were successfully uploaded." if success_files.any?
+    flash[:errors] = "File(s) #{failure_files.join(', ')} were not uploaded."          if failure_files.any?
 
     cleanup_cached_pages
     redirect_to admin_file_assets_path
