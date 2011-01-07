@@ -11,13 +11,13 @@
     %h1
     = render :partial => 'admin/shared/menu' if current_admin.present?
 
-    - if flash[:notice]
+    - if flash[:notice].present?
       #flashnotice
         = flash[:notice]
-    - if flash[:error] || flash[:alert]
+    - if flash[:error].present? || flash[:alert].present?
       #flasherror
         = flash[:error]
-        =flash[:alert]
+        = flash[:alert]
 
     #header
       #header_left

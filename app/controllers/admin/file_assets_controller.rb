@@ -1,24 +1,34 @@
 class Admin::FileAssetsController < Admin::BaseController
   unloadable
 
+  before_filter :ensure_file_upload_array, :only => :create
+
   def index
     @file_assets = FileAsset.all
     @file_asset = FileAsset.new
   end
 
   def create
-    filename = params[:file_asset]["attachment"].original_filename
-    if existing_files = FileAsset.find_by_attachment_file_name(filename)
+    success_files = []
+    failure_files = []
+
+    params[:file_asset][:attachment].each do |file|
+      filename = file.original_filename
+
       # "Overwrite" existing by removing them
-      existing_files.destroy
+      FileAsset.find_by_attachment_file_name(filename).try(:destroy)
+
+      file_asset = FileAsset.new('attachment' => file)
+      if file_asset.save!
+        success_files << "“#{filename}”"
+      else
+        failure_files << "“#{filename}”"
+      end
     end
 
-    @file_asset = FileAsset.new(params[:file_asset])
-    if @file_asset.save!
-      flash[:notice] = 'File was successfully uploaded.'
-    else
-      flash[:error] = 'File was not uploaded.'
-    end
+    flash[:notice] = "File(s) #{success_files.join(', ')} were successfully uploaded." if success_files.present?
+    flash[:errors] = "File(s) #{failure_files.join(', ')} were not uploaded."          if failure_files.present?
+
     cleanup_cached_pages
     redirect_to admin_file_assets_path
   end
@@ -30,6 +40,13 @@ class Admin::FileAssetsController < Admin::BaseController
   end
 
   private
+
+  def ensure_file_upload_array
+    if !params[:file_asset][:attachment].is_a?(Array)
+      params[:file_asset][:attachment] = [ params[:file_asset][:attachment] ]
+    end
+  end
+
   def cleanup_cached_pages
     cache_dir = ActionController::Base.page_cache_directory
     Page.all.each do |p|
