@@ -1,13 +1,12 @@
 - content_for :header_left do
   <%= class_name %> exports
 
-= form_tag(admin_<%= file_name %>_exports_path, :method=>:post) do
-  %p
-    %b Select the export you want to generate:
+%p
+  Select the export you want to generate:
+= form_tag(admin_<%= file_name %>_exports_path, :method => :post) do
   = select_tag "export_name_scope", options_for_select(@export_name_scopes)
   = select_tag "file_type", options_for_select(@file_types)
-  &nbsp;&nbsp;
-  = submit_tag "Generate export"
+  = submit_tag "generate export"
 
 - @file_types.each do |file_type|
   %h2= file_type
