@@ -402,7 +402,7 @@ form .forgetmenot label {
 }
 
 form .submit { float: right; }
-form#new_admin_session .submit { float: none; text-align: right; }
+form#loginform .submit { float: none; text-align: right; }
 
 form p { margin-bottom: 24px; }
 
@@ -411,8 +411,8 @@ form p { margin-bottom: 24px; }
   margin: 7em auto 0;
 }
 
-#admin_session_login,
-#admin_session_password {
+#loginform #admin_email,
+#loginform #admin_password {
   -moz-background-clip:border;
   -moz-background-inline-policy:continuous;
   -moz-background-origin:padding;
