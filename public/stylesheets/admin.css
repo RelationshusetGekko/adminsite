@@ -346,6 +346,10 @@ table th {
   font-weight: normal;
   font-variant: small-caps;
 }
+table tr.old td {
+  opacity: 0.5;
+  border-color: #e6e6e6;
+}
 table.statistics td {
   text-align: right;
 }

@@ -21,7 +21,9 @@
       - exports.each do |export|
         - basename = File.basename(export, ".#{file_type}")
         - file_path = admin_<%= file_name %>_export_path("#{basename}_#{file_type}")
-        %tr
+        - age_in_minutes = (((Time.now - File.mtime(export)).abs)/60)
+        - klass = 'old' if age_in_minutes > 60
+        %tr{ :class => klass }
           %td= link_to "#{basename}.#{file_type}", file_path
           %td= time_ago_in_words File.mtime(export)
           %td= link_to image_tag('admin/cross.png'), file_path, :confirm => 'Are you sure?', :method => :delete
