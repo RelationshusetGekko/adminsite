@@ -1,8 +1,6 @@
 class Admin::FileAssetsController < Admin::BaseController
   unloadable
 
-  before_filter :ensure_file_upload_array, :only => :create
-
   def index
     @file_assets = FileAsset.all
     @file_asset = FileAsset.new
@@ -12,7 +10,7 @@ class Admin::FileAssetsController < Admin::BaseController
     success_files = []
     failure_files = []
 
-    params[:file_asset][:attachment].each do |file|
+    Array(params[:file_asset][:attachment]).each do |file|
       filename = file.original_filename
 
       # "Overwrite" existing by removing them
@@ -40,12 +38,6 @@ class Admin::FileAssetsController < Admin::BaseController
   end
 
   private
-
-  def ensure_file_upload_array
-    if !params[:file_asset][:attachment].is_a?(Array)
-      params[:file_asset][:attachment] = [ params[:file_asset][:attachment] ]
-    end
-  end
 
   def cleanup_cached_pages
     cache_dir = ActionController::Base.page_cache_directory
