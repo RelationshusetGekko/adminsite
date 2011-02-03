@@ -1,4 +1,4 @@
-- if @file_assets.any?
+- if @file_assets.present? && @file_assets.any?
   #page-assets-list
     %h2 Assets
     %table
