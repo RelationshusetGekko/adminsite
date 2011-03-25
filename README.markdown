@@ -15,13 +15,13 @@ features:
 
 3 steps install
 ===============
-1. Add this in your environment.rb:
+1. Add this in your Gemfile:
 
-    `config.gem 'adminsite'`
+    gem 'adminsite'
 
 2. Run
 
-    `./script/generate adminsite`
+    rails generate adminsite
 
 3. There is no 3
 You are ready to go!
