@@ -1,0 +1,22 @@
+- content_for :header_left do
+  Profiles (Max. 90 order by created_at DESC)
+
+%p
+  Search (on name or email):
+  = text_field_tag("query", params['query'], :size => 20 )
+  = image_tag("admin/spinner.gif", :align => "absmiddle", :border => 0, :id => "spinner", :style =>"display: none;" )
+
+  :javascript
+    $(document).ready(function() {
+      $('#query').delayedObserver(0.5, function(value, object) {
+        $('#spinner').show();
+
+        //controller's URI
+        var query_value = $('#query').val();
+        var url = '/admin/profiles?query=' + encodeURI(query_value);
+        $('#ajax_wrapper').load(url, function(){ $('#spinner').hide(); } );
+      });
+    });
+
+#ajax_wrapper
+  = render :partial => "profile_list"
