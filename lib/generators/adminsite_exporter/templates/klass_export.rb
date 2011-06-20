@@ -29,7 +29,7 @@ class <%= class_name %>Export
           attr_lst = <%= class_name %>::Exports.full
           sheet.add_row(attr_lst)
           <%= class_name %>.send(export_name_scope).each do |<%= file_name %>|
-            values = attr_lst.collect { |attr| <%= file_name %>.try(attr).inspect }
+            values = attr_lst.collect { |attr| <%= file_name %>.try(attr).to_s }
             sheet.add_row(values)
           end
         end
