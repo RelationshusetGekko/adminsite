@@ -30,7 +30,6 @@ class Profile < ActiveRecord::Base
     end
 
     def containing_text(text)
-      return where(true) if text.blank?
       where("email LIKE :t
              OR public_key LIKE :t",
             { :t => "%#{text}%" })
