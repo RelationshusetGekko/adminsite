@@ -1,13 +1,13 @@
 - content_for :header_left do
-  Profiles (Max. 90 order by created_at DESC)
+  Profiles (Max. 50 order by created_at DESC)
 
 %p
-  Search (on name or email):
+  Search (on email or public key):
   = text_field_tag("query", params['query'], :size => 20 )
-  = image_tag("admin/spinner.gif", :align => "absmiddle", :border => 0, :id => "spinner", :style =>"display: none;" )
+  = image_tag("admin/spinner.gif", :align => "absmiddle", :border => "0", :id => "spinner", :style =>"display: none;" )
 
   :javascript
-    $(document).ready(function() {
+    $(function() {
       $('#query').delayedObserver(0.5, function(value, object) {
         $('#spinner').show();
 

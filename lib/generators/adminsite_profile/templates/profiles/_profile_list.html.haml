@@ -1,6 +1,6 @@
 %table
   %tr
-    %th{ :colspan => 3 }
+    %th
     %th Public key
     %th Email
     %th Created at
@@ -12,4 +12,4 @@
       %td= profile.email
       %td= profile.created_at.try(:to_s, :short)
 %p
-  = will_paginate @profiles if @profiles.class == WillPaginate::Collection
+  = will_paginate @profiles

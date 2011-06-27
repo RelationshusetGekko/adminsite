@@ -21,7 +21,7 @@ class AdminsiteProfileGenerator < Rails::Generators::Base
 
     # _Menu
     inject_into_file "app/views/admin/shared/_menu.haml", :before => /^.*destroy_admin_session_path/ do
-      "    = menu_item 'Profiles', admin_profiles_path, '#profiles'\n"
+      "    = menu_item 'Profiles', admin_profiles_path, 'profiles'\n"
     end
 
     # Gemfile
