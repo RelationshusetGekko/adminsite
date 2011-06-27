@@ -9,6 +9,7 @@ class Admin::ProfilesController < AdminApplicationController
   end
 
   def show
+    @attr_lst = ( Profile.column_names - %w[id password_hash password_salt] + %w[password_present?] ).sort
     @profile = Profile.find(params[:id])
   end
 end

@@ -7,8 +7,7 @@
   %tr
     %th Attribute
     %th Value
-  - attr_lst = Profile.new.attributes.except("password_hash", "password_salt").keys << "password_present?"
-  - attr_lst.sort.each do |attr|
+  - @attr_lst.each do |attr|
     %tr
       %th= attr
       %td= @profile.try(attr.to_sym)
