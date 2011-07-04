@@ -40,27 +40,27 @@ class Profile < ActiveRecord::Base
     password_hash.present? && password_salt.present?
   end
 
-  # def has_given_permission?
-  #   !permission_given_at.nil?
-  # end
-  #
-  # def permission=(flag)
-  #   return if has_given_permission?
-  #   if ActiveRecord::ConnectionAdapters::Column.value_to_boolean(flag)
-  #     timestamp :permission_given_at
-  #     self.update_attributes(:unsubscribed_at => nil)
-  #   end
-  # end
-  #
-  # def unsubscribe!
-  #   return nil if unsubscribed?
-  #   self.update_attributes(:permission_given_at => nil)
-  #   timestamp :unsubscribed_at
-  # end
-  #
-  # def unsubscribed?
-  #   unsubscribed_at.present?
-  # end
+  def has_given_permission?
+    !permission_given_at.nil?
+  end
+
+  def permission=(flag)
+    return if has_given_permission?
+    if ActiveRecord::ConnectionAdapters::Column.value_to_boolean(flag)
+      timestamp :permission_given_at
+      self.update_attributes(:unsubscribed_at => nil)
+    end
+  end
+
+  def unsubscribe!
+    return nil if unsubscribed?
+    self.update_attributes(:permission_given_at => nil)
+    timestamp :unsubscribed_at
+  end
+
+  def unsubscribed?
+    unsubscribed_at.present?
+  end
 
   protected
 
