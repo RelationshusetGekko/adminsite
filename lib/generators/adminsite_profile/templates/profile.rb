@@ -52,6 +52,11 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def permission?
+    return false if unsubscribed?
+    permission_given_at.present?
+  end
+
   def unsubscribe!
     return nil if unsubscribed?
     self.update_attributes(:permission_given_at => nil)

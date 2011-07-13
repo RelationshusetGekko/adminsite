@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string     :password_hash
       t.string     :password_salt
       t.string     :public_key
+      t.string     :referral
       t.datetime   :permission_given_at
       t.datetime   :unsubscribed_at
 
