@@ -40,9 +40,7 @@ class Profile < ActiveRecord::Base
     password_hash.present? && password_salt.present?
   end
 
-  def has_given_permission?
-    !permission_given_at.nil?
-  end
+  alias has_given_permission? permission?
 
   def permission=(flag)
     return if has_given_permission?
