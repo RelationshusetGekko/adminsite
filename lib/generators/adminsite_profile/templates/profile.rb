@@ -67,6 +67,14 @@ class Profile < ActiveRecord::Base
 
   protected
 
+  def generate_postal_invitation_code
+    code = PostalLoginCodeGenerator.generate(6)
+    while Profile.where(:postal_invitation_code => code).count > 0
+      code = PostalLoginCodeGenerator.generate(6)
+    end
+    self.postal_invitation_code = code
+  end
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt

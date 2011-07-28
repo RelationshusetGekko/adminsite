@@ -8,12 +8,14 @@ class CreateProfiles < ActiveRecord::Migration
       t.string     :referral
       t.datetime   :permission_given_at
       t.datetime   :unsubscribed_at
+      t.string     :postal_invitation_code
 
       t.timestamps
     end
 
     add_index :profiles, :email
     add_index :profiles, :public_key, :unique => true
+    add_index :profiles, :postal_invitation_code, :unique => true
   end
 
   def self.down

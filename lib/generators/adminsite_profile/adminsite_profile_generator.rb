@@ -13,6 +13,8 @@ class AdminsiteProfileGenerator < Rails::Generators::Base
     template  "profiles/index.html.haml"         , "app/views/admin/profiles/index.html.haml"
     template  "profiles/show.html.haml"          , "app/views/admin/profiles/show.html.haml"
     template  "profiles/_profile_list.html.haml" , "app/views/admin/profiles/_profile_list.html.haml"
+    # Lib
+    template  "profiles/lib/postal_login_code_generator.rb", "lib/postal_login_code_generator.rb"
 
     # Routes
     inject_into_file "config/routes.rb", :after => /\.routes\.draw do\s*\n/ do
