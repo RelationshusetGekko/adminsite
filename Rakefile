@@ -55,6 +55,7 @@ begin
   POST_INSTALL_MESSAGE
     s.add_dependency 'devise', '>= 1.1.5'
     s.add_dependency 'haml', '>= 3.0.25'
+    s.add_dependency 'cocaine'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
     s.add_dependency 'simple_xlsx_writer'
