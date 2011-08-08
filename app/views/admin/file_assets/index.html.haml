@@ -13,9 +13,9 @@
 - if @file_assets.any?
   %table
     %tr
-      %th
       %th Filename
       %th Last update
+      %th
     - @file_assets.each do |asset|
       %tr
         %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
