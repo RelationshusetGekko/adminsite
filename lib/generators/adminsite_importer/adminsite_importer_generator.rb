@@ -4,7 +4,7 @@ class AdminsiteImporterGenerator < Rails::Generators::NamedBase
   def run_generation
     puts "Setting up Adminsite to import #{class_name} "
 
-    template  "klass_importer_task.rake", "lib/tasks/#{class_name.downcase}_importer.rake"
+    template  "class_importer_task.rake", "lib/tasks/#{class_name.downcase}_importer.rake"
 
   end
 end
