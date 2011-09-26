@@ -1,0 +1,13 @@
+NAME
+     statistic - generates a new statistic for a defined class
+
+SYNOPSIS
+     statistic
+
+DESCRIPTION
+     generates a new statistic for a defined class
+
+EXAMPLE
+     rails generate statistic [ClassName]
+
+     This will generates a new statistic for a defined class

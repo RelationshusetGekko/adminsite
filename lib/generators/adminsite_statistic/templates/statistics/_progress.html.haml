@@ -1,0 +1,28 @@
+- count_profile_old = 0
+- start_date = @first_<%= class_name.downcase %>_created_at
+- month = start_date.try(:month) || @today.month
+- (0..@month_dif).to_a.each do |i|
+  %h4= Date::MONTHNAMES[month]
+  %table
+    %tr
+      %th Date
+      %th
+        Total Number of
+        %b <%= class_name.titlecase %>s
+
+    - last_date = start_date
+    - last_date.upto(@today) do |day|
+      - start_date = day.to_date
+      - break if start_date.month != month
+      - count_<%= class_name.downcase %>_new = <%= class_name.titlecase %>.created_at_date(start_date).count
+      %tr
+        %th= start_date.to_s(:long)
+
+        = render :partial => "progress_td", :locals => { :count_new => count_<%= class_name.downcase %>_new, :count_old => count_<%= class_name.downcase %>_old }
+
+      - count_<%= class_name.downcase %>_old = count_<%= class_name.downcase %>_new
+
+  - if (month) < 12
+    - month += 1
+  - else
+    - month = 1
