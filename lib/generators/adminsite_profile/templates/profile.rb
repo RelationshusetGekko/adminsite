@@ -40,8 +40,6 @@ class Profile < ActiveRecord::Base
     password_hash.present? && password_salt.present?
   end
 
-  alias has_given_permission? permission?
-
   def permission=(flag)
     return if has_given_permission?
     if ActiveRecord::ConnectionAdapters::Column.value_to_boolean(flag)
@@ -54,6 +52,7 @@ class Profile < ActiveRecord::Base
     return false if unsubscribed?
     permission_given_at.present?
   end
+  alias has_given_permission? permission?
 
   def unsubscribe!
     return nil if unsubscribed?
