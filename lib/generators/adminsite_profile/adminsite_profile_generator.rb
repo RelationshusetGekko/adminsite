@@ -27,50 +27,50 @@ class AdminsiteProfileGenerator < Rails::Generators::Base
     end
 
     # Gemfile
-    inject_into_file "Gemfile", :before => /^.*gem 'adminsite'/ do
+    inject_into_file "Gemfile", :before => /^.*gem ['"]adminsite['"]/ do
       "gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'\n"+
       "gem 'will_paginate', '~>3.0.pre2'\n"
     end
 
     # Javascript
-    inject_into_file "public/javascripts/application.js" do
+    append_file "public/javascripts/application.js" do
       <<-DELAYED_OBSERVER.strip_heredoc
-      /*
-       jQuery delayed observer
-       (c) 2007 - Maxime Haineault (max@centdessin.com)
-      */
-      jQuery.fn.extend({
-        delayedObserver:function(delay, callback){
-          $this = $(this);
-          if (typeof window.delayedObserverStack == 'undefined') {
-            window.delayedObserverStack = [];
-          }
-          if (typeof window.delayedObserverCallback == 'undefined') {
-            window.delayedObserverCallback = function(stackPos) {
-              observed = window.delayedObserverStack[stackPos];
-              if (observed.timer) clearTimeout(observed.timer);
-
-              observed.timer = setTimeout(function(){
-                observed.timer = null;
-                observed.callback(observed.obj.val(), observed.obj);
-              }, observed.delay * 1000);
-
-              observed.oldVal = observed.obj.val();
+        /*
+         jQuery delayed observer
+         (c) 2007 - Maxime Haineault (max@centdessin.com)
+        */
+        jQuery.fn.extend({
+          delayedObserver:function(delay, callback){
+            $this = $(this);
+            if (typeof window.delayedObserverStack == 'undefined') {
+              window.delayedObserverStack = [];
             }
+            if (typeof window.delayedObserverCallback == 'undefined') {
+              window.delayedObserverCallback = function(stackPos) {
+                observed = window.delayedObserverStack[stackPos];
+                if (observed.timer) clearTimeout(observed.timer);
+
+                observed.timer = setTimeout(function(){
+                  observed.timer = null;
+                  observed.callback(observed.obj.val(), observed.obj);
+                }, observed.delay * 1000);
+
+                observed.oldVal = observed.obj.val();
+              }
+            }
+            window.delayedObserverStack.push({
+              obj: $this, timer: null, delay: delay,
+              oldVal: $this.val(), callback: callback });
+
+              stackPos = window.delayedObserverStack.length-1;
+
+            $this.keyup(function() {
+              observed = window.delayedObserverStack[stackPos];
+                if (observed.obj.val() == observed.obj.oldVal) return;
+                else window.delayedObserverCallback(stackPos);
+            });
           }
-          window.delayedObserverStack.push({
-            obj: $this, timer: null, delay: delay,
-            oldVal: $this.val(), callback: callback });
-
-            stackPos = window.delayedObserverStack.length-1;
-
-          $this.keyup(function() {
-            observed = window.delayedObserverStack[stackPos];
-              if (observed.obj.val() == observed.obj.oldVal) return;
-              else window.delayedObserverCallback(stackPos);
-          });
-        }
-      });
+        });
       DELAYED_OBSERVER
     end
   end
