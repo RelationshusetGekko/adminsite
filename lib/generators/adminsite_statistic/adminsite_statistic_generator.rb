@@ -14,7 +14,8 @@ class AdminsiteStatisticGenerator < Rails::Generators::NamedBase
 
     # Gemfile
     inject_into_file "Gemfile", :after => /gem 'adminsite'.*\n/ do
-      "gem 'memcache-client'\ngem 'statistics'\n"
+      "gem 'memcache-client'\n"+
+      "gem 'statistics'\n"
     end
 
     # Routes

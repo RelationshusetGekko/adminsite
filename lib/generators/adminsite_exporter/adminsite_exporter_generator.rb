@@ -19,5 +19,14 @@ class AdminsiteExporterGenerator < Rails::Generators::NamedBase
     inject_into_file "app/views/admin/shared/_menu.haml", :before => /^.*destroy_admin_session_path/ do
       "    = menu_item '#{class_name} exports', admin_#{file_name}_exports_path, '#{file_name}_exports'\n"
     end
+    # Gemfile
+    inject_into_file "Gemfile", :before => /^.*gem ['"]adminsite['"]/ do
+      "gem 'comma'\n"+
+      "gem 'builder' # Explicit require before simple_xlsx_writer\n"+
+      "gem 'broadcamp56-simple_xlsx_writer', '~> 0.5.4',\n"+
+      "   :require => 'simple_xlsx',\n"+
+      "   :git     => 'git@github.com:Broadcamp56/simple_xlsx_writer.git',\n"+
+      "   :branch  => 'master'\n"
+    end
   end
 end

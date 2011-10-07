@@ -58,7 +58,8 @@ begin
     s.add_dependency 'cocaine'
     s.add_dependency 'liquid'
     s.add_dependency 'paperclip-cloudfiles'
-    s.add_dependency 'simple_xlsx_writer'
+    s.add_dependency 'hoptoad_notifier', '>= 2.4.5'
+    s.add_dependency 'newrelic_rpm'
   end
 
   desc 'Copy gem file on gems.crd.dk'

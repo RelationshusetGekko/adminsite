@@ -6,5 +6,10 @@ class AdminsiteImporterGenerator < Rails::Generators::NamedBase
 
     template  "class_importer_task.rake", "lib/tasks/#{class_name.downcase}_importer.rake"
 
+    # Gemfile
+    inject_into_file "Gemfile", :before => /^.*gem ['"]adminsite['"]/ do
+      "gem 'fastercsv'\n"
+    end
+
   end
 end
