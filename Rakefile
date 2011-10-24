@@ -1,10 +1,57 @@
+# encoding: utf-8
+
+require 'rubygems'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+
 require 'rake'
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = "adminsite"
+  # gem.executables = "jeweler"
+  gem.summary = "Adminsite"
+  gem.email = "row@crd.dk"
+  gem.homepage = "http://www.crd.dk"
+  gem.description = "Adminsite plugin"
+  gem.authors = ["Robin Wunderlin"]
+  gem.files =  FileList["[A-Z]*", "{app,config,db,public,lib,generators}/**/*", 'lib/jeweler/templates/.gitignore']
+  gem.post_install_message = <<-POST_INSTALL_MESSAGE
+#{'*'*60}
+
+  Thank you for installing Circle Adminsite
+
+  Once you have installed this gem
+  include it into your app Gemfile with:
+  gem 'adminsite'
+
+  Then from your app root type:
+  rails generate adminsite
+
+  For Mosso Cloud Files integration and Protected pages
+  please refer to the README file in this gem root folder
+
+  Export generator is also available:
+  rails generate adminsite_exporter Product
+
+#{'*'*60}
+POST_INSTALL_MESSAGE
+end
+
+desc 'Copy gem file on gems.crd.dk'
+task :publish do
+  version = File.read('VERSION').strip
+  puts "Publishing version #{version} on gems.crd.dk"
+  system "scp pkg/adminsite-#{version}.gem gems.crd.dk:/usr/local/www/rubygems/gems/."
+end
+
 require 'rake/testtask'
-require 'rake/rdoctask'
-
-desc 'Default: run unit tests.'
-task :default => :test
-
 desc 'Test the adminsite plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
@@ -13,62 +60,25 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |test|
+  test.libs << 'test'
+  test.pattern = 'test/**/test_*.rb'
+  test.verbose = true
+  test.rcov_opts << '--exclude "gems/*"'
+end
+
+desc 'Default: run unit tests.'
+task :default => :test
+
+require 'rake/rdoctask'
 desc 'Generate documentation for the adminsite plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Adminsite'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
+  rdoc.title = "test-gem #{version}"
+  rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |s|
-    s.name = "adminsite"
-    # s.executables = "jeweler"
-    s.summary = "Adminsite"
-    s.email = "lic@crd.dk"
-    s.homepage = "http://www.crd.dk"
-    s.description = "Adminsite plugin"
-    s.authors = ["Liborio Cannici"]
-    s.files =  FileList["[A-Z]*", "{app,config,db,public,lib,generators}/**/*", 'lib/jeweler/templates/.gitignore']
-    s.post_install_message = <<-POST_INSTALL_MESSAGE
-  #{'*'*60}
-
-    Thank you for installing Circle Adminsite
-
-    Once you have installed this gem
-    include it into your app Gemfile with:
-    gem 'adminsite'
-
-    Then from your app root type:
-    rails generate adminsite
-
-    For Mosso Cloud Files integration and Protected pages
-    please refer to the README file in this gem root folder
-
-    Export generator is also available:
-    rails generate adminsite_exporter Product
-
-  #{'*'*60}
-  POST_INSTALL_MESSAGE
-    s.add_dependency 'devise', '>= 1.1.5'
-    s.add_dependency 'haml', '>= 3.0.25'
-    s.add_dependency 'cocaine'
-    s.add_dependency 'liquid'
-    s.add_dependency 'paperclip-cloudfiles'
-    s.add_dependency 'hoptoad_notifier', '>= 2.4.5'
-    s.add_dependency 'newrelic_rpm'
-  end
-
-  desc 'Copy gem file on gems.crd.dk'
-  task :publish do
-    version = File.read('VERSION').strip
-    puts "Publishing version #{version} on gems.crd.dk"
-    system "scp pkg/adminsite-#{version}.gem gems.crd.dk:/usr/local/www/rubygems/gems/."
-  end
-
-rescue LoadError
-  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
-end
