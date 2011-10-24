@@ -18,9 +18,9 @@ class Admin::FileAssetsController < Admin::BaseController
 
       file_asset = FileAsset.new('attachment' => file)
       if file_asset.save!
-        success_files << "“#{filename}”"
+        success_files << "'#{filename}'"
       else
-        failure_files << "“#{filename}”"
+        failure_files << "'#{filename}'"
       end
     end
 
