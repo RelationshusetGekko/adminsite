@@ -71,7 +71,7 @@ end
 desc 'Default: run unit tests.'
 task :default => :test
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 desc 'Generate documentation for the adminsite plugin.'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""

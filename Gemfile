@@ -3,7 +3,6 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem 'rake', '0.8.7'
 gem 'devise', '>= 1.1.5'
 gem 'haml', '>= 3.0.25'
 gem 'cocaine'
@@ -19,4 +18,5 @@ group :development do
   gem "bundler", "~> 1.0.0"
   gem "jeweler", "~> 1.6.4"
   gem "rcov", ">= 0"
+  gem "rdoc"
 end
