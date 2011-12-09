@@ -1,4 +1,4 @@
-- count_profile_old = 0
+- count_<%= class_name.downcase %>_old = 0
 - start_date = @first_<%= class_name.downcase %>_created_at
 - month = start_date.try(:month) || @today.month
 - (0..@month_dif).to_a.each do |i|
