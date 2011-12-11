@@ -1,13 +1,13 @@
 namespace :app do
-  namespace :<%= class_name.downcase %> do
+  namespace :<%= class_name.underscore %> do
 
     desc 'Load <%= class_name %> data'
     task :import => :environment do
 
-      puts "Before import, we have #{<%= class_name %>.count} <%= class_name.downcase %>s in DB"
+      puts "Before import, we have #{<%= class_name %>.count} <%= class_name.underscore %>s in DB"
 
       counter = 0;
-      path = Rails.root.join('db', 'seeds', '<%= class_name.downcase %>s')
+      path = Rails.root.join('db', 'seeds', '<%= class_name.underscore %>s')
       <%= class_name %>.transaction do
         Dir[path.to_s + "/**"].each do |filename|
           basename = File.basename(filename)
@@ -22,8 +22,8 @@ namespace :app do
                             :header_converters => [:utf8, :downcase]) do |row|
             row_index += 1
             begin
-              <%= class_name.downcase %> = <%= class_name %>.create!(row.to_hash)
-              # <%= class_name.downcase %>.update_attributes(:import_file => basename)
+              <%= class_name.underscore %> = <%= class_name %>.create!(row.to_hash)
+              # <%= class_name.underscore %>.update_attributes(:import_file => basename)
             rescue Exception => e
               raise "Error on row #{row_index}: #{e.message}"
             end

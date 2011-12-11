@@ -1,0 +1,13 @@
+NAME
+     soap - generates a new soap:base class
+
+SYNOPSIS
+     soap
+
+DESCRIPTION
+     generates a new soap class
+
+EXAMPLE
+     rails generate soap [ClassName]
+
+     This will generates a new soap class

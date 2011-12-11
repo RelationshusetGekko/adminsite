@@ -1,4 +1,4 @@
-module Admin::<%= class_name.titlecase %>StatisticsHelper
+module Admin::<%= class_name.camelize %>StatisticsHelper
 
   def get_number(number, totalnumber)
     percent = get_percent(number, totalnumber)

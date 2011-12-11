@@ -1,4 +1,4 @@
-module <%= class_name.titlecase %>::Statistic
+module <%= class_name.camelize %>::Statistic
   class << self
 
     def caching
@@ -18,7 +18,7 @@ module <%= class_name.titlecase %>::Statistic
     def included(base)
       base.instance_eval do
 
-        with_options <%= class_name.titlecase %>::Statistic.caching.merge(:count => :all) do |c|
+        with_options <%= class_name.camelize %>::Statistic.caching.merge(:count => :all) do |c|
 
           # General Counts
           c.define_statistic :all_count,                   :count => :all
