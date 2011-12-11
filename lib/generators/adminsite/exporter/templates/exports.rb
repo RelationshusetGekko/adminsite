@@ -1,4 +1,4 @@
-module <%= class_name %>::Exports
+module <%= class_name.camelize %>::Exports
   def self.included(base)
     base.instance_eval do
       comma do

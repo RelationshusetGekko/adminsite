@@ -4,7 +4,7 @@ module Adminsite
       source_root File.expand_path("../templates", __FILE__)
 
       def run_generation
-        puts "Setting up Adminsite statistic for #{class_name}"
+        puts "Setting up Adminsite statistic for #{class_name.camelize}"
 
         template  "class_statistic_module.rb", "app/models/#{class_name.underscore}/statistic.rb"
         template  "class_statistics_controller.rb", "app/controllers/admin/#{class_name.underscore}_statistics_controller.rb"

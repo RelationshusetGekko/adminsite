@@ -4,7 +4,7 @@ module Adminsite
       source_root File.expand_path("../templates", __FILE__)
 
       def run_generation
-        puts "Setting up Adminsite to import #{class_name} "
+        puts "Setting up Adminsite to import #{class_name.camelize} "
 
         template  "class_importer_task.rake", "lib/tasks/#{class_name.underscore}_importer.rake"
 

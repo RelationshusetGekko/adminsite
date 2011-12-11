@@ -1,5 +1,5 @@
 - content_for :header_left do
-  <%= class_name %> exports
+  <%= class_name.camelize %> exports
 
 %p
   Select the export you want to generate:
@@ -10,7 +10,7 @@
 
 - @file_types.each do |file_type|
   %h2= file_type
-  - exports = <%= class_name %>Export.generated_export_files(file_type)
+  - exports = <%= class_name.camelize %>Export.generated_export_files(file_type)
   - if exports.any?
     %table
       %tr

@@ -1,4 +1,4 @@
-class <%= class_name %>Export
+class <%= class_name.camelize %>Export
   @queue = :<%= file_name %>_export
 
   class << self
@@ -25,10 +25,10 @@ class <%= class_name %>Export
       tmp_file = default_path_to_export.join(tmp_filename)
 
       SimpleXlsx::Serializer.new(tmp_file) do |doc|
-        doc.add_sheet "<%= class_name %>s" do |sheet|
-          attr_lst = <%= class_name %>::Exports.full
+        doc.add_sheet "<%= class_name.camelize %>s" do |sheet|
+          attr_lst = <%= class_name.camelize %>::Exports.full
           sheet.add_row(attr_lst)
-          <%= class_name %>.send(export_name_scope).each do |<%= file_name %>|
+          <%= class_name.camelize %>.send(export_name_scope).each do |<%= file_name %>|
             values = attr_lst.collect { |attr| <%= file_name %>.try(attr).to_s }
             sheet.add_row(values)
           end
@@ -40,7 +40,7 @@ class <%= class_name %>Export
 
     def export_to_csv(export_name_scope)
       file = default_path_to_export.join(filename('csv'))
-      <%= class_name %>.send(export_name_scope).to_comma(:style    => :default,
+      <%= class_name.camelize %>.send(export_name_scope).to_comma(:style    => :default,
                                                :filename => file)
     end
 
