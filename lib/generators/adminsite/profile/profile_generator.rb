@@ -75,6 +75,8 @@ module Adminsite
             });
           DELAYED_OBSERVER
         end
+
+        run ('bundle')
       end
 
       def after_generate

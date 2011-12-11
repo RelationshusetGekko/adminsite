@@ -13,6 +13,7 @@ module Adminsite
           "gem 'fastercsv'\n"
         end
 
+        run ('bundle')
       end
     end
   end

@@ -30,6 +30,8 @@ module Adminsite
           "   :git     => 'git@github.com:Broadcamp56/simple_xlsx_writer.git',\n"+
           "   :branch  => 'master'\n"
         end
+
+        run ('bundle')
       end
     end
   end

@@ -32,15 +32,16 @@ module Adminsite
 
         # _Class Model
         inject_into_file "app/models/#{class_name.underscore}.rb", :after => /class #{class_name.camelize} < ActiveRecord::Base\s*\n/ do
-      "
-      class << self
-        def self.created_at_date(date)
-          where(\"DATE(created_at) <= ?\", date)
-        end
-      end\n
-      "
+          "
+          class << self
+            def self.created_at_date(date)
+              where(\"DATE(created_at) <= ?\", date)
+            end
+          end\n
+          "
         end
 
+        run ('bundle')
       end
     end
   end

@@ -4,6 +4,8 @@ module Adminsite
       source_root File.expand_path("../templates", __FILE__)
 
       def run_generation
+
+        run ('bundle')
       end
     end
   end
