@@ -9,7 +9,8 @@ module Adminsite
 
         template '_menu.html.haml', 'app/views/admin/shared/_menu.haml'
         remove_file 'public/index.html'
-        move_file 'app/views/layouts/application.html.erb',  'app/views/layouts/application.html.erb.onsolete'
+        copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'
+        remove_file 'app/views/layouts/application.html.erb'
 
         rake "adminsite:sync",  :generate_only => true
         rake "db:migrate",      :generate_only => true
