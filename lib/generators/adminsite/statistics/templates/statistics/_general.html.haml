@@ -1,0 +1,11 @@
+%table
+  %tr
+    %th
+      Total Number of
+      %b <%= class_name.camelize %>
+    %th
+      Col 2
+    %tr
+      %td= @<%= class_name.underscore %>_stats[:all_count]
+      %td
+        value 2

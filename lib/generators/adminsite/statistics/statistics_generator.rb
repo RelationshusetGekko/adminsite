@@ -11,6 +11,7 @@ module Adminsite
         template  "class_statistics_helper.rb", "app/helpers/admin/#{class_name.underscore}_statistics_helper.rb"
 
         template  "statistics/index.html.haml", "app/views/admin/#{class_name.underscore}_statistics/index.html.haml"
+        template  "statistics/_general.html.haml", "app/views/admin/#{class_name.underscore}_statistics/_general.html.haml"
         template  "statistics/_progress.html.haml", "app/views/admin/#{class_name.underscore}_statistics/_progress.html.haml"
         template  "statistics/_progress_td.html.haml", "app/views/admin/#{class_name.underscore}_statistics/_progress_td.html.haml"
 

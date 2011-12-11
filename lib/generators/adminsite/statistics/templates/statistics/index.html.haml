@@ -2,5 +2,9 @@
   <%= class_name.camelize %>-Statistic
 
 .statistic_group
+  %h2 General
+  = render :partial => "general"
+
+.statistic_group
   %h2 Progress / Growth
   = render :partial => "progress"
