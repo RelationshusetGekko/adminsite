@@ -3,6 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
+gem 'rails', '>= 2.3.0'
 gem 'devise', '>= 1.1.5'
 gem 'haml', '>= 3.0.25'
 gem 'cocaine'
