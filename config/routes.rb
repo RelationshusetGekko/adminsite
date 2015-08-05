@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   root  :to => 'contents#show', :page_url => 'index'
-  match '/:page_url(.:format)(/:id)' => 'contents#show'
+  get '/:page_url(.:format)(/:id)' => 'contents#show'
 end

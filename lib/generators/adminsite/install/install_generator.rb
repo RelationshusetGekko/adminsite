@@ -8,13 +8,20 @@ module Adminsite
         template 'application.rb', 'lib/recipes/application.rb'
 
         template '_menu.html.haml', 'app/views/admin/shared/_menu.haml'
-        remove_file 'public/index.html'
-        copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'
-        remove_file 'app/views/layouts/application.html.erb'
 
-        rake "adminsite:sync",  :generate_only => true
-        rake "db:migrate",      :generate_only => true
-        rake "adminsite:setup", :generate_only => true
+        if File.exists?("#{destination_root}/app/views/layouts/application.html.erb")
+          copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'
+        end
+
+        ['public/index.html', 'app/views/layouts/application.html.erb'].each do |f|
+          f = "#{destination_root}/#{f}"
+          remove_file f if File.exists?(f)
+        end
+
+        rake "adminsite:install:migrations", :generate_only => true
+        rake "adminsite:sync",               :generate_only => true
+        rake "db:migrate",                   :generate_only => true
+        rake "adminsite:create_admin",       :generate_only => true
       end
 
       def after_generate
