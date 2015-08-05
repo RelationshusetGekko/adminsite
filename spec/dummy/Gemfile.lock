@@ -8,6 +8,7 @@ PATH
       liquid
       paperclip-cloudfiles
       rails (~> 4.2)
+      sass-rails
 
 GEM
   remote: https://rubygems.org/
@@ -49,6 +50,10 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -58,6 +63,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -125,6 +131,8 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-footnotes (4.1.7)
+      rails (>= 3.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     railties (4.2.3)
@@ -171,21 +179,28 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    xray-rails (0.1.16)
+      coffee-rails
+      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   adminsite!
+  better_errors
+  binding_of_caller
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
   pg
   rails (~> 4.2.3)
+  rails-footnotes
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  xray-rails

@@ -1,9 +1,8 @@
 class Admin::AdminsController < Admin::BaseController
-  unloadable
   protect_from_forgery :except => :update
 
   def index
-    @admins = Admin.find(:all)
+    @admins = Admin.all
 
     respond_to do |format|
       format.html

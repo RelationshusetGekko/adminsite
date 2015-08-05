@@ -24,8 +24,10 @@ Gem::Specification.new do |s|
   s.post_install_message = File.open('USAGE').read
 
   s.add_runtime_dependency(%q<rails>, ["~> 4.2"])
+  s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
   s.add_runtime_dependency(%q<devise>, ["~> 3.4"])
   s.add_runtime_dependency(%q<haml>, [">= 0"])
+  s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
   s.add_runtime_dependency(%q<cocaine>, [">= 0"])
   s.add_runtime_dependency(%q<liquid>, [">= 0"])
   s.add_runtime_dependency(%q<paperclip-cloudfiles>, [">= 0"])

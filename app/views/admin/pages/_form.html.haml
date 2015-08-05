@@ -7,7 +7,7 @@
   %label
     Layout
     %br
-    = f.select :page_layout_id, PageLayout.find(:all).collect{ |h| [ h.title, h.id ] }
+    = f.select :page_layout_id, PageLayout.all.collect{ |h| [ h.title, h.id ] }
 %p
   %label
     Requires login

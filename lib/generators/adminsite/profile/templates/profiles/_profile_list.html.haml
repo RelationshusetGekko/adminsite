@@ -7,7 +7,7 @@
 
   - @profiles.each do |profile|
     %tr
-      %td= link_to image_tag('admin/magnifier.png', :size => '16x16'), admin_profile_path(profile)
+      %td= link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_profile_path(profile)
       %td= profile.public_key
       %td= profile.email
       %td= profile.created_at.try(:to_s, :short)

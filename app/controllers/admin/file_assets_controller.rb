@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 class Admin::FileAssetsController < Admin::BaseController
-  unloadable
 
   def index
     @file_assets = FileAsset.all

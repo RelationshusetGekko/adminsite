@@ -1,5 +1,4 @@
 class ContentsController < ApplicationController
-  unloadable
   before_filter :set_p3p
 
   def show
