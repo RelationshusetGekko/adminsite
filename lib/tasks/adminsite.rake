@@ -10,7 +10,7 @@ namespace :adminsite do
   desc "Setup an admin account"
   task :create_admin => :environment do
 
-    email = "admin@crd.dk"
+    email = ENV['EMAIL'] || "admin@rhg.dk"
     if Rails.env.development?
       password = "password"
     else

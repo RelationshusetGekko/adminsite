@@ -3,11 +3,11 @@ PATH
   specs:
     adminsite (2.0.0)
       cocaine
-      devise (>= 3.4.1)
-      haml (>= 4.0.6)
+      devise (~> 3.4)
+      haml
       liquid
       paperclip-cloudfiles
-      rails (~> 4.2.3)
+      rails (~> 4.2)
 
 GEM
   remote: https://rubygems.org/
