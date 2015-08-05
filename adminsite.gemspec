@@ -31,7 +31,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
   s.add_runtime_dependency(%q<cocaine>, [">= 0"])
   s.add_runtime_dependency(%q<liquid>, [">= 0"])
-  s.add_runtime_dependency(%q<paperclip-cloudfiles>, [">= 0"])
+  s.add_runtime_dependency(%q<paperclip>, [">= 0"])
+  s.add_runtime_dependency(%q<fog>, [">= 0"])
 
 end
 

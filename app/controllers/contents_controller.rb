@@ -1,4 +1,7 @@
 class ContentsController < ApplicationController
+  include ActionController::Caching::Pages
+  self.page_cache_directory = Adminsite::Engine.config.action_controller.page_cache_directory
+
   before_filter :set_p3p
 
   def show

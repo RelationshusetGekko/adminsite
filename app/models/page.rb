@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   end
 
   def cache_dir
-    @cache_dir ||= ActionController::Base.page_cache_directory
+    @cache_dir ||= ContentsController.page_cache_directory # Adminsite::Engine.config.action_controller.page_cache_directory
   end
 
   def cleanup_cached
