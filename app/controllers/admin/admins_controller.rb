@@ -24,7 +24,7 @@ class Admin::AdminsController < Admin::BaseController
   end
 
   def create
-    @admin = Admin.new(params[:admin])
+    @admin = Admin.new(permitted_params[:admin])
     respond_to do |format|
       if @admin.save
         flash[:notice] = 'Admin was successfully created.'
@@ -40,7 +40,7 @@ class Admin::AdminsController < Admin::BaseController
   def update
     @admin = Admin.find(params[:id])
     respond_to do |format|
-      if @admin.update_attributes(params[:admin])
+      if @admin.update_attributes(permitted_params[:admin])
         flash[:notice] = 'Admin was successfully updated.'
         format.html { redirect_to(admin_admins_path) }
         format.xml  { head :ok }

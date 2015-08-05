@@ -13,7 +13,7 @@ class Admin::PageLayoutsController < Admin::BaseController
   end
 
   def create
-    @page_layout = PageLayout.new(params[:page_layout])
+    @page_layout = PageLayout.new(permitted_params[:page_layout])
     if @page_layout.save
       flash[:notice] = 'Page Layout was successfully created.'
       redirect_to(admin_page_layouts_path)
@@ -24,7 +24,7 @@ class Admin::PageLayoutsController < Admin::BaseController
 
   def update
     @page_layout = PageLayout.find(params[:id])
-    if @page_layout.update_attributes(params[:page_layout])
+    if @page_layout.update_attributes(permitted_params[:page_layout])
       flash[:notice] = 'Page Layout was successfully updated.'
       Page.cleanup_all_cached
       redirect_to(edit_admin_page_layout_path(@page_layout))

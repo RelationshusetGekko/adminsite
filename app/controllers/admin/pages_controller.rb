@@ -15,7 +15,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(permitted_params[:page])
     if @page.save
       flash[:notice] = 'Page was successfully created.'
       redirect_to(admin_pages_path)
@@ -27,7 +27,7 @@ class Admin::PagesController < Admin::BaseController
   def update
     @page = Page.find(params[:id])
     @file_assets = FileAsset.all
-    if @page.update_attributes(params[:page])
+    if @page.update_attributes(permitted_params[:page])
       flash[:notice] = 'Page was successfully updated.'
       @page.cleanup_cached
       redirect_to(edit_admin_page_path(@page))

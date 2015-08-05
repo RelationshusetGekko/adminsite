@@ -6,10 +6,6 @@ class Page < ActiveRecord::Base
 
   class << self
 
-    def cache_dir
-      @cache_dir ||= ActionController::Base.page_cache_directory
-    end
-
     def cleanup_all_cached
       Page.all.each do |p|
         p.cleanup_cached
@@ -19,6 +15,9 @@ class Page < ActiveRecord::Base
 
   end
 
+  def cache_dir
+    @cache_dir ||= ActionController::Base.page_cache_directory
+  end
 
   def cleanup_cached
     logger.info("Removing cached page at: #{cache_dir}/#{self.url}")

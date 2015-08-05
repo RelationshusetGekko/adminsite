@@ -12,7 +12,7 @@ class Admin::FileAssetsController < Admin::BaseController
     failure_files = []
 
     if params[:file_asset].present?
-      Array(params[:file_asset][:attachment]).each do |file|
+      Array(permitted_params[:file_asset][:attachment]).each do |file|
         filename = file.original_filename
 
         # "Overwrite" existing by removing them
@@ -30,14 +30,14 @@ class Admin::FileAssetsController < Admin::BaseController
     flash[:notice] = "File(s) #{success_files.join(', ')} were successfully uploaded." if success_files.any?
     flash[:errors] = "File(s) #{failure_files.join(', ')} were not uploaded."          if failure_files.any?
 
-    Page.cleanup_cached_pages
+    Page.cleanup_all_cached
     redirect_to admin_file_assets_path
   end
 
   def destroy
     FileAsset.destroy(params[:id])
     redirect_to admin_file_assets_path
-    Page.cleanup_cached_pages
+    Page.cleanup_all_cached
   end
 
   private
