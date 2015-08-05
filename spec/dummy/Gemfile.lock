@@ -2,9 +2,11 @@ PATH
   remote: ../../
   specs:
     adminsite (2.0.0)
+      actionpack-page_caching
       cocaine
       devise (~> 3.4)
       haml
+      jquery-rails
       liquid
       paperclip-cloudfiles
       rails (~> 4.2)
@@ -26,6 +28,8 @@ GEM
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-page_caching (1.0.2)
+      actionpack (>= 4.0.0, < 5)
     actionview (4.2.3)
       activesupport (= 4.2.3)
       builder (~> 3.1)

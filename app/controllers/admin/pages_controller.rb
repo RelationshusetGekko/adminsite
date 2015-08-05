@@ -29,7 +29,7 @@ class Admin::PagesController < Admin::BaseController
     @file_assets = FileAsset.all
     if @page.update_attributes(params[:page])
       flash[:notice] = 'Page was successfully updated.'
-      cleanup_cached_page(@page.url)
+      @page.cleanup_cached
       redirect_to(edit_admin_page_path(@page))
     else
       render :action => "edit"
@@ -38,14 +38,10 @@ class Admin::PagesController < Admin::BaseController
 
   def destroy
     @page = Page.find(params[:id])
-    cleanup_cached_page(@page.url)
+    @page.cleanup_cached
     @page.destroy
     redirect_to(admin_pages_path)
   end
 
   private
-  def cleanup_cached_page(file_name)
-    cache_dir = ActionController::Base.page_cache_directory
-    FileUtils.rm("#{cache_dir}/#{file_name}") if File.exist?("#{cache_dir}/#{file_name}")
-  end
 end

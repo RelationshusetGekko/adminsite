@@ -5,14 +5,24 @@ class Page < ActiveRecord::Base
   validates_presence_of :url
 
   class << self
+
+    def cache_dir
+      @cache_dir ||= ActionController::Base.page_cache_directory
+    end
+
     def cleanup_all_cached
-      cache_dir = ActionController::Base.page_cache_directory
       Page.all.each do |p|
-        logger.info("Removing cached page at: #{cache_dir}/#{p.url}")
-        FileUtils.rm("#{cache_dir}/#{p.url}") if File.exist?("#{cache_dir}/#{p.url}")
+        p.cleanup_cached
       end
       logger.info("Page cache has been wiped out: deleted all cached pages.")
     end
+
+  end
+
+
+  def cleanup_cached
+    logger.info("Removing cached page at: #{cache_dir}/#{self.url}")
+    FileUtils.rm("#{cache_dir}/#{self.url}") if File.exist?("#{cache_dir}/#{self.url}")
   end
 
   def render(args)
