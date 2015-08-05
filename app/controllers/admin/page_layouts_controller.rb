@@ -6,10 +6,12 @@ class Admin::PageLayoutsController < Admin::BaseController
 
   def new
     @page_layout = PageLayout.new(:body => "{{content_for_template}}")
+    @file_assets = FileAsset.all
   end
 
   def edit
     @page_layout = PageLayout.find(params[:id])
+    @file_assets = FileAsset.all
   end
 
   def create
