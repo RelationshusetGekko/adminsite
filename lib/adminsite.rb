@@ -1,12 +1,16 @@
-# Adminsite
-require "rails"
-require 'paperclip'
-require 'liquid'
-require 'adminsite/liquid/tags/asset'
-require 'devise'
-require 'haml'
-require 'cocaine'
+require "adminsite/engine"
+require 'adminsite/configuration'
 
 module Adminsite
-  require 'engine' if defined?(Rails) && Rails::VERSION::MAJOR == 3
+  class << self
+    def configure
+      yield configuration
+    end
+
+    # Accessor for Adminsite::Configuration
+    def configuration
+      @configuration ||= Configuration.new
+    end
+    alias :config :configuration
+  end
 end
