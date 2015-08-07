@@ -6,4 +6,8 @@ class Admin::<%= @resource_class %>sController < Admin::ResourcesController
     <%= @resource_class %>
   end
 
+  def resource_admin_config
+    resource_class::AdminConfig
+  end
+
 end

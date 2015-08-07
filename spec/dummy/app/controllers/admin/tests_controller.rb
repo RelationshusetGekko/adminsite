@@ -6,4 +6,8 @@ class Admin::TestsController < Admin::ResourcesController
     Page
   end
 
+  def resource_admin_config
+    Test::AdminConfig
+  end
+
 end

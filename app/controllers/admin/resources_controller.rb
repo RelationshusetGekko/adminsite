@@ -1,6 +1,7 @@
 class Admin::ResourcesController < Admin::BaseController
 
-  helper_method :admin_resource_path, :resource_class_underscore, :resource_class
+  helper_method :admin_resource_path, :resource_class_underscore,
+                :resource_class, :resource_admin_config
 
   def new
     @resource = resource_class.new
@@ -63,6 +64,10 @@ class Admin::ResourcesController < Admin::BaseController
 
   def resource_class
     raise NotImplementedError.new('Define resource_class in subclass')
+  end
+
+  def resource_admin_config
+    resource_class::AdminConfig
   end
 
 end
