@@ -1,0 +1,13 @@
+- content_for :header_left do
+  Edit
+- content_for :header_right do
+  = link_to_back 'Back', admin_resource_path
+
+= error_messages_for @resource
+
+= form_for([:admin, @resource]) do |f|
+  %div{id: "#{resource_class_underscore}-edit"}
+    = render :partial => 'form', :locals => { :f => f }
+    = submit_tag "Update"
+
+.clear

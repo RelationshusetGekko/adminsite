@@ -43,5 +43,4 @@ class Admin::PagesController < Admin::BaseController
     redirect_to(admin_pages_path)
   end
 
-  private
 end

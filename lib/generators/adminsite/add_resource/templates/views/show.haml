@@ -1,0 +1,8 @@
+- content_for :header_left do
+  New
+- content_for :header_right do
+  = link_to_back 'Back', admin_resource_path
+
+= @resource.inspect
+
+.clear
