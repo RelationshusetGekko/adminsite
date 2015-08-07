@@ -1,8 +1,13 @@
 require 'erb'
+
 namespace :app do
-  desc "Create default admin"
-  task :setup_admin_site do
-    run_with_rake 'adminsite:setup'
+
+  namespace :adminsite do
+
+    desc "Create default admin"
+    task :create_admin do
+      run_with_rake 'adminsite:create_admin'
+    end
   end
 
   def run_with_rake(task_name)

@@ -1,0 +1,7 @@
+#admin_menu.menu
+  %ul
+    = menu_item 'Administrators', admin_admins_path,          'admins'
+    = menu_item 'Page layouts',   admin_page_layouts_path,    'page_layouts'
+  %ul
+    = menu_item 'Log out', destroy_admin_session_path, [], 'log_out', :delete
+.clearfix

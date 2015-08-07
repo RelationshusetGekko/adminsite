@@ -7,7 +7,8 @@ module Adminsite
         run ('rails generate devise:install')
         template 'application.rb', 'lib/recipes/application.rb'
 
-        template '_menu.html.haml', 'app/views/admin/shared/_menu.haml'
+        template '_admin_menu.html.haml', 'app/views/admin/shared/_admin_menu.haml'
+        template '_content_menu.html.haml', 'app/views/admin/shared/_content_menu.haml'
 
         if File.exists?("#{destination_root}/app/views/layouts/application.html.erb")
           copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'

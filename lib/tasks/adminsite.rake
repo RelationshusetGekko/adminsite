@@ -7,7 +7,7 @@ namespace :adminsite do
     system "rsync -ruv #{public_dir} ."
   end
 
-  desc "Setup an admin account"
+  desc "Create an admin account"
   task :create_admin => :environment do
 
     email = ENV['EMAIL'] || "admin@rhg.dk"
