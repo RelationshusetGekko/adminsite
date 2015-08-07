@@ -1,0 +1,21 @@
+- content_for :header_left do
+  Listing
+- content_for :header_right do
+  = link_to_add 'New', admin_resource_path(nil, 'new')
+
+= admin_resource_path
+
+%table
+  %tr
+    - resource_class::AdminConfig.attributes_index.each do |attr|
+      %th= h attr.to_s.titlecase
+    - resource_class::AdminConfig.actions_index.each do |action|
+      %th
+  - @resources.each do |resource|
+    %tr
+      - resource_class::AdminConfig.attributes_index.each do |attr|
+        - value = resource.send(attr)
+        - value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
+        %td= h value
+      - resource_class::AdminConfig.actions_index.each do |action|
+        %td= send("link_to_#{action}", admin_resource_path, resource)

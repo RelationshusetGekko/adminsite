@@ -7,7 +7,7 @@
       = controller.action_name.capitalize
     = stylesheet_link_tag 'admin'
     = javascript_include_tag 'admin'
-  %body
+  %body.adminsite
     %h1
     = render :partial => 'admin/shared/admin_menu' if current_admin.present?
     = render :partial => 'admin/shared/content_menu' if current_admin.present?

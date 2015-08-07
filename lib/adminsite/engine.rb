@@ -6,6 +6,7 @@ require 'adminsite/liquid/tags/asset'
 require 'devise'
 require 'haml'
 require 'cocaine'
+require 'formtastic'
 
 module Adminsite
   class Engine < Rails::Engine

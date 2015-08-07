@@ -1,13 +1,13 @@
 - content_for :header_left do
-  New
+  Edit
 - content_for :header_right do
   = link_to_back 'Back', admin_resource_path
 
 = error_messages_for @resource
 
-= form_for([:admin, @resource], :url => admin_pages_path) do |f|
+= semantic_form_for([:admin, @resource]) do |f|
   %div{id: "#{resource_class_underscore}-edit"}
     = render :partial => 'form', :locals => { :f => f }
-    = submit_tag "Create"
+    = submit_tag "Update"
 
 .clear

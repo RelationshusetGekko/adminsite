@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require 'adminsite/admin'
 //= require_tree ./admin
+

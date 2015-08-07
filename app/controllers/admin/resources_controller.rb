@@ -1,6 +1,6 @@
-class Admin::ResourceController < Admin::BaseController
+class Admin::ResourcesController < Admin::BaseController
 
-  helper_method :admin_resource_path, :resource_class_underscore
+  helper_method :admin_resource_path, :resource_class_underscore, :resource_class
 
   def new
     @resource = resource_class.new
@@ -45,16 +45,10 @@ class Admin::ResourceController < Admin::BaseController
   end
 
   def admin_resource_path(id = nil, action = nil)
-    path = "#{admin_root_path}/#{resource_class.table_name}"
-    if id.present?
-      if action.present?
-        "#{path}/#{id}/#{action}"
-      else
-        "#{path}/#{id}"
-      end
-    else
-      path
-    end
+    path = "/#{params[:controller]}"
+    path = "#{path}/#{id}" if id.present?
+    path = "#{path}/#{action}" if action.present?
+    path
   end
 
   private
