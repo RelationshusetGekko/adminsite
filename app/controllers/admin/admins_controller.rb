@@ -2,7 +2,7 @@ class Admin::AdminsController < Admin::BaseController
   protect_from_forgery :except => :update
 
   def index
-    @admins = Admin.all
+    @admins = Admin.all.order('email ASC')
 
     respond_to do |format|
       format.html

@@ -3,7 +3,7 @@
 class Admin::FileAssetsController < Admin::BaseController
 
   def index
-    @file_assets = FileAsset.all
+    @file_assets = FileAsset.all.order('attachment_file_name ASC')
     @file_asset = FileAsset.new
   end
 

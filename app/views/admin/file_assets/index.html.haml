@@ -13,11 +13,13 @@
 - if @file_assets.any?
   %table
     %tr
+      %th
       %th Filename
       %th Last update
       %th
     - @file_assets.each do |asset|
       %tr
+        %td.graphic= image_tag(asset.attachment.url(:original, false), style: 'max-height: 50px;')
         %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
         %td= h asset.updated_at
         %td= link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), [:admin, asset], :confirm => 'Are you sure?', :method => :delete

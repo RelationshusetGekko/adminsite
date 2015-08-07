@@ -5,10 +5,11 @@ module Admin::AdminsiteApplicationHelper
     raw ['<ul>', msgs, '</ul>'].flatten.join
   end
 
-  def menu_item(label, url, current_controller = '', klass = nil)
+  def menu_item(label, url, current_controller = '', klass = nil, method = nil)
     current = %Q{id="current"} if url == request.fullpath
     klass_string = %Q{class="#{klasses(current_controller, klass)}"} if klass.present?
-    raw "<li #{[current, klass_string].join(' ')}><a href='#{h url}'>#{h label}</a></li>"
+    link = link_to(label, url, method: method)
+    raw "<li #{[current, klass_string].join(' ')}>#{link}</li>"
   end
 
   def klasses(current_controller, klass)
