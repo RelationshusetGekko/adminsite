@@ -6,10 +6,11 @@
       Administration:
       = controller.action_name.capitalize
     = stylesheet_link_tag 'admin'
-    = javascript_include_tag :defaults
-  %body
+    = javascript_include_tag 'admin'
+  %body.adminsite
     %h1
-    = render :partial => 'admin/shared/menu' if current_admin.present?
+    = render :partial => 'admin/shared/admin_menu' if current_admin.present?
+    = render :partial => 'admin/shared/content_menu' if current_admin.present?
 
     - if flash[:notice].present?
       #flashnotice

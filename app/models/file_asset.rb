@@ -1,16 +1,11 @@
 class FileAsset < ActiveRecord::Base
-  # IF PAPERCLIP_CONTAINER is not defined we fall back to local filesystem
-  begin
-    STORAGE = { :storage => :cloud_files,
-                :container => PAPERCLIP_CONTAINER,
-                :cloudfiles_credentials => "config/mosso_cloudfiles.yml",
-                :path => "assets/:id/:filename" }
-  rescue
-    STORAGE = { :path => ":rails_root/public/system/assets/:filename",
-                :url  => "/system/assets/:filename" }
-  end
 
-  has_attached_file :attachment, STORAGE
+  has_attached_file :attachment
+
+  validates_with AttachmentPresenceValidator, :attributes => :attachment
+  validates_with AttachmentSizeValidator, :attributes => :attachment, :less_than => 2.megabytes
+  validates_attachment :attachment, content_type: { content_type: /\A.*\Z/ }
+  # do_not_validate_attachment_file_type :image
 
   class << self
     def attachment_url_for(name)

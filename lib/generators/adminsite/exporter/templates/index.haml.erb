@@ -25,7 +25,7 @@
         %tr{ :class => klass }
           %td= link_to "#{basename}.#{file_type}", file_path
           %td= time_ago_in_words File.mtime(export)
-          %td= link_to image_tag('admin/cross.png'), file_path, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to image_tag('adminsite/admin/cross.png'), file_path, :confirm => 'Are you sure?', :method => :delete
   - else
     %p
       No exports yet

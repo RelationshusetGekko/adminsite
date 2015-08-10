@@ -1,4 +1,8 @@
 class Admin::BaseController < AdminApplicationController
-  unloadable
   layout 'admin'
+
+  def permitted_params
+    params.permit!
+  end
+
 end

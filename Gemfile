@@ -1,23 +1,18 @@
+source 'https://gems.gemfury.com/h3guD34D9aPxbAv7FsEc/'
 source "http://rubygems.org"
-# Add dependencies required to use your gem here.
-# Example:
-#   gem "activesupport", ">= 2.3.5"
 
-gem 'rails', '>= 2.3.0'
-gem 'devise', '>= 1.1.5'
-gem 'haml', '>= 3.0.25'
+gem 'rails', '~> 4.2.3'
+gem 'devise', '>= 3.4.1'
+gem 'haml', '>= 4.0.6'
 gem 'cocaine'
 gem 'liquid'
 gem 'paperclip-cloudfiles'
-gem 'hoptoad_notifier', '>= 2.4.5'
-gem 'newrelic_rpm'
+gem 'b56_utils', '>= 1.0.9'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "shoulda", ">= 0"
-  gem "bundler", "~> 1.0.0"
-  gem "jeweler", "~> 1.6.4"
-  gem "rcov", ">= 0"
+  gem "simplecov", ">= 0.10.0"
   gem "rdoc"
 end

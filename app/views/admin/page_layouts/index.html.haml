@@ -1,21 +1,5 @@
-- content_for :header_left do
-  Listing page layouts
-- content_for :header_right do
-  = link_to_add 'New page layout', new_admin_page_layout_path
-
-- if @page_layouts.any?
-  %table
-    %tr
-      %th Title
-      %th Last update
-      %th
-      %th
-    - @page_layouts.each do |page_layout|
-      %tr
-        %td= h page_layout.title
-        %td= h page_layout.updated_at
-        %td= link_to image_tag('admin/pencil.png', :size => '16x16'), edit_admin_page_layout_path(page_layout)
-        %td= link_to image_tag('admin/cross.png', :size => '16x16'), [:admin, page_layout], :confirm => 'Are you sure?', :method => :delete
-- else
+- if @resources.any?
+  = render :file => 'admin/resources/index'
+- elsif PageLayout.exists?
   There are no page layouts. Go ahead and
   #{link_to 'add the first one', new_admin_page_layout_path}.
