@@ -3,8 +3,6 @@
 - content_for :header_right do
   = link_to_add 'New', admin_resource_path(nil, 'new')
 
-= admin_resource_path
-
 %table
   %tr
     - resource_admin_config.attributes_index.each do |attr|

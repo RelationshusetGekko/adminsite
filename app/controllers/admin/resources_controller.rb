@@ -1,4 +1,5 @@
 class Admin::ResourcesController < Admin::BaseController
+  before_filter :find_resource, :except => [:new, :create, :index]
 
   helper_method :admin_resource_path, :resource_class_underscore,
                 :resource_class, :resource_admin_config
@@ -10,33 +11,33 @@ class Admin::ResourcesController < Admin::BaseController
   def create
     @resource = resource_class.new(resource_params)
     if @resource.save
-      flash_notice_success
-      redirect_to admin_resource_path(@resource)
+      flash_notice_success('created')
+      redirect_to admin_resource_path(@resource.id)
     else
       render :action => "new"
     end
   end
 
   def edit
-    @resource = resource_class.find(params[:id])
+  end
+
+  def show
   end
 
   def update
-    @resource = resource_class.find(params[:id])
     if @resource.update_attributes(resource_params)
-      flash_notice_success
-      redirect_to admin_resource_path(@resource, :edit)
+      flash_notice_success('updated')
+      redirect_to admin_resource_path(@resource.id, :edit)
     else
       render :action => "edit"
     end
   end
 
   def index
-    @resources = resource_class.all
+    @resources = resources.order(order_params)
   end
 
   def destroy
-    @resource = resource_class.find(params[:id])
     @resource.destroy
     redirect_to admin_resource_path
   end
@@ -54,8 +55,28 @@ class Admin::ResourcesController < Admin::BaseController
 
   private
 
-  def flash_notice_success
-    flash[:notice] = "#{resource_class.name} was successfully created."
+  def resources
+    if filter_scopes.any?
+      eval("resource_class.#{filter_scopes.join('.')}")
+    else
+      resource_class.all
+    end
+  end
+
+  def filter_scopes
+    []
+  end
+
+  def order_params
+    'ID DESC'
+  end
+
+  def find_resource
+    @resource = resources.find(params[:id])
+  end
+
+  def flash_notice_success(action)
+    flash[:notice] = "#{resource_class.name} was successfully #{action}."
   end
 
   def resource_params

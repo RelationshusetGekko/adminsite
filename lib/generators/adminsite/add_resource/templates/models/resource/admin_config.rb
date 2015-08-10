@@ -2,11 +2,13 @@ class <%= @resource_class %>
   module AdminConfig
 
     def self.attributes_index
-      [ :id ]
+      [ :id,
+        :name
+      ]
     end
 
     def self.attributes_edit
-      [ :id ]
+      [ :name ]
     end
 
     def self.attributes_show
@@ -14,7 +16,8 @@ class <%= @resource_class %>
     end
 
     def self.index_actions
-      [ :edit,
+      [ :show,
+        :edit,
         :destroy]
     end
   end

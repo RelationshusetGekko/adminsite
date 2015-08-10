@@ -13,6 +13,14 @@ class Page < ActiveRecord::Base
       logger.info("Page cache has been wiped out: deleted all cached pages.")
     end
 
+    def cacheable
+      where(cacheable: true)
+    end
+
+    def requires_login
+      where(requires_login: true)
+    end
+
   end
 
   def cache_dir
