@@ -28,6 +28,7 @@ class Page < ActiveRecord::Base
   end
 
   def cleanup_cached
+    return if self.url.blank?
     logger.info("Removing cached page at: #{cache_dir}/#{self.url}")
     FileUtils.rm("#{cache_dir}/#{self.url}") if File.exist?("#{cache_dir}/#{self.url}")
   end

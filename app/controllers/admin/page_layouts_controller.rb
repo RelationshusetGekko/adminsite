@@ -1,44 +1,32 @@
-class Admin::PageLayoutsController < Admin::BaseController
-
-  def index
-    @page_layouts = PageLayout.all.order("title ASC")
-  end
+class Admin::PageLayoutsController < Admin::ResourcesController
 
   def new
-    @page_layout = PageLayout.new(:body => "{{content_for_template}}")
+    @resource = PageLayout.new(:body => "{{content_for_template}}")
     @file_assets = FileAsset.all
+    super
   end
 
   def edit
-    @page_layout = PageLayout.find(params[:id])
     @file_assets = FileAsset.all
-  end
-
-  def create
-    @page_layout = PageLayout.new(permitted_params[:page_layout])
-    if @page_layout.save
-      flash[:notice] = 'Page Layout was successfully created.'
-      redirect_to(admin_page_layouts_path)
-    else
-      render :action => "new"
-    end
+    super
   end
 
   def update
-    @page_layout = PageLayout.find(params[:id])
-    if @page_layout.update_attributes(permitted_params[:page_layout])
-      flash[:notice] = 'Page Layout was successfully updated.'
-      Page.cleanup_all_cached
-      redirect_to(edit_admin_page_layout_path(@page_layout))
-    else
-      render :action => "edit"
-    end
+    @file_assets = FileAsset.all
+    super
+    Page.cleanup_all_cached
   end
 
   def destroy
-    @page_layout = PageLayout.find(params[:id])
     Page.cleanup_all_cached
-    @page_layout.destroy
-    redirect_to(admin_page_layouts_path)
+    super
+  end
+
+  def resource_class
+    PageLayout
+  end
+
+  def order_params
+    'title ASC'
   end
 end

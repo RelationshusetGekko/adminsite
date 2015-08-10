@@ -1,7 +1,7 @@
 - content_for :header_left do
-  Listing
+  = "Listing #{label_resource_class_plural}"
 - content_for :header_right do
-  = link_to_add 'New', admin_resource_path(nil, 'new')
+  = link_to_add "New #{label_resource_class}", admin_resource_path(nil, 'new')
 
 %table
   %tr

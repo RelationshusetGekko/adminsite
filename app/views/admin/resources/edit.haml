@@ -1,5 +1,5 @@
 - content_for :header_left do
-  Edit
+  = "Edit #{label_resource_class}: '#{label_resource}'"
 - content_for :header_right do
   = link_to_back 'Back', admin_resource_path
 
@@ -9,5 +9,3 @@
   %div{id: "#{resource_class_underscore}-edit"}
     = render :partial => 'form', :locals => { :f => f }
     = submit_tag "Update"
-
-.clear

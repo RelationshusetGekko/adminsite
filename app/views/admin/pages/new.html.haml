@@ -1,14 +1,5 @@
-- content_for :header_left do
-  New page
-- content_for :header_right do
-  = link_to_back 'Back', admin_pages_path
+= render :file => 'admin/resources/new'
 
-= error_messages_for @page
-
-= form_for([:admin, @page], :url => admin_pages_path) do |f|
-  #page-edit
-    = render(:partial => 'form', :locals => { :f => f })
-    = submit_tag "Create"
 = render :partial => 'admin/shared/syntax_help'
 = render :partial => 'admin/shared/page_assets_list'
-.clear
+

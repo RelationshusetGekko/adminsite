@@ -308,10 +308,6 @@ body.adminsite {
     min-height: 34px;
     margin: 20px;
   }
-  #page-edit {
-    width: 560px;
-    float: left;
-  }
   #page-assets-list, #syntax-help {
     width: 290px;
     padding: 9px;
@@ -438,12 +434,17 @@ body.adminsite {
     }
   }
 
-  form.formtastic.page > div {
-    background-color: #eee;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  form.formtastic {
+   width:   560px;
+   float:   left;
 
+    & > div {
+      background-color: #eee;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   }
+
 
 }

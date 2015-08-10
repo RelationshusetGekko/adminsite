@@ -1,14 +1,5 @@
-- content_for :header_left do
-  Edit page “#{@page.title}”
-- content_for :header_right do
-  = link_to_back 'Back', admin_pages_path
+= render :file => 'admin/resources/edit'
 
-= error_messages_for @page
-
-= form_for([:admin, @page]) do |f|
-  #page-edit
-    = render :partial => 'form', :locals => { :f => f }
-    = submit_tag "Update"
 = render :partial => 'admin/shared/syntax_help'
 = render :partial => 'admin/shared/page_assets_list'
 .clear

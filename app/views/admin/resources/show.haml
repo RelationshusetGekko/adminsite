@@ -1,5 +1,5 @@
 - content_for :header_left do
-  New
+  = "Show #{label_resource_class}: '#{label_resource}'"
 - content_for :header_right do
   = link_to_back 'Back', admin_resource_path
 
@@ -13,4 +13,3 @@
         - value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
         = value
 
-.clear

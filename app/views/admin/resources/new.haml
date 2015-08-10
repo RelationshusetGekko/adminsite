@@ -1,5 +1,5 @@
 - content_for :header_left do
-  New
+  = "New #{label_resource_class}"
 - content_for :header_right do
   = link_to_back 'Back', admin_resource_path
 
@@ -10,4 +10,3 @@
     = render :partial => 'form', :locals => { :f => f }
     = submit_tag "Create"
 
-.clear

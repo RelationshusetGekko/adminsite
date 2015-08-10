@@ -5,11 +5,11 @@ class Admin::ResourcesController < Admin::BaseController
                 :resource_class, :resource_admin_config
 
   def new
-    @resource = resource_class.new
+    @resource ||= resource_class.new
   end
 
   def create
-    @resource = resource_class.new(resource_params)
+    @resource ||= resource_class.new(resource_params)
     if @resource.save
       flash_notice_success('created')
       redirect_to admin_resource_path(@resource.id)
@@ -72,7 +72,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def find_resource
-    @resource = resources.find(params[:id])
+    @resource ||= resources.find(params[:id])
   end
 
   def flash_notice_success(action)
@@ -88,7 +88,7 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def resource_admin_config
-    resource_class::AdminConfig
+    eval  "Adminsite::#{resource_class}::AdminConfig"
   end
 
 end

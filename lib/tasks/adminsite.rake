@@ -10,19 +10,22 @@ namespace :adminsite do
   desc "Create an admin account"
   task :create_admin => :environment do
 
-    email = ENV['EMAIL'] || "admin@rhg.dk"
+    email = ENV['EMAIL'] || "admin@adminsite.dk"
     if Rails.env.development?
       password = "password"
     else
       password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
     end
 
-    Admin.create!(:email                 => email,
+    Admin.create!(:name                  => 'Admin',
+                  :email                 => email,
                   :password              => password,
                   :password_confirmation => password)
     puts "#{'*'*70}"
     puts "Done! You can access the admin interface at http://yourapp_url/admin"
     puts "I have created an administrator with these credentials:"
+    puts ""
+    puts "Name:     #{name}"
     puts "e-mail:   #{email}"
     puts "password: #{password}"
     puts ""

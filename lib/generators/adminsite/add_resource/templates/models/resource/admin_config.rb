@@ -1,24 +1,31 @@
 class <%= @resource_class %>
   module AdminConfig
 
-    def self.attributes_index
-      [ :id,
-        :name
-      ]
-    end
+    class << self
 
-    def self.attributes_edit
-      [ :name ]
-    end
+      def attributes_index
+        [ :id,
+          :name
+        ]
+      end
 
-    def self.attributes_show
-      attributes_edit
-    end
+      def attributes_edit
+        [ :name ]
+      end
 
-    def self.index_actions
-      [ :show,
-        :edit,
-        :destroy]
+      def attributes_show
+        attributes_edit + [:updated_at]
+      end
+
+      def index_actions
+        [ :show,
+          :edit,
+          :destroy]
+      end
+
+      def label_attribute
+        :title
+      end
     end
   end
 end

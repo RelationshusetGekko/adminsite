@@ -2,6 +2,7 @@ class CreateAdmin < ActiveRecord::Migration
   def self.up
     create_table(:admins) do |t|
       ## Database authenticatable
+      t.string :name
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
 
@@ -50,9 +51,9 @@ class CreateAdmin < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :open_id_authentication_associations
-    drop_table :open_id_authentication_nonces
-    drop_table :sessions
+    # drop_table :open_id_authentication_associations
+    # drop_table :open_id_authentication_nonces
+    # drop_table :sessions
     drop_table :admins
   end
 end

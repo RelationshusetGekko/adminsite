@@ -1,35 +1,8 @@
-- content_for :header_left do
-  Listing pages
-- content_for :header_right do
-  = link_to_add 'New page', new_admin_page_path if PageLayout.exists?
-
-- if @pages.any?
-  %table
-    %tr
-      %th Title
-      %th Url
-      %th Requires login
-      %th Can be cached
-      %th Layout
-      %th Last update
-      %th
-      %th
-      %th
-    - @pages.each do |page|
-      %tr
-        %td= h page.title
-        %td= h page.url
-        %td= page.requires_login ? "YES" : "NO"
-        %td= page.cacheable ? "YES" : "NO"
-        %td= link_to( page.page_layout.title, edit_admin_page_layout_path(page.page_layout) ) if page.page_layout.present?
-        %td= h page.updated_at
-        %td= link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), "/#{page.url}", target: :blank
-        %td= link_to image_tag('adminsite/admin/pencil.png', :size => '16x16'), edit_admin_page_path(page)
-        %td= link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), [:admin, page], :confirm => 'Are you sure?', :method => :delete
+- if @resources.any?
+  = render :file => 'admin/resources/index'
 - elsif PageLayout.exists?
   There are no pages. Go ahead and
   #{link_to 'add the first one', new_admin_page_path}.
 - else
-  You should
-  #{link_to 'add a page layout', new_admin_page_layout_path}
+  You should #{link_to 'add a page layout', new_admin_page_layout_path}
   before adding your first page.

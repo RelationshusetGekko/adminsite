@@ -1,6 +1,7 @@
 module Admin::AdminsiteApplicationHelper
+
   def error_messages_for(obj)
-    return if obj.errors.any?
+    return if obj.errors.blank?
     msgs = obj.errors.full_messages.collect{|msg| "<li>#{ h msg }</li>" }
     raw ['<ul>', msgs, '</ul>'].flatten.join
   end
@@ -17,6 +18,18 @@ module Admin::AdminsiteApplicationHelper
       result << klass    if klass.present?
       result << 'active' if current_controller == controller.controller_name
     end.join(' ')
+  end
+
+  def label_resource
+    @resource.send(resource_admin_config.label_attribute)
+  end
+
+  def label_resource_class
+    resource_class.name.underscore.gsub('_', ' ')
+  end
+
+  def label_resource_class_plural
+    label_resource_class.pluralize
   end
 
   def link_to_back(text, path)
