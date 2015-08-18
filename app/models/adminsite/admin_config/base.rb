@@ -15,7 +15,7 @@ module Adminsite
             # Test if "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" is defined
             config_class = eval("Adminsite::AdminConfig::#{config_class_name}")
           rescue NameError, LoadError => e
-            Rails.logger.warn(e)
+            Rails.logger.debug(e)
           end
           config_class
         end

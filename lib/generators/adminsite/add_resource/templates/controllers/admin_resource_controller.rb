@@ -10,7 +10,7 @@ class Admin::<%= @resource_class %>sController < Adminsite::Admin::ResourcesCont
     'ID DESC'
   end
 
-  def resource_class
+  def self.resource_class
     <%= @resource_class %>
   end
 
@@ -19,5 +19,7 @@ class Admin::<%= @resource_class %>sController < Adminsite::Admin::ResourcesCont
     # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
     super
   end
+
+    self.register_routes
 
 end

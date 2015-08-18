@@ -1,31 +1,39 @@
-class <%= @resource_class %>
-  module AdminConfig
+module Adminsite
+  class AdminConfig::<%= @resource_class %>
 
-    class << self
+    # def ignore_columns
+    #   ['created_at', 'updated_at', 'id']
+    # end
 
-      def attributes_index
-        [ :id,
-          :name
-        ]
-      end
+    # def column_names
+    #   @column_names ||= resource_class.column_names
+    # end
 
-      def attributes_edit
-        [ :name ]
-      end
+    # def attributes_index
+    #   column_names
+    # end
 
-      def attributes_show
-        attributes_edit + [:updated_at]
-      end
+    # def attributes_edit
+    #   @attributes_edit ||= (column_names - ignore_columns)
+    # end
 
-      def index_actions
-        [ :show,
-          :edit,
-          :destroy]
-      end
+    # def attributes_show
+    #   attributes_edit
+    # end
 
-      def label_attribute
-        :title
-      end
-    end
+    # def default_member_actions
+    #   [ :show,
+    #     :edit,
+    #     :destroy]
+    # end
+
+    # def actions_index
+    #   [ :new ]
+    # end
+
+    # def label_attribute
+    #   :title
+    # end
+
   end
 end

@@ -3,6 +3,10 @@ module Adminsite
 
     protected
 
+    def filter_scopes
+      []
+    end
+
     def self.resource_class
       Adminsite::AdminUser
     end
