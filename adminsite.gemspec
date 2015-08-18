@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<actionpack-page_caching>, [">= 0"])
   s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
 
+  s.add_runtime_dependency(%q<b56_utils>, [">= 1.1.0"])
+
   s.add_runtime_dependency(%q<p3p>, ["~> 1.2.0"])
 
   s.add_runtime_dependency(%q<devise>, ["~> 3.4"])
