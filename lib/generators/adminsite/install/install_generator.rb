@@ -7,8 +7,8 @@ module Adminsite
         run ('rails generate devise:install')
         template 'application.rb', 'lib/recipes/application.rb'
 
-        template '_admin_menu.html.haml', 'app/views/admin/shared/_admin_menu.haml'
-        template '_content_menu.html.haml', 'app/views/admin/shared/_content_menu.haml'
+        template '_admin_menu.html.haml', 'app/views/admin/shared/_admin_menu.html.haml'
+        template '_content_menu.html.haml', 'app/views/admin/shared/_content_menu.html.haml'
 
         if File.exists?("#{destination_root}/app/views/layouts/application.html.erb")
           copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'
@@ -18,6 +18,12 @@ module Adminsite
           f = "#{destination_root}/#{f}"
           remove_file f if File.exists?(f)
         end
+
+        inject_into_file 'config/routes.rb', before: /end$/ do
+          "  mount ::Adminsite::Engine => '/' \n"+
+          "  get '/:page_url(.:format)(/:id)' => 'adminsite/contents#show'\n"
+        end
+
 
         rake "adminsite:install:migrations", :generate_only => true
         rake "adminsite:sync",               :generate_only => true
