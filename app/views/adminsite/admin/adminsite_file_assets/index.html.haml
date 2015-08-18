@@ -1,0 +1,25 @@
+- content_for :header_left do
+  Listing file assets
+
+= error_messages_for @file_asset
+
+= form_for(@file_asset, :url => admin_adminsite_file_assets_path, :html => { :multipart => true }) do |f|
+  %p
+    %b New file asset
+    = f.file_field :attachment, :multiple => ''
+  %p
+    = submit_tag 'Add'
+
+- if @file_assets.any?
+  %table
+    %tr
+      %th
+      %th Filename
+      %th Last update
+      %th
+    - @file_assets.each do |asset|
+      %tr
+        %td.graphic= image_tag(asset.attachment.url(:original, false), style: 'max-height: 50px;')
+        %td= link_to asset.attachment.url(:original, false), asset.attachment.url(:original, false)
+        %td= h asset.updated_at
+        %td= link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), [:admin, :adminsite, asset], :confirm => 'Are you sure?', :method => :delete

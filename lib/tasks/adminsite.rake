@@ -10,17 +10,18 @@ namespace :adminsite do
   desc "Create an admin account"
   task :create_admin => :environment do
 
-    email = ENV['EMAIL'] || "admin@adminsite.dk"
+    name = ENV['NAME'] || 'Admin'
+    email = ENV['EMAIL'] || 'admin@adminsite.dk'
     if Rails.env.development?
       password = "password"
     else
       password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
     end
 
-    Admin.create!(:name                  => 'Admin',
-                  :email                 => email,
-                  :password              => password,
-                  :password_confirmation => password)
+    Adminsite::AdminUser.create!( :name                  => name,
+                                  :email                 => email,
+                                  :password              => password,
+                                  :password_confirmation => password)
     puts "#{'*'*70}"
     puts "Done! You can access the admin interface at http://yourapp_url/admin"
     puts "I have created an administrator with these credentials:"
@@ -56,7 +57,7 @@ namespace :adminsite do
           ext = File.extname(file)
           unless %w[.html .css].include?(ext)
             puts file
-            FileAsset.create(:attachment => File.new(file))
+            Adminsite::FileAsset.create(:attachment => File.new(file))
           end
         end
       end
@@ -64,7 +65,7 @@ namespace :adminsite do
       desc "Overwrite assets in seed data"
       task :dump => :environment do
         FileUtils.mkdir_p(path_to_assets_seed_sub_dir)
-        FileAsset.all.each do |file_asset|
+        Adminsite::FileAsset.all.each do |file_asset|
           target_file = "#{path_to_assets_seed_sub_dir}/#{file_asset.attachment_file_name}"
           if file_asset.attachment.options[:storage] == :filesystem
             src_file = file_asset.attachment.path
@@ -81,7 +82,7 @@ namespace :adminsite do
 
       desc "Clear out all assets"
       task :clear => :environment do
-        FileAsset.destroy_all
+        Adminsite::FileAsset.destroy_all
       end
     end
 
@@ -93,7 +94,7 @@ namespace :adminsite do
       desc "Load page layouts from seeds"
       task :load => :environment do
         YAML::load_file("#{Rails.root}/db/seeds/page_layouts.yml").each do |page_layout|
-          PageLayout.create!(page_layout)
+          Adminsite::PageLayout.create!(page_layout)
         end
       end
 
@@ -110,7 +111,7 @@ namespace :adminsite do
 
       desc "Clear out all page layouts"
       task :clear => :environment do
-        PageLayout.destroy_all
+        Adminsite::PageLayout.destroy_all
       end
     end
 
@@ -123,7 +124,7 @@ namespace :adminsite do
       task :load => :environment do
         YAML::load_file("#{Rails.root}/db/seeds/pages.yml").each do |page|
           page_layout = PageLayout.find_by_title(page["page_layout_title"])
-          Page.create!(page.except("page_layout_title").merge({:page_layout_id => page_layout.id}))
+          Adminsite::Page.create!(page.except("page_layout_title").merge({:page_layout_id => page_layout.id}))
         end
       end
 
@@ -140,7 +141,7 @@ namespace :adminsite do
 
       desc "Clear out all pages"
       task :clear => :environment do
-        Page.destroy_all
+        Adminsite::Page.destroy_all
       end
     end
   end

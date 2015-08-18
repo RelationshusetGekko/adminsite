@@ -1,6 +1,6 @@
 class CreateAdmin < ActiveRecord::Migration
   def self.up
-    create_table(:admins) do |t|
+    create_table(:adminsite_admin_users) do |t|
       ## Database authenticatable
       t.string :name
       t.string :email,              :null => false, :default => ""
@@ -44,16 +44,16 @@ class CreateAdmin < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :admins, :email,                :unique => true
-    add_index :admins, :reset_password_token, :unique => true
-    # add_index :admins, :confirmation_token,   :unique => true
-    # add_index :admins, :unlock_token,         :unique => true
+    add_index :adminsite_admin_users, :email,                :unique => true
+    add_index :adminsite_admin_users, :reset_password_token, :unique => true
+    # add_index :adminsite_admin_users, :confirmation_token,   :unique => true
+    # add_index :adminsite_admin_users, :unlock_token,         :unique => true
   end
 
   def self.down
     # drop_table :open_id_authentication_associations
     # drop_table :open_id_authentication_nonces
     # drop_table :sessions
-    drop_table :admins
+    drop_table :adminsite_admin_users
   end
 end

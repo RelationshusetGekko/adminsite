@@ -1,8 +1,0 @@
-- if @resources.any?
-  = render :file => 'admin/resources/index'
-- elsif PageLayout.exists?
-  There are no pages. Go ahead and
-  #{link_to 'add the first one', new_admin_page_path}.
-- else
-  You should #{link_to 'add a page layout', new_admin_page_layout_path}
-  before adding your first page.

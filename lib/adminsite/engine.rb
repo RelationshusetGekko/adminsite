@@ -15,6 +15,9 @@ module Adminsite
     # config.generators.integration_tool    :rspec
     # config.generators.test_framework      :rspec
 
+    config.autoload_paths << "#{Adminsite::Engine.root}/app/models/adminsite"
+    config.autoload_paths << "#{Adminsite::Engine.root}/app/models/adminsite/admin_config"
+
     initializer :adminsite do
       Adminsite::Engine.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
     end

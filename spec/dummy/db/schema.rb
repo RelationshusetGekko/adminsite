@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150805105043) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
+  create_table "adminsite_admin_users", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150805105043) do
     t.datetime "updated_at"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+  add_index "adminsite_admin_users", ["email"], name: "index_adminsite_admin_users_on_email", unique: true, using: :btree
+  add_index "adminsite_admin_users", ["reset_password_token"], name: "index_adminsite_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "file_assets", force: :cascade do |t|
+  create_table "adminsite_file_assets", force: :cascade do |t|
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -45,14 +45,14 @@ ActiveRecord::Schema.define(version: 20150805105043) do
     t.datetime "updated_at"
   end
 
-  create_table "page_layouts", force: :cascade do |t|
+  create_table "adminsite_page_layouts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pages", force: :cascade do |t|
+  create_table "adminsite_pages", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
     t.text     "body"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150805105043) do
     t.datetime "updated_at"
   end
 
-  add_index "pages", ["page_layout_id"], name: "index_pages_on_page_layout_id", using: :btree
+  add_index "adminsite_pages", ["page_layout_id"], name: "index_adminsite_pages_on_page_layout_id", using: :btree
+  add_index "adminsite_pages", ["url"], name: "index_adminsite_pages_on_url", using: :btree
 
 end

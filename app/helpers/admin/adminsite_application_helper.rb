@@ -53,6 +53,6 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def display_referenced_resource(resource)
-    link_to resource.title, send("edit_admin_#{resource.class.to_s.underscore}_path", resource.id)
+    link_to resource.title, send("edit_admin_#{resource.class.to_s.underscore.gsub('/','_')}_path", resource.id)
   end
 end

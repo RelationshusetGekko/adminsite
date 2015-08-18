@@ -91,14 +91,14 @@ Add this line into your `config/environment.rb`:
 Protected pages
 ===============
 If you want protected pages you need to add in `ApplicationController` a
-`require_user` method:
+`authenticate_content_user` method:
 
 This method should return `false` if no user is logged in or `true` if there is
 a user logged in
 
 ex. using Authlogic:
 
-    def require_user
+    def authenticate_content_user
       unless current_user
         flash[:notice] = "You must be logged in to access this page"
         redirect_to "/"
@@ -118,6 +118,6 @@ The gem adds these task:
 
     rake adminsite:sync
     rake db:migrate
-    rake adminsite:setup
+    rake adminsite:create_admin
 
-These tasks are all executed for you by `script/generate adminsite`
+These tasks are all executed for you by `rails g | grep adminsite`

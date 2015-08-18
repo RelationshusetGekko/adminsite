@@ -1,4 +1,4 @@
-class Admin::<%= @resource_class %>sController < Admin::ResourcesController
+class Admin::<%= @resource_class %>sController < Adminsite::Admin::ResourcesController
 
   private
 
@@ -15,7 +15,9 @@ class Admin::<%= @resource_class %>sController < Admin::ResourcesController
   end
 
   def resource_admin_config
-    "Adminsite::#{resource_class}::AdminConfig"
+    # Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
+    # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
+    super
   end
 
 end

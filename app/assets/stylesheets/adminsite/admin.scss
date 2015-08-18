@@ -378,20 +378,24 @@ body.adminsite {
       box-shadow: #c8c8c8 0 4px 18px;
     }
   }
-  #login-box form {
-    .submit input {
-      padding: 3px 10px;
-      font-size: 12px;
-      border: 1px solid #222;
-      -moz-border-radius: 15px;
-      -khtml-border-radius: 15px;
-      -webkit-border-radius: 15px;
-      border-radius: 15px;
-      cursor: pointer;
-      margin-top: -3px;
-    }
-    p {
-      margin-bottom: 0;
+  #login-box {
+    width: 36em;
+    margin: 7em auto 0;
+    form {
+      .submit input {
+        padding: 3px 10px;
+        font-size: 12px;
+        border: 1px solid #222;
+        -moz-border-radius: 15px;
+        -khtml-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        margin-top: -3px;
+      }
+      p {
+        margin-bottom: 0;
+      }
     }
   }
   label {
@@ -414,12 +418,8 @@ body.adminsite {
       margin-bottom: 24px;
     }
   }
-  #login-box {
-    width: 18em;
-    margin: 7em auto 0;
-  }
   #loginform {
-    #admin_email, #admin_password {
+    #adminsite_admin_user_email, #adminsite_admin_user_password {
       -moz-background-clip: border;
       -moz-background-inline-policy: continuous;
       -moz-background-origin: padding;

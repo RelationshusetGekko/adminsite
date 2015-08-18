@@ -1,7 +1,7 @@
 class CreateCmsTables < ActiveRecord::Migration
   def self.up
 
-    create_table :file_assets do |t|
+    create_table :adminsite_file_assets do |t|
       t.string   :attachment_file_name
       t.string   :attachment_content_type
       t.integer  :attachment_file_size
@@ -9,7 +9,7 @@ class CreateCmsTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :pages do |t|
+    create_table :adminsite_pages do |t|
       t.string :title
       t.string :url
       t.text :body
@@ -18,9 +18,10 @@ class CreateCmsTables < ActiveRecord::Migration
       t.integer :page_layout_id
       t.timestamps
     end
-    add_index :pages, :page_layout_id
+    add_index :adminsite_pages, :page_layout_id
+    add_index :adminsite_pages, :url
 
-    create_table :page_layouts do |t|
+    create_table :adminsite_page_layouts do |t|
       t.string :title
       t.text :body
       t.timestamps
@@ -28,8 +29,8 @@ class CreateCmsTables < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :page_layouts
-    drop_table :pages
-    drop_table :file_assets
+    drop_table :adminsite_page_layouts
+    drop_table :adminsite_pages
+    drop_table :adminsite_file_assets
   end
 end

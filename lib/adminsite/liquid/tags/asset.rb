@@ -5,7 +5,7 @@ class Asset < Liquid::Tag
   end
 
   def render(context)
-    FileAsset.attachment_url_for(@asset_name)
+    Adminsite::FileAsset.attachment_url_for(@asset_name)
   end
 end
 
