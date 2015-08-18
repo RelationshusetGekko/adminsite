@@ -1,7 +1,7 @@
 PATH
   remote: ../../
   specs:
-    adminsite (2.0.0)
+    adminsite (2.0.0.rc1)
       actionpack-page_caching
       b56_utils (>= 1.1.0)
       cocaine
