@@ -26,12 +26,18 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<rails>, ["~> 4.2"])
   s.add_runtime_dependency(%q<actionpack-page_caching>, [">= 0"])
   s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
+
+  s.add_runtime_dependency(%q<p3p>, ["~> 1.2.0"])
+
   s.add_runtime_dependency(%q<devise>, ["~> 3.4"])
   s.add_runtime_dependency(%q<haml>, [">= 0"])
   s.add_runtime_dependency(%q<formtastic>, [">= 3.1.3"])
+
   s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
+
   s.add_runtime_dependency(%q<cocaine>, [">= 0"])
   s.add_runtime_dependency(%q<liquid>, [">= 0"])
+
   s.add_runtime_dependency(%q<paperclip>, [">= 0"])
   s.add_runtime_dependency(%q<fog>, [">= 0"])
 

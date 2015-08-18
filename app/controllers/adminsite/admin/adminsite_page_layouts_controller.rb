@@ -22,11 +22,21 @@ class Adminsite::Admin::AdminsitePageLayoutsController < Adminsite::Admin::Resou
     super
   end
 
-  def resource_class
+  protected
+
+  def self.resource_class
     Adminsite::PageLayout
   end
 
   def order_params
     'title ASC'
   end
+
+  def resource_admin_config
+    # Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
+    # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
+    super
+  end
+
+  self.register_routes
 end

@@ -26,10 +26,11 @@ module Adminsite
         attributes_edit
       end
 
-      def actions_index
+      def default_member_actions
         [ :edit,
           :destroy]
       end
+
       def label_attribute
         :title
       end

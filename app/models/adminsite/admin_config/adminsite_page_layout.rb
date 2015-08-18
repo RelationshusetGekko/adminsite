@@ -15,7 +15,7 @@ module Adminsite
         ]
       end
 
-      def actions_index
+      def default_member_actions
         [ :edit,
           :destroy]
       end

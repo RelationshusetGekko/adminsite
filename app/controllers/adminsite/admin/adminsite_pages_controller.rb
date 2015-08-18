@@ -23,18 +23,19 @@ class Adminsite::Admin::AdminsitePagesController < Adminsite::Admin::ResourcesCo
 
   protected
 
+  def order_params
+    'title ASC'
+  end
+
   def resource_admin_config
     # Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
     # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
     super
   end
 
-  def resource_class
+  def self.resource_class
     Adminsite::Page
   end
 
-  def order_params
-    'title ASC'
-  end
-
+  self.register_routes
 end

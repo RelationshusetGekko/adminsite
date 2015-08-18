@@ -5,4 +5,5 @@ class Adminsite::AdminApplicationController < ActionController::Base
   helper :all, "admin/adminsite_application"
   layout 'adminsite/admin'
   before_filter :authenticate_adminsite_admin_user!
+
 end

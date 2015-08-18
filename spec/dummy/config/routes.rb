@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
   mount ::Adminsite::Engine => "/"
-
-  namespace :admin do
-    resources :tests
-  end
+  get '/:page_url(.:format)(/:id)' => 'adminsite/contents#show'
 
 end

@@ -1,10 +1,8 @@
-# encoding: utf-8
-
-class Adminsite::Admin::AdminsiteFileAssetsController < Adminsite::Admin::BaseController
+class Adminsite::Admin::AdminsiteFileAssetsController < Adminsite::Admin::ResourcesController
 
   def index
-    @file_assets = Adminsite::FileAsset.all.order('attachment_file_name ASC')
     @file_asset = Adminsite::FileAsset.new
+    super
   end
 
   def create
@@ -35,11 +33,27 @@ class Adminsite::Admin::AdminsiteFileAssetsController < Adminsite::Admin::BaseCo
   end
 
   def destroy
-    Adminsite::FileAsset.destroy(params[:id])
-    redirect_to admin_adminsite_file_assets_path
+    super
     Adminsite::Page.cleanup_all_cached
+    # redirect_to admin_adminsite_file_assets_path
   end
 
-  private
+  protected
+
+  def order_params
+    'attachment_file_name ASC'
+  end
+
+  def resource_admin_config
+    # Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
+    # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
+    super
+  end
+
+  def self.resource_class
+    Adminsite::FileAsset
+  end
+
+  self.register_routes
 
 end

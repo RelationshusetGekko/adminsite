@@ -1,5 +1,28 @@
 module Admin::AdminsiteApplicationHelper
 
+  def format_response_value(value)
+    response = '<td>'
+    if is_url?(value)
+      response += link_to(value,value, target: :blank)
+      response += "<br/>#{image_tag(value)}" if is_image?(value)
+    else
+      response += h value
+    end
+    response + '</td>'
+  end
+
+  def is_url?(value)
+    value.is_a?(String) && value.match(/^[\/]|^http[s]*:/)
+  end
+
+  def image_extensions
+    %w(.png .gif .jpg .tif)
+  end
+
+  def is_image?(path)
+    image_extensions.include?( File.extname(path).split('?').first.try(:downcase) )
+  end
+
   def error_messages_for(obj)
     return if obj.errors.blank?
     msgs = obj.errors.full_messages.collect{|msg| "<li>#{ h msg }</li>" }
@@ -36,7 +59,7 @@ module Admin::AdminsiteApplicationHelper
     link_to text, path, :class => 'back'
   end
 
-  def link_to_add(text, path)
+  def link_to_new(text, path)
     link_to text, path, :class => 'add'
   end
 
@@ -53,6 +76,6 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def display_referenced_resource(resource)
-    link_to resource.title, send("edit_admin_#{resource.class.to_s.underscore.gsub('/','_')}_path", resource.id)
+    link_to resource.title, send("edit_admin_#{resource.class.name.underscore.gsub('/','_')}_path", resource.id)
   end
 end

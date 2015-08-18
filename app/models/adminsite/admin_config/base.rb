@@ -14,7 +14,8 @@ module Adminsite
           begin
             # Test if "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" is defined
             config_class = eval("Adminsite::AdminConfig::#{config_class_name}")
-          rescue LoadError => e
+          rescue NameError, LoadError => e
+            Rails.logger.warn(e)
           end
           config_class
         end
@@ -71,7 +72,7 @@ module Adminsite
       end
 
       def actions_index
-        default_member_actions
+        [ :new ]
       end
 
       def label_attribute

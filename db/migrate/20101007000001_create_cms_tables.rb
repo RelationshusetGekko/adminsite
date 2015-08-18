@@ -8,6 +8,8 @@ class CreateCmsTables < ActiveRecord::Migration
       t.datetime :attachment_updated_at
       t.timestamps
     end
+    add_index :adminsite_pages, :attachment_file_name
+
 
     create_table :adminsite_pages do |t|
       t.string :title
@@ -20,6 +22,7 @@ class CreateCmsTables < ActiveRecord::Migration
     end
     add_index :adminsite_pages, :page_layout_id
     add_index :adminsite_pages, :url
+
 
     create_table :adminsite_page_layouts do |t|
       t.string :title
