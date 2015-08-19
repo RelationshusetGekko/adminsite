@@ -13,9 +13,10 @@ module Adminsite
           config_class_name = class_name.name.gsub('::','')
           begin
             # Test if "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" is defined
-            config_class = eval("Adminsite::AdminConfig::#{config_class_name}")
+            config_class = eval("Adminsite::#{config_class_name}AdminConfig")
           rescue NameError, LoadError => e
-            Rails.logger.debug(e)
+            puts("AdminConfig for #{config_class_name} not found. Use fallback: #{config_class}")
+            Rails.logger.warn("AdminConfig for #{config_class_name} not found. Use fallback: #{config_class}")
           end
           config_class
         end
