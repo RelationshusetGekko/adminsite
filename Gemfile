@@ -3,6 +3,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem 'b56_utils', ">= 1.1.0"
+
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 group :development do

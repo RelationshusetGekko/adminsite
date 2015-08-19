@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805105043) do
+ActiveRecord::Schema.define(version: 20150819065953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,5 +65,22 @@ ActiveRecord::Schema.define(version: 20150805105043) do
 
   add_index "adminsite_pages", ["page_layout_id"], name: "index_adminsite_pages_on_page_layout_id", using: :btree
   add_index "adminsite_pages", ["url"], name: "index_adminsite_pages_on_url", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "utm_source"
+    t.string   "utm_medium"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.string   "utm_campaign"
+    t.string   "survey_name"
+    t.datetime "survey_completed_at"
+    t.datetime "survey_started_at"
+    t.datetime "permission_given_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

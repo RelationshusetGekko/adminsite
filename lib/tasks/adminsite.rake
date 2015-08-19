@@ -1,11 +1,6 @@
 require 'net/http'
 
 namespace :adminsite do
-  desc "Sync extra files from adminsite plugin"
-  task :sync do
-    public_dir = File.dirname(__FILE__) + "/../../public"
-    system "rsync -ruv #{public_dir} ."
-  end
 
   desc "Create an admin account"
   task :create_admin => :environment do

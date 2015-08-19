@@ -116,7 +116,6 @@ Rake Tasks
 ==========
 The gem adds these task:
 
-    rake adminsite:sync
     rake db:migrate
     rake adminsite:create_admin
 

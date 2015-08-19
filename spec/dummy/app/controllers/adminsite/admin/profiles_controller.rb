@@ -1,4 +1,4 @@
-class Adminsite::Admin::<%= @resource_class %>sController < Adminsite::Admin::ResourcesController
+class Adminsite::Admin::ProfilesController < Adminsite::Admin::ResourcesController
 
   private
 
@@ -11,7 +11,7 @@ class Adminsite::Admin::<%= @resource_class %>sController < Adminsite::Admin::Re
   end
 
   def self.resource_class
-    <%= @resource_class %>
+    Profile
   end
 
   def resource_admin_config

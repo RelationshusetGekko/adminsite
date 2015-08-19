@@ -1,8 +1,0 @@
-#admin_menu.menu
-  %ul
-    = menu_item 'Page layouts',   admin_adminsite_page_layouts_path,    'page_layouts'
-    = menu_item 'Administrators', admin_adminsite_admin_users_path,     'admins'
-    = menu_item 'System',         '#',     'system'
-  %ul
-    = menu_item 'Log out', destroy_adminsite_admin_user_session_path, [], 'log_out', :delete
-.clearfix

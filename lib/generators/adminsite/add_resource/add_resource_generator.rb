@@ -13,19 +13,14 @@ module Adminsite
         @resource_class = class_name.camelize
 
         # Controllers
-        template  "controllers/admin_resource_controller.rb", "app/controllers/admin/#{table_name}_controller.rb"
+        template  "controllers/admin_resource_controller.rb", "app/controllers/adminsite/admin/#{table_name}_controller.rb"
 
         # Models
-        template  "models/resource/admin_config.rb", "app/models/#{file_name}/admin_config.rb"
-
-        # Routing
-        inject_into_file "config/routes.rb", :after => /\.routes\.draw do\s*\n/ do
-          "  namespace :admin do\n    resources :#{table_name}\n  end\n"
-        end
+        template  "admin_configs/resource_admin_config.rb", "app/admin_configs/adminsite/#{file_name}_admin_config.rb"
 
         # Content-Menu
-        inject_into_file "app/views/admin/shared/_content_menu.haml", :after => /\#content_menu.menu\n .*\s\%ul/ do
-          "\n    = menu_item '#{class_name.camelize.pluralize}', admin_#{table_name}_path, '#{table_name}'\n"
+        inject_into_file "app/views/adminsite/admin/shared/_content_menu.html.haml", :after => /\#content_menu.menu\n .*\s\%ul/ do
+          "\n    = menu_item '#{class_name.camelize.pluralize}', admin_#{table_name}_path, '#{table_name}'"
         end
 
       end
