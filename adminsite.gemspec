@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.name = "adminsite"
   s.version =  Adminsite::VERSION
   s.authors = ["Robin Wunderlin"]
-  s.email = "row@crd.dk"
-  s.homepage = "http://www.crd.dk"
+  s.email = "robin@wunderlin.dk"
+  s.homepage = "http://www.rhg.dk"
   s.summary = "Adminsite"
   s.description = "Adminsite plugin"
 
