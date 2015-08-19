@@ -22,11 +22,10 @@ module Adminsite
           remove_file f if File.exists?(f)
         end
 
-        inject_into_file 'config/routes.rb', before: /end$/ do
+        inject_into_file 'config/routes.rb', before: /end[\s]*\z/ do
           "  mount ::Adminsite::Engine => '/' \n"+
-          "  get '/:page_url(.:format)(/:id)' => 'adminsite/contents#show'\n"
+          "  get '/:page_url(.:format)(/:id)' => 'adminsite/contents#show'\n\n"
         end
-
 
         rake "adminsite:install:migrations", :generate_only => true
         rake "db:migrate",                   :generate_only => true
