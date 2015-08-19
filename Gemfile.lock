@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    adminsite (2.0.0.rc1)
+    adminsite (2.0.0.rc2)
       actionpack-page_caching
       cocaine
       devise (~> 3.4)
