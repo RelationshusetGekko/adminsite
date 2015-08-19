@@ -12,7 +12,7 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def is_url?(value)
-    value.is_a?(String) && value.match(/^[\/]|^http[s]*:/)
+    value.is_a?(String) && value.match(/\A[\/]|\Ahttp[s]*:/)
   end
 
   def image_extensions
