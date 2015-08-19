@@ -6,11 +6,11 @@
   - content_for :header_right do
     = link_to_new "New #{label_resource_class}", admin_resource_path(nil, 'new')
   There are no pages. Go ahead and
-  #{link_to 'add the first one', new_admin_page_path}.
+  #{link_to 'add the first one', new_admin_adminsite_page_path}.
 - else
   - content_for :header_left do
     = "Listing #{label_resource_class_plural}"
   - content_for :header_right do
     = link_to_new "New #{label_resource_class}", admin_resource_path(nil, 'new')
-  You should #{link_to 'add a page layout', new_admin_page_layout_path}
+  You should #{link_to 'add a page layout', new_admin_adminsite_page_layout_path}
   before adding your first page.
