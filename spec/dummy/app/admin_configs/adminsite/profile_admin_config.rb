@@ -9,9 +9,9 @@ module Adminsite
     #   @column_names ||= resource_class.column_names
     # end
 
-    # def attributes_index
-    #   column_names
-    # end
+    def attributes_index
+      [:id, :email, :first_name, :last_name, :utm_source ] #column_names
+    end
 
     # def attributes_edit
     #   @attributes_edit ||= (column_names - ignore_columns)

@@ -7,13 +7,14 @@ module Adminsite
       class << self
 
         def admin_default_config_class(class_name)
-          config_class = Adminsite::AdminConfig::Base
+          config_class = 'Adminsite::AdminConfig::Base'
           return config_class if class_name.blank?
 
-          config_class_name = class_name.name.gsub('::','')
+          config_class_name = class_name.to_s.gsub('::','')
           begin
             # Test if "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" is defined
-            config_class = eval("Adminsite::#{config_class_name}AdminConfig")
+            config_class = "Adminsite::#{config_class_name}AdminConfig"
+            eval(config_class)
           rescue NameError, LoadError => e
             puts("AdminConfig for #{config_class_name} not found. Use fallback: #{config_class}")
             Rails.logger.warn("AdminConfig for #{config_class_name} not found. Use fallback: #{config_class}")
@@ -22,13 +23,12 @@ module Adminsite
         end
 
         def admin_config_of_class(class_name, admin_config_class = nil)
-          admin_config ||= @@admin_configs[class_name]
-          if admin_config.blank?
-            admin_config_class ||= admin_default_config_class(class_name)
-            admin_config = admin_config_class.new(class_name)
-            register_admin_configs(class_name, admin_config)
+          admin_config_class ||= @@admin_configs[class_name]
+          if admin_config_class.blank?
+            admin_config_class = admin_default_config_class(class_name)
+            register_admin_configs(class_name, admin_config_class)
           end
-          admin_config
+          eval(admin_config_class).new(class_name)
         end
 
         def register_admin_configs(class_name, admin_config, override = true)

@@ -9,12 +9,6 @@ module Adminsite
     # config.generators.integration_tool    :rspec
     # config.generators.test_framework      :rspec
 
-    config.autoload_paths |= [
-      "#{Adminsite::Engine.root}/app/models/adminsite",
-      "#{Adminsite::Engine.root}/app/admin_configs/adminsite",
-      "#{Adminsite::Engine.root}/app/controllers/adminsite/admin"
-    ]
-
     initializer "adminsite.assets.precompile" do |app|
       app.config.assets.precompile |= %w( adminsite.css adminsite.js )
     end
@@ -22,19 +16,15 @@ module Adminsite
     initializer :adminsite do
       Adminsite::Engine.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
 
-      # Have to be done here, to be sure Rails.root is set
-      config.autoload_paths |= [
-        "#{Rails.root}/app/admin_configs/adminsite",
-        "#{Rails.root}/app/controllers/adminsite/admin"
-      ]
-
-      load_adminsite_autoload_paths
+      # Make sure to load adminsite controllers to initalize adminsite resource routing
+      load_paths( [ Adminsite::Engine.root, Rails.root].collect{|r| "#{r}/app/controllers/adminsite/admin" } )
     end
 
-    def load_adminsite_autoload_paths
-      config.autoload_paths.each do |path|
+    def load_paths(paths)
+      paths.each do |path|
         Dir.glob("#{path}/*.*").each{|f| require f }
       end
     end
+
   end
 end
