@@ -6,7 +6,7 @@ module Adminsite
 
     # Configuration defaults
     def initialize
-      @admin_namespace                        = :admin_namespace
+      @admin_namespace                        = :admin
     end
 
   end
