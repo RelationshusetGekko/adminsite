@@ -8,7 +8,7 @@ class CreateCmsTables < ActiveRecord::Migration
       t.datetime :attachment_updated_at
       t.timestamps
     end
-    add_index :adminsite_pages, :attachment_file_name
+    add_index :adminsite_file_assets, :attachment_file_name
 
 
     create_table :adminsite_pages do |t|
