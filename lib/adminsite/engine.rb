@@ -32,10 +32,8 @@ module Adminsite
     end
 
     def load_adminsite_autoload_paths
-      puts config.autoload_paths.inspect
       config.autoload_paths.each do |path|
-        puts "- load path: #{path}"
-        Dir.glob("#{path}/*.*").each{|f| puts  "-- require #{f}"; require f }
+        Dir.glob("#{path}/*.*").each{|f| require f }
       end
     end
   end
