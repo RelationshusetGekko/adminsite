@@ -15,9 +15,9 @@ module Adminsite
       "#{Adminsite::Engine.root}/app/controllers/adminsite/admin"
     ]
 
-    # initializer "adminsite.assets.precompile" do |app|
-    #   app.config.assets.precompile |= %w( adminsite/admin.css adminsite/admin.js )
-    # end
+    initializer "adminsite.assets.precompile" do |app|
+      app.config.assets.precompile |= %w( adminsite.css adminsite.js )
+    end
 
     initializer :adminsite do
       Adminsite::Engine.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"

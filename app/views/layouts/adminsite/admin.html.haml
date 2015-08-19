@@ -5,8 +5,8 @@
     %title
       Administration:
       = controller.action_name.capitalize
-    = stylesheet_link_tag 'admin'
-    = javascript_include_tag 'admin'
+    = stylesheet_link_tag 'adminsite'
+    = javascript_include_tag 'adminsite'
   %body.adminsite
     %h1
     = render :partial => 'adminsite/admin/shared/admin_menu' if current_adminsite_admin_user.present?

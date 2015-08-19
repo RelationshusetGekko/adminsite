@@ -3,12 +3,15 @@ module Adminsite
     class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path("../templates", __FILE__)
       def run_generation
-        #append_file 'Rakefile', "require 'adminsite/tasks'"
+        # append_file 'Rakefile', "require 'adminsite/tasks'"
         run ('rails generate devise:install')
-        template 'application.rb', 'lib/recipes/application.rb'
+        template 'recipes/application.rb', 'lib/recipes/application.rb'
 
-        template '_admin_menu.html.haml', 'app/views/adminsite/admin/shared/_admin_menu.html.haml'
-        template '_content_menu.html.haml', 'app/views/adminsite/admin/shared/_content_menu.html.haml'
+        template 'views/_admin_menu.html.haml', 'app/views/adminsite/admin/shared/_admin_menu.html.haml'
+        template 'views/_content_menu.html.haml', 'app/views/adminsite/admin/shared/_content_menu.html.haml'
+
+        template 'assets/adminsite.js', 'app/assets/adminsite/javascripts/adminsite.js'
+        template 'assets/adminsite.scss', 'app/assets/adminsite/stylesheets/adminsite.scss'
 
         if File.exists?("#{destination_root}/app/views/layouts/application.html.erb")
           copy_file "#{destination_root}/app/views/layouts/application.html.erb",  'app/views/layouts/application.html.erb.onsolete'
