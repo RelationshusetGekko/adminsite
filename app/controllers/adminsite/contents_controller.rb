@@ -10,6 +10,15 @@ class Adminsite::ContentsController < ApplicationController
     end
   end
 
+  def render_404
+    page = find_page_by_url('404')
+    if page.nil?
+      render :file => Rails.root.join('public', '404.html'), :status => 404
+    else
+      render :text => page.render(liquid_attributes), :status => 404 and return
+    end
+  end
+
   private
 
   def content_params
@@ -53,13 +62,8 @@ class Adminsite::ContentsController < ApplicationController
       end
       return
     else
-      # find a custom 404 page in CMS
-      page = find_page_by_url('404')
-      unless page.nil?
-        render :text => page.render(liquid_attributes), :status => 404 and return
-      end
+      render_404
     end
-    render :file => Rails.root.join('public', '404.html'), :status => 404
   end
 
 end

@@ -22,9 +22,15 @@ module Adminsite
           remove_file f if File.exists?(f)
         end
 
+        inject_into_file 'config/routes.rb', after: /\ARails.application.routes.draw do/ do
+          "\n  mount ::Adminsite::Engine => '/' \n"+
+          "# Defines root path. If survey or other gem have to serve root_path u have to comment line below \n"+
+          " root :to => 'adminsite/contents#show', :page_url => 'index' \n"
+        end
+
         inject_into_file 'config/routes.rb', before: /end[\s]*\z/ do
-          "  mount ::Adminsite::Engine => '/' \n"+
-          "  get '/:page_url(.:format)(/:id)' => 'adminsite/contents#show'\n\n"
+          "# Should be last to render 404 if routing not found \n"+
+          "\n  get '/:page_url(.:format)' => 'adminsite/contents#render_404'\n"
         end
 
         rake "adminsite:install:migrations", :generate_only => true
