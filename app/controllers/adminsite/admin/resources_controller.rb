@@ -51,7 +51,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
   end
 
   def resource_class_underscore
-    @resource_class_underscore ||= self.class.remove_namespace(resource_class.to_s.underscore, ['adminsite'])
+    @resource_class_underscore ||= resource_class.to_s.underscore.gsub('/','_')
   end
 
   def admin_resource_path(id = nil, action = nil)

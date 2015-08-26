@@ -17,7 +17,7 @@ module Adminsite
       Adminsite::Engine.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
 
       # Make sure to load adminsite controllers to initalize adminsite resource routing
-      load_paths( [ Adminsite::Engine.root, Rails.root].collect{|r| "#{r}/app/controllers/adminsite/admin/*.*" } )
+      load_paths( [ Adminsite::Engine.root, Rails.root].collect{|r| "#{r}/app/controllers/adminsite/admin/**/*.*" } )
     end
 
     def load_paths(paths)

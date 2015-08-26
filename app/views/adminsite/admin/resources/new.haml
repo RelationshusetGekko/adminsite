@@ -5,7 +5,7 @@
 
 = error_messages_for @resource
 
-= semantic_form_for([:admin, @resource], :url => admin_resource_path) do |f|
+= semantic_form_for([:admin, @resource], :url => admin_resource_path, namespace: resource_class_underscore ) do |f|
   %div{id: "#{resource_class_underscore}-edit"}
     = render :partial => 'form', :locals => { :f => f }
     = submit_tag "Create"
