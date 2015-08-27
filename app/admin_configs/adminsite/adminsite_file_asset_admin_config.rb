@@ -9,12 +9,16 @@ module Adminsite
       ]
     end
 
+    def attributes_show
+      ['attachment.url'] + attributes_edit
+    end
+
     def actions_index
       [ ]
     end
 
     def default_member_actions
-      [ :destroy ]
+      [ :show, :destroy ]
     end
 
     def label_attribute
