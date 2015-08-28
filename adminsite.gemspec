@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency(%q<sass-rails>, [">= 0"])
 
+  s.add_dependency "codemirror-rails", '>= 4.8'
   s.add_runtime_dependency(%q<cocaine>, [">= 0"])
   s.add_runtime_dependency(%q<liquid>, [">= 0"])
 
