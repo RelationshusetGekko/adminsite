@@ -10,6 +10,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
 
   def create
     @resource ||= self.class.resource_class.new(resource_params)
+
     if @resource.save
       flash_notice_success('created')
       redirect_to admin_resource_path(@resource.id)

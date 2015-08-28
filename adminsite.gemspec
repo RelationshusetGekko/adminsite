@@ -29,6 +29,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency(%q<p3p>, ["~> 1.2.0"])
 
+  s.add_runtime_dependency(%q<domainatrix>, [">= 0"])
+
   s.add_runtime_dependency(%q<devise>, ["~> 3.4"])
   s.add_runtime_dependency(%q<haml>, [">= 0"])
   s.add_runtime_dependency(%q<formtastic>, [">= 3.1.3"])

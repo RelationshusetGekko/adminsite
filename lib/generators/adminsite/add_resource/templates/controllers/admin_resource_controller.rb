@@ -1,4 +1,4 @@
-class Adminsite::Admin::<%= @resource_class %>sController < Adminsite::Admin::ResourcesController
+class Adminsite::Admin::<%= @resource_class.gsub('::','') %>sController < Adminsite::Admin::ResourcesController
 
   private
 

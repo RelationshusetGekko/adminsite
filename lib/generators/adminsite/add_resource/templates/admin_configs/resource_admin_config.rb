@@ -1,5 +1,5 @@
 module Adminsite
-  class <%= @resource_class %>AdminConfig < Adminsite::AdminConfig::Base
+  class <%= @resource_class.gsub('::','') %>AdminConfig < Adminsite::AdminConfig::Base
 
     # def ignore_columns
     #   ['created_at', 'updated_at', 'id']
