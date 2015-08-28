@@ -23,11 +23,12 @@ module Adminsite
         end
 
         def admin_config_of_class(class_name, admin_config_class = nil)
-          admin_config_class ||= @@admin_configs[class_name]
+          admin_config_class ||= @@admin_configs[class_name.to_s]
           if admin_config_class.blank?
-            admin_config_class = admin_default_config_class(class_name)
-            register_admin_configs(class_name, admin_config_class)
+            admin_config_class = admin_default_config_class(class_name.to_s)
+            register_admin_configs(class_name.to_s, admin_config_class)
           end
+          puts "all_registered_admin_configs: #{Adminsite::AdminConfig::Base.all_registered_admin_configs.inspect}"
           eval(admin_config_class).new(class_name)
         end
 
