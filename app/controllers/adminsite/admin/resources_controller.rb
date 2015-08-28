@@ -4,6 +4,9 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
   helper_method :admin_resource_path, :resource_class_underscore,
                 :resource_class, :resource_admin_config , :resource_entity_name
 
+  respond_to :html, :json
+
+
   def new
     @resource ||= self.class.resource_class.new
   end
@@ -13,7 +16,11 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
 
     if @resource.save
       flash_notice_success('created')
-      redirect_to admin_resource_path(@resource.id)
+      if api_call?
+        render :json => @resource
+      else
+        redirect_to admin_resource_path(@resource.id)
+      end
     else
       render :action => "new"
     end
@@ -23,12 +30,17 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
   end
 
   def show
+    render :json => @resource if api_call?
   end
 
   def update
     if @resource.update_attributes(resource_params)
       flash_notice_success('updated')
-      redirect_to admin_resource_path(@resource.id, :edit)
+      if api_call?
+        render :json => @resource
+      else
+        redirect_to admin_resource_path(@resource.id, :edit)
+      end
     else
       render :action => "edit"
     end
@@ -36,6 +48,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
 
   def index
     @resources = resources.order(order_params)
+    render :json => @resources if api_call?
   end
 
   def destroy
@@ -68,6 +81,10 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
   end
 
   protected
+
+  def api_call?
+    request.xhr? || request.format.to_sym == :json
+  end
 
   def find_resource
     @resource ||= resources.find(params[:id])
