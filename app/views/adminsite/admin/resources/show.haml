@@ -4,12 +4,10 @@
   = link_to_back 'Back', admin_resource_path
 
 .formtastic
-  %ol
+  %table
     - resource_admin_config.attributes_show.each do |attr|
-      %li
-        %label
+      %tr
+        %th
           = "#{attr.to_s.titlecase}:"
-        - value = @resource.send(attr)
-        - value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
-        = value
+        = display_resource_value(@resource, attr)
 

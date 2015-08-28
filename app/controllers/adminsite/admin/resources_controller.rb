@@ -54,14 +54,16 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
     @resource_class_underscore ||= resource_class.to_s.underscore.gsub('/','_')
   end
 
+  def current_admin_menu
+    @current_admin_menu ||= params[:admin_menu]
+  end
+
   def admin_resource_path(id = nil, action = nil)
-    # admin_adminsite_pages_path
-    # <action>_admin_adminsite_page_path
     path = self.class.remove_namespace(params[:controller], ['adminsite'])
     path = path.gsub('/','_')
     path = path.singularize if (action || id).present?
     path = "#{action}_#{path}" if action.present?
-    send("#{path}_path", id)
+    send("#{path}_path", id, admin_menu: current_admin_menu)
   end
 
   protected

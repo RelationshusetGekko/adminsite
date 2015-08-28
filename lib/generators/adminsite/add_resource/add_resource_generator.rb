@@ -19,8 +19,8 @@ module Adminsite
         template  "admin_configs/resource_admin_config.rb", "app/admin_configs/adminsite/#{file_name}_admin_config.rb"
 
         # Content-Menu
-        inject_into_file "app/views/adminsite/admin/shared/_content_menu.html.haml", :after => /\#content_menu.menu\n .*\s\%ul/ do
-          "\n    = menu_item '#{class_name.camelize.pluralize}', admin_#{table_name}_path, '#{table_name}'"
+        inject_into_file "app/views/adminsite/admin/shared/_admin_menu.html.haml", :after => /\= yield :admin_menu\n/ do\
+          "\n    = menu_item '#{class_name.camelize}Mngt', admin_#{table_name}_path, ['#{table_name}']\n"
         end
 
       end

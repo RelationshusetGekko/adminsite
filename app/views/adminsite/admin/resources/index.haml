@@ -13,9 +13,6 @@
   - @resources.each do |resource|
     %tr
       - resource_admin_config.attributes_index.each do |attr|
-        - value = nil
-        - attr.to_s.split('.').each{|a| value = (value || resource).send(a) }
-        - value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
-        = format_response_value(value).html_safe
+        = display_resource_value(resource, attr)
       - resource_admin_config.default_member_actions.each do |action|
-        %td= send("link_to_#{action}", admin_resource_path, resource)
+        %td= send("link_to_#{action}", resource)
