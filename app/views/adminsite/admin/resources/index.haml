@@ -2,7 +2,8 @@
   = "Listing #{label_resource_class_plural}"
 - if resource_admin_config.actions_index.any?
   - content_for :header_right do
-    = link_to_new "New #{label_resource_class}", admin_resource_path(nil, 'new')
+    - resource_admin_config.actions_index.each do |action|
+      = send("link_to_#{action}", action.to_s.titlecase)
 
 %table
   %tr

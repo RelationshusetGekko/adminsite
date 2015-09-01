@@ -85,11 +85,11 @@ module Admin::AdminsiteApplicationHelper
     label_resource_class.pluralize
   end
 
-  def link_to_back(text, path)
+  def link_to_back(text, path = admin_resource_path)
     link_to text, path, :class => 'back'
   end
 
-  def link_to_new(text, path)
+  def link_to_new(text, path = admin_resource_path(nil, :new) )
     link_to text, path, :class => 'add'
   end
 
