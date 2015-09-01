@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'adminsite', path: '../../'
+# gem 'b56_statistics', path: '~/code/b56/b56_statistics'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
