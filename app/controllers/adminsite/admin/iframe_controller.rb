@@ -1,4 +1,4 @@
-class Adminsite::Admin::IframeController <  Adminsite::Admin::IndexController
+class Adminsite::Admin::IframeController <  Adminsite::Admin::CrudController
 
   def index
     @iframe_name = self.class.iframe_name

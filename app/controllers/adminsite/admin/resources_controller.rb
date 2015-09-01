@@ -1,4 +1,4 @@
-class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
+class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   before_filter :find_resource, :except => [:new, :create, :index]
 
   helper_method :admin_resource_path, :resource_class_underscore,
@@ -132,12 +132,13 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
     end
 
     def register_routes
-      puts "#{self.name}.register_routes"
-      eval( "Adminsite::Engine.routes.append do
-        namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do
-          resources :#{resource_entity_name}s, class_name: #{resource_class} , controller: '#{controller_name}'
-        end
-      end" )
+      super
+      # puts "#{self.name}.register_routes"
+      # eval( "Adminsite::Engine.routes.append do
+      #   namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do
+      #     resources :#{resource_entity_name}s, class_name: #{resource_class} , controller: '#{controller_name}'
+      #   end
+      # end" )
     end
 
     def resource_class

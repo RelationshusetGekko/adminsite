@@ -21,7 +21,7 @@
 
         # Content-Menu
         inject_into_file "app/views/adminsite/admin/shared/_admin_menu.html.haml", :after => /\= yield :admin_menu\n/ do\
-          "\n    = menu_item '#{@domain.camelize}Iframe', admin_#{@file_name}_path, ['#{@domain}']\n"
+          "\n    = menu_item 'IFrame-#{@domain.camelize}', admin_#{@file_name}_index_path, ['#{@domain}_index']\n"
         end
 
      end

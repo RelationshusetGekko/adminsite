@@ -2,6 +2,8 @@
   %ul
     = yield :admin_menu
 
+    = menu_item 'IFrames', admin_rhg_index_path, ['rhg_index']
+
     = menu_item 'ProfileMngt',    admin_profiles_path,                  ['profiles']
     = menu_item 'Data',           admin_profiles_path,                  ['profiles']
     = menu_item 'CMS',            admin_adminsite_pages_path,           ['adminsite_pages', 'adminsite_file_assets', 'adminsite_page_layouts']

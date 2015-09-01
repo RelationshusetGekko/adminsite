@@ -1,0 +1,15 @@
+- content_for :header_left do
+  = controller_name
+- content_for :header_right do
+  = link_to_back 'Back', url_for(controller: controller_name, action: :index )
+
+please override in '/app/views/adminsite/admin/#{controller_name}/show.html.haml'
+
+//.formtastic
+//  %table
+//    - attributes_show.each do |attr|
+//      %tr
+//        %th
+//          = "#{attr.to_s.titlecase}:"
+//        = display_resource_value(@resource, attr)
+
