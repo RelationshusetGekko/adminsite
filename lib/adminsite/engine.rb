@@ -1,4 +1,4 @@
-%w(rails action_controller/page_caching p3p).each{|f| require f }
+%w(rails action_controller/page_caching).each{|f| require f }
 %w(paperclip liquid adminsite/liquid/tags/asset).each{|f| require f }
 %w(devise haml formtastic codemirror-rails).each{|f| require f }
 

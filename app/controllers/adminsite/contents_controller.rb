@@ -2,6 +2,8 @@ class Adminsite::ContentsController < ApplicationController
   include ActionController::Caching::Pages
   self.page_cache_directory = Adminsite::Engine.config.action_controller.page_cache_directory
 
+  before_filter :set_p3p
+
   def show
     respond_to do |format|
       format.html { retrive_page_or_404(params[:page_url],params[:id]) }
@@ -20,6 +22,10 @@ class Adminsite::ContentsController < ApplicationController
   end
 
   private
+
+  def set_p3p
+    response.headers['P3P'] = 'CP="CAO PSA OUR"'
+  end
 
   def content_params
     { :authenticity_token => form_authenticity_token,
