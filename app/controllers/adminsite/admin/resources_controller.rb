@@ -2,7 +2,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   before_filter :find_resource, :except => [:new, :create, :index]
 
   helper_method :admin_resource_path, :resource_class_underscore,
-                :resource_class, :resource_admin_config , :resource_entity_name
+                :resource_class, :resource_admin_config
 
   respond_to :html, :json
 
@@ -58,10 +58,6 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   def resource_class
     self.class.resource_class
-  end
-
-  def resource_entity_name
-    self.class.resource_entity_name
   end
 
   def resource_class_underscore
@@ -127,18 +123,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
       (string.split('/') - namespaces).join('/')
     end
 
-    def resource_entity_name
-      resource_class.name.underscore.gsub('/','_')
-    end
-
     def register_routes
       super
-      # puts "#{self.name}.register_routes"
-      # eval( "Adminsite::Engine.routes.append do
-      #   namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do
-      #     resources :#{resource_entity_name}s, class_name: #{resource_class} , controller: '#{controller_name}'
-      #   end
-      # end" )
     end
 
     def resource_class
