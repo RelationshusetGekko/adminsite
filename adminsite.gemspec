@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1.2'
   s.require_paths = ["lib"]
 
-  s.date = "#{Time.now.to_date}"
+  # s.date = "#{Time.now.to_date}"
   s.post_install_message = File.open('USAGE').read
 
   s.add_runtime_dependency(%q<rails>, ["~> 4.2"])
