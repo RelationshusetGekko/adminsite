@@ -123,11 +123,6 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
 
   class << self
 
-    def routing_controller_declaration
-      declaration = remove_namespace(self.name.underscore, ['adminsite'])
-      declaration.gsub('_controller','')
-    end
-
     def remove_namespace(string, namespaces)
       (string.split('/') - namespaces).join('/')
     end
@@ -140,7 +135,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::BaseController
       puts "#{self.name}.register_routes"
       eval( "Adminsite::Engine.routes.append do
         namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do
-          resources :#{resource_entity_name}s, class_name: #{resource_class} # , controller: '#{routing_controller_declaration}'
+          resources :#{resource_entity_name}s, class_name: #{resource_class} , controller: '#{controller_name}'
         end
       end" )
     end
