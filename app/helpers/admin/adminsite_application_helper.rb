@@ -1,6 +1,7 @@
 module Admin::AdminsiteApplicationHelper
 
   def format_response_value(value)
+    value = value.url if value.is_a?(PictureUploader)
     response = '<td>'
     if is_url?(value)
       response += link_to(value,value, target: :blank)
