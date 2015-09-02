@@ -47,7 +47,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def index
-    @resources = resources.order(order_params)
+    @resources = resources.order(order_params).page params[:page]
     render :json => @resources if api_call?
   end
 
