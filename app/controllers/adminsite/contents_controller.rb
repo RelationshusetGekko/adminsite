@@ -15,7 +15,7 @@ class Adminsite::ContentsController < ApplicationController
   def render_404
     page = find_page_by_url('404')
     if page.nil?
-      render :file => Rails.root.join('public', '404.html'), :status => 404
+      render :file => Rails.root.join('public', '404.html'), :status => 404, layout: nil
     else
       render :text => page.render(liquid_attributes), :status => 404 and return
     end
