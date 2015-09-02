@@ -1,4 +1,4 @@
-class Adminsite::Admin::<%= @file_name.camelize.gsub('::','') %>Controller < Adminsite::Admin::IframeController
+class Adminsite::Admin::<%= @controller_name.camelize.gsub('::','') %>Controller < Adminsite::Admin::IframeController
 
   private
 
@@ -9,7 +9,7 @@ class Adminsite::Admin::<%= @file_name.camelize.gsub('::','') %>Controller < Adm
     end
 
     def iframe_name
-      '<%= @domain %>'
+      '<%= @controller_name %>'
     end
   end
 
