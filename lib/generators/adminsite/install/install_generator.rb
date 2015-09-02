@@ -8,7 +8,6 @@ module Adminsite
         template 'recipes/application.rb', 'lib/recipes/application.rb'
 
         template 'views/_admin_menu.html.haml', 'app/views/adminsite/admin/shared/_admin_menu.html.haml'
-        # template 'views/_content_menu.html.haml', 'app/views/adminsite/admin/shared/_content_menu.html.haml'
 
         template 'assets/adminsite.js', 'app/assets/javascripts/adminsite.js'
         template 'assets/adminsite.scss', 'app/assets/stylesheets/adminsite.scss'
