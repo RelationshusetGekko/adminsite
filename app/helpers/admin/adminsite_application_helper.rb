@@ -48,7 +48,11 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def content_menu_item(current_controller, admin_menu, klasses, method )
-    url = eval("admin_#{current_controller}_path")
+    if current_controller != current_controller.pluralize
+      url = eval("admin_#{current_controller}_index_path")
+    else
+      url = eval("admin_#{current_controller}_path")
+    end
     label = current_controller.titlecase
     link = link_to(label, "#{url}?admin_menu=#{admin_menu}", method: method, )
     raw "<li class='#{html_classes(url, current_controller, klasses, admin_menu )}'>#{link}</li>"
