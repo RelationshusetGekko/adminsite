@@ -17,7 +17,7 @@ class Adminsite::Admin::CrudController <  Adminsite::Admin::BaseController
        eval( "Adminsite::Engine.routes.append do
          namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do
            resources :#{controller_name}, controller: '#{controller_name}', only: #{defined_controller_actions.inspect} do
-              collection { get :search, to: '#{controller_name}#index' }
+              # collection { get :search, to: '#{controller_name}#index' }
             end
          end
        end" )

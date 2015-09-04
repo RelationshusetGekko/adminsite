@@ -1,12 +1,16 @@
 .search_form_for{style: 'float: right;'}
-  = search_form_for(@q, :url => admin_resource_path(nil, :search), html: {class: 'formtastic' }) do |f|
+  = search_form_for(@q, :url => admin_resource_path(nil), html: {class: 'formtastic' }, method: :get) do |f|
     %div{id: "#{controller_name}-search"}
       %ul
         - resource_admin_config.attributes_search.each do |search_attr|
           - begin
             %li
-              = f.label "#{search_attr}_cont"
-              = f.search_field "#{search_attr}_cont"
+              = f.label("#{search_attr}")
+              = f.predicate_select({:only => [:cont, :eq]}, {name: "p[#{search_attr}]", onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']';" })
+              = f.search_field("#{search_attr}")
+              :javascript
+                predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
+                predicate_obj.onchange();
           - rescue
 
       .actions

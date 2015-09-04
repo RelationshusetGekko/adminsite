@@ -5,7 +5,8 @@
     - resource_admin_config.actions_index.each do |action|
       = send("link_to_#{action}", action.to_s.titlecase)
 
-= render :partial => 'search_form'
+- cache("#{controller_name}-index-search_form") do
+  = render :partial => 'search_form'
 
 %table
   %tr
