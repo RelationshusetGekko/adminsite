@@ -1,0 +1,15 @@
+.search_form_for{style: 'float: right;'}
+  = search_form_for(@q, :url => admin_resource_path(nil, :search), html: {class: 'formtastic' }) do |f|
+    %div{id: "#{controller_name}-search"}
+      %ul
+        - resource_admin_config.attributes_search.each do |search_attr|
+          - begin
+            %li
+              = f.label "#{search_attr}_cont"
+              = f.search_field "#{search_attr}_cont"
+          - rescue
+
+      .actions
+        =# link_to "remove", '', class: "remove_fields"
+        = f.submit "Search"
+

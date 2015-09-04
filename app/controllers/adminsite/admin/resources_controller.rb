@@ -47,7 +47,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def index
-    @resources = resources.order(order_params).page params[:page]
+    @q = resources.order(order_params).ransack(params[:q])
+    @resources = @q.result.page(params[:page])
     render :json => @resources if api_call?
   end
 
@@ -71,7 +72,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   def admin_resource_path(id = nil, action = nil)
     path = self.class.remove_namespace(params[:controller], ['adminsite'])
     path = path.gsub('/','_')
-    path = path.singularize if (action || id).present?
+    path = path.singularize if (action || id).present? && action.to_s != 'search'
     path = "#{action}_#{path}" if action.present?
     send("#{path}_path", id, admin_menu: current_admin_menu)
   end

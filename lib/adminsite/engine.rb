@@ -1,6 +1,6 @@
 %w(rails action_controller/page_caching).each{|f| require f }
 %w(paperclip liquid adminsite/liquid/tags/asset).each{|f| require f }
-%w(devise haml formtastic codemirror-rails kaminari).each{|f| require f }
+%w(devise haml formtastic codemirror-rails kaminari ransack).each{|f| require f }
 
 module Adminsite
   class Engine < Rails::Engine

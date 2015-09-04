@@ -67,6 +67,10 @@ module Adminsite
         attributes_edit
       end
 
+      def attributes_search
+        attributes_index
+      end
+
       def default_member_actions
         [ :show,
           :edit,
