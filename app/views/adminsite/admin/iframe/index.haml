@@ -1,6 +1,6 @@
 - content_for :header_left do
   = @iframe_name
-  = @app_name
+  = @controller_name
 
 %a{:href => @iframe_url, :style => "float: right;", :target => "_blank"} Open in new window (fullscreen)
 %iframe{:height => '600px', :src => @iframe_url, :width => '100%'}
