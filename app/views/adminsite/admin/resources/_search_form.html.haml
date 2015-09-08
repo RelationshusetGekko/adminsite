@@ -1,5 +1,7 @@
-.search_form_for{style: 'float: right;'}
-  = search_form_for(@q, :url => admin_resource_path(nil), html: {class: 'formtastic' }, method: :get) do |f|
+.search_form
+  %a#show{onClick: 'showSearchForm();'} Show Filters
+  %a#hide{onClick: 'hideSearchForm();', style: 'display:none'} Hide Filters
+  = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: 'display:none'} ) do |f|
     %div{id: "#{controller_name}-search"}
       %ul
         - resource_admin_config.attributes_search.each do |search_attr|
