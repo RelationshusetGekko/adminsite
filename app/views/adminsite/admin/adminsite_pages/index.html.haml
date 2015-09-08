@@ -1,4 +1,4 @@
-- if @resources.any?
+- if Adminsite::Page.any?
   = render :file => 'adminsite/admin/resources/index'
 - elsif Adminsite::PageLayout.exists?
   - content_for :header_left do
