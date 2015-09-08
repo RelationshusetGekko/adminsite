@@ -34,5 +34,9 @@ module Adminsite
       :title
     end
 
+    def scopes
+       [:all, :cacheable, :requires_login ]
+    end
+
   end
 end

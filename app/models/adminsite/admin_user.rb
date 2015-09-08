@@ -6,4 +6,5 @@ module Adminsite
            :recoverable, :rememberable, :trackable, :validatable
 
   end
+
 end

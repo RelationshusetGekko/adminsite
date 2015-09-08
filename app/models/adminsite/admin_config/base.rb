@@ -85,6 +85,10 @@ module Adminsite
         :title
       end
 
+      def scopes
+        [:all]
+      end
+
       protected
 
       def initialize(resource_class)

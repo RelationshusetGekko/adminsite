@@ -88,7 +88,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def resources
-    if filter_scopes.any?
+    if filter_scopes.present?
       eval("resource_class.#{filter_scopes.join('.')}")
     else
       self.class.resource_class.all
@@ -104,7 +104,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def filter_scopes
-    []
+    return [] if params[:scope].blank?
+    resource_admin_config.scopes & params[:scope].split(',').collect{|s| s.to_sym }
   end
 
   def order_params

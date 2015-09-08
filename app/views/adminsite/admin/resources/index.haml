@@ -4,7 +4,8 @@
   - content_for :header_right do
     - resource_admin_config.actions_index.each do |action|
       = send("link_to_#{action}", action.to_s.titlecase)
-
+    - resource_admin_config.scopes.each do |scope|
+      = link_to "#{scope.to_s.titlecase} (#{resource_class.send(scope).count})", "#{admin_resource_path}&scope=#{scope}"
 - cache("#{controller_name}-index-search_form") do
   = render :partial => 'search_form'
 
