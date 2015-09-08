@@ -476,10 +476,15 @@ body.adminsite {
       li
       {
         float: left;
+        min-width: 390px;
         margin-bottom: 4px;
         margin-right: 20px;
         list-style: none;
       }
+    }
+    .actions {
+      margin-top: 10px;
+      clear: both;
     }
   }
 
