@@ -101,10 +101,10 @@ body.adminsite {
         padding-left: 18px;
       }
       &.add {
-        background-image: url(/assets/adminsite/admin/add.png);
+        background-image: asset-url('adminsite/admin/add.png');
       }
       &.back {
-        background-image: url(/assets/adminsite/admin/arrow_left.png);
+        background-image: asset-url('adminsite/admin/arrow_left.png');
       }
     }
   }
@@ -312,7 +312,7 @@ body.adminsite {
     margin-bottom: 10px;
   }
   h1 {
-    background: url(/assets/adminsite/admin/logo.png) no-repeat;
+    background: asset-url("adminsite/admin/logo.png") no-repeat;
     font-size: 135%;
     font-weight: normal;
     padding-left: 124px;
