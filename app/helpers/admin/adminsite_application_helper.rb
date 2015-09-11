@@ -113,11 +113,11 @@ module Admin::AdminsiteApplicationHelper
   def display_resource_value(resource, attr)
     value = nil
     attr.to_s.split('.').each{|a| value = (value || resource).send(a) }
-    display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
+    value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
     format_response_value(value).html_safe
   end
 
   def display_referenced_resource(resource)
-    link_to resource.title, send("edit_admin_#{resource.class.name.underscore.gsub('/','_')}_path", resource.id)
+    link_to resource.title, send("edit_admin_#{resource.class.name.underscore.gsub('/','_')}_path", resource.id, admin_menu: params[:admin_menu])
   end
 end
