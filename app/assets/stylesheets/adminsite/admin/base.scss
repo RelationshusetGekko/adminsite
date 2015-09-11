@@ -22,6 +22,9 @@ body.adminsite {
     &:hover, &:active {
       outline: none;
     }
+    &:hover img {
+      background: #fff;
+    }
   }
   #error {
     width: 340px;
@@ -75,6 +78,9 @@ body.adminsite {
       font-size: 135%;
       margin: 0;
       padding: 0;
+    }
+    a:hover img {
+      background: #e7e7e7;
     }
   }
   #header_right {
@@ -288,9 +294,6 @@ body.adminsite {
   img {
     border: 0;
     text-decoration: none;
-  }
-  a:hover img {
-    background: #fff;
   }
   .notice {
     border: 1px solid #090;
