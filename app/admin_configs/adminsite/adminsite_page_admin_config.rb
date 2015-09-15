@@ -6,7 +6,7 @@ module Adminsite
         :url,
         :requires_login,
         :cacheable,
-        :page_layout,
+        :page_layout_id,
         :updated_at
       ]
     end

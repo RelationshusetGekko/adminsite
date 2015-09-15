@@ -7,20 +7,26 @@
       = hidden_field_tag :admin_menu, params[:admin_menu]
       %ul
         - resource_admin_config.attributes_search.each do |search_attr|
-          - begin
-            %li
+          %li
+            - if (column = column_of_attr(search_attr)).present?
               - p_value = (params[:p] || {})[search_attr]
+              - input_type = input_type_of_column(column)
+              - predicates = ransack_predicate_input_type(input_type)
+              - field_value = (params[:q] || {})["#{search_attr}_#{p_value}"]
               = f.label("#{search_attr}")
-              = f.predicate_select({:only => [:cont, :eq], :selected => p_value}, {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; " } )
-              = f.search_field("#{search_attr}", value: (params[:q] || {})["#{search_attr}_#{p_value}"] )
+              - html_options = {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; "}
+              - html_options.merge!(:style => 'display: none;') if predicates.count == 1
+              = f.predicate_select({:only => predicates, :selected => p_value, :compounds => false}, html_options )
+              - case input_type
+              - when :boolean
+                = select_tag("q[#{search_attr}_eq]", options_for_select([ "true", "false" ], field_value), include_blank: true)
+              - else
+                = f.search_field("#{search_attr}", value: field_value )
               :javascript
                 predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
                 predicate_obj.onchange();
-          - rescue
 
 
       .actions
-        =  link_to "reset", admin_resource_path(nil)
         = f.submit "Search"
-
-
+        = link_to "reset", admin_resource_path(nil)
