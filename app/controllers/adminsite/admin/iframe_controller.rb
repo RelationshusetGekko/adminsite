@@ -16,6 +16,11 @@ class Adminsite::Admin::IframeController <  Adminsite::Admin::CrudController
       raise NotImplementedError.new('Define iframe_url in subclass')
     end
 
+    def register_routes
+      return if self == Adminsite::Admin::IframeController
+      super
+    end
+
   end
 
 end

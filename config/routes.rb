@@ -3,10 +3,11 @@ Adminsite::Engine.routes.draw do
              :controllers => { :sessions => "adminsite/admin_user_sessions" }
 
   namespace Adminsite.config.admin_namespace, as: :admin, module: :admin do
+    Adminsite::Admin::CrudController.descendants.each(&:register_routes)
+
     root      :to => 'adminsite_pages#index'
-
-
   end
+
   get '/:page_url(.:format)(/:id)' => 'contents#show',
       :constraints => lambda { |req|
                                 Adminsite::Page.find_by_url( [req.params[:page_url], "#{req.params[:page_url]}.#{req.params[:format] || 'html'} "]).present? &&

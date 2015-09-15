@@ -37,5 +37,5 @@ class Adminsite::Admin::AdminsitePagesController < Adminsite::Admin::ResourcesCo
     Adminsite::Page
   end
 
-  self.register_routes
+  # self.register_routes
 end

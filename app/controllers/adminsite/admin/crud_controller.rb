@@ -13,6 +13,7 @@ class Adminsite::Admin::CrudController <  Adminsite::Admin::BaseController
     end
 
      def register_routes
+       return if self == Adminsite::Admin::CrudController
        puts "#{self.name}.register_routes"
        eval( "Adminsite::Engine.routes.append do
          namespace :#{Adminsite.config.admin_namespace}, as: :admin, module: :admin do

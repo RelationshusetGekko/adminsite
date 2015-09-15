@@ -127,6 +127,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     end
 
     def register_routes
+      return if self == Adminsite::Admin::ResourcesController
       super
     end
 
