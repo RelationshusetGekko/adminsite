@@ -1,21 +1,26 @@
 .search_form
-  %a#show{onClick: 'showSearchForm();'} Show Filters
-  %a#hide{onClick: 'hideSearchForm();', style: 'display:none'} Hide Filters
-  = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: 'display:none'} ) do |f|
+  - show_search_form = @ransack_params.present?
+  %a#show{onClick: 'showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
+  %a#hide{onClick: 'hideSearchForm();', style: "#{'display:none' unless show_search_form}" } Hide Filters
+  = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless show_search_form}"} ) do |f|
     %div{id: "#{controller_name}-search"}
+      = hidden_field_tag :admin_menu, params[:admin_menu]
       %ul
         - resource_admin_config.attributes_search.each do |search_attr|
           - begin
             %li
+              - p_value = (params[:p] || {})[search_attr]
               = f.label("#{search_attr}")
-              = f.predicate_select({:only => [:cont, :eq]}, {name: "p[#{search_attr}]", onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']';" })
-              = f.search_field("#{search_attr}")
+              = f.predicate_select({:only => [:cont, :eq], :selected => p_value}, {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; " } )
+              = f.search_field("#{search_attr}", value: (params[:q] || {})["#{search_attr}_#{p_value}"] )
               :javascript
                 predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
                 predicate_obj.onchange();
           - rescue
 
+
       .actions
-        =# link_to "remove", '', class: "remove_fields"
+        =  link_to "reset", admin_resource_path(nil)
         = f.submit "Search"
+
 

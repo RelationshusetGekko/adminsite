@@ -49,6 +49,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   def index
     @q = resources.order(order_params).ransack(params[:q])
     @resources = @q.result.page(params[:page])
+    @ransack_params = params.slice(:q, :p)
     render :json => @resources if api_call?
   end
 
