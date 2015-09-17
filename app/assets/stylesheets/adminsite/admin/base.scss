@@ -342,6 +342,9 @@ body.adminsite {
       padding: 0.2em 0.4em;
       font-weight: bold;
     }
+    tr:nth-child(even) {background: #FFF}
+    tr:nth-child(odd) {background: #f4f5f5}
+
     th, td {
       border: 1px solid #cccccc;
       padding: 0.2em 0.4em;
@@ -415,6 +418,7 @@ body.adminsite {
   label {
     color: #777;
     font-size: 13px;
+    display: block;
   }
   form {
     .forgetmenot label {
@@ -445,6 +449,7 @@ body.adminsite {
       margin-top: 2px;
       padding: 3px;
       width: 97%;
+
     }
   }
 
@@ -474,13 +479,12 @@ body.adminsite {
       }
     }
     ul {
-      margin: 0px;
-      padding: 0px;
+      margin: 9px;
+      padding: 9px;
       li
       {
         float: left;
-        height: 20px;
-        min-width: 390px;
+        min-width: 250px;
         margin-bottom: 4px;
         margin-right: 20px;
         list-style: none;
@@ -492,5 +496,8 @@ body.adminsite {
     }
   }
 
+ table tr.selectionColor{
+    background-color: #d9e4ec;
+}
 
 }

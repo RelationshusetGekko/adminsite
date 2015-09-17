@@ -156,4 +156,5 @@ module Admin::AdminsiteApplicationHelper
   def display_referenced_resource(resource)
     link_to resource.title, send("edit_admin_#{resource.class.name.underscore.gsub('/','_')}_path", resource.id, admin_menu: params[:admin_menu])
   end
+
 end

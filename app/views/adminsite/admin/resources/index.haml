@@ -11,15 +11,20 @@
 
 %table
   %tr
+    %th
     - resource_admin_config.attributes_index.each do |attr|
       %th= sort_link(@q, attr)
     - resource_admin_config.default_member_actions.each do |action|
       %th
+
   - @resources.each do |resource|
     %tr
+      %td{onClick:'selectedRow();'}=check_box_tag 'resource[]'
       - resource_admin_config.attributes_index.each do |attr|
         = display_resource_value(resource, attr)
       - resource_admin_config.default_member_actions.each do |action|
         %td= send("link_to_#{action}", resource)
 
 = paginate(@resources, :window => 2)
+=#%a#show{onClick: 'showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
+
