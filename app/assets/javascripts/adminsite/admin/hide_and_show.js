@@ -1,15 +1,12 @@
-function selectedRow (){
-
-  $("input[type='checkbox']").on("click", function(){
-
-      if($(this).is(":checked")){
-          $(this).parents('tr').addClass("selectionColor");
-      }
-      else
-      {
-          $(this).parents('tr').removeClass("selectionColor");
-      }
-  });
+function selectedRow (param){
+  var param_parent = param.parentNode.parentNode;
+  if( param_parent.className == "selectionColor"  ){
+    param_parent.classList.remove("selectionColor");
+  }
+  else
+  {
+    param_parent.classList.add("selectionColor");
+  }
 };
 
 

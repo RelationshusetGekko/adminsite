@@ -455,7 +455,7 @@ body.adminsite {
 
   form.formtastic {
    width:   560px;
-   float:   left;
+
 
     & > div {
       background-color: #eee;
@@ -496,8 +496,17 @@ body.adminsite {
     }
   }
 
- table tr.selectionColor{
+  .select_row {
+    width: 12px;
+    height: 12px;
+    background-color: #cccccc;
+  }
+
+  table tr.selectionColor{
     background-color: #d9e4ec;
-}
+    .select_row {
+      background-color: rgba(117, 117, 214, 0.91);
+    }
+  }
 
 }
