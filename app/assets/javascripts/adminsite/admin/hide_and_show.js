@@ -1,5 +1,5 @@
 function selectedRow (param){
-  var param_parent = param.parentNode.parentNode;
+  var param_parent = param;
   if( param_parent.className == "selectionColor"  ){
     param_parent.classList.remove("selectionColor");
   }
@@ -8,10 +8,6 @@ function selectedRow (param){
     param_parent.classList.add("selectionColor");
   }
 };
-
-
-
-
 
 function showSearchForm(){
   $(".search_form form").show();
