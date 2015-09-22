@@ -32,6 +32,10 @@ module Adminsite
           "\n  get '/:page_url(.:format)' => 'adminsite/contents#render_404'\n"
         end
 
+        # Locales
+        copy_file "config/locales/adminsite.da.yml", 'config/locales/adminsite.da.yml'
+        copy_file "config/locales/adminsite.en.yml", 'config/locales/adminsite.en.yml'
+
         rake "adminsite:install:migrations", :generate_only => true
         rake "db:migrate",                   :generate_only => true
         rake "adminsite:create_admin",       :generate_only => true
