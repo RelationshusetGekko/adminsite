@@ -1,0 +1,28 @@
+$position : left ;
+$primary-color: #efefef;
+$secondary-color: #BBB;
+.pagination
+{
+  text-align: $position ;
+  color: #666;
+}
+.pagination a {
+  border-radius: 2px;
+      padding: 0.5em 0.7em;
+  border-color: #aaa;
+  border-style: solid;
+  background-color: #efefef;
+  background-color: $primary-color;
+  border-top: 2px solid $secondary-color ;
+   border: 1px solid $secondary-color ;
+  text-decoration: none;
+  font-size: smaller;
+  }
+  .pagination a:hover ,  .pagination a:focus
+  {
+    background-image: -webkit-linear-gradient(top, #cfcfcf, #cfcfcf);
+  }
+  .pagination a.more  {
+    box-shadow: 0 0 0 0 transparent;
+    background: transparent;
+  }
