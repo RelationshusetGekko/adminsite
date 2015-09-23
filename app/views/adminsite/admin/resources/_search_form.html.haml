@@ -12,19 +12,21 @@
               - p_value = (params[:p] || {})[search_attr]
               - input_type = input_type_of_column(column)
               - predicates = ransack_predicate_input_type(input_type)
+              - show_predicate_select = predicates.count > 1
               - field_value = (params[:q] || {})["#{search_attr}_#{p_value}"]
               = f.label("#{search_attr}")
               - html_options = {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; "}
-              - html_options.merge!(:style => 'display: none;') if predicates.count == 1
+              - html_options.merge!(:style => 'display: none;') unless show_predicate_select
               = f.predicate_select({:only => predicates, :selected => p_value, :compounds => false}, html_options )
               - case input_type
               - when :boolean
                 = select_tag("q[#{search_attr}_eq]", options_for_select([ "true", "false" ], field_value), include_blank: true)
               - else
                 = f.search_field("#{search_attr}", value: field_value )
-              :javascript
-                predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
-                predicate_obj.onchange();
+              - if show_predicate_select
+                :javascript
+                  predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
+                  predicate_obj.onchange();
 
 
       .actions
