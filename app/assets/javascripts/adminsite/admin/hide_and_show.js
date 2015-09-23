@@ -1,13 +1,13 @@
 function selectedRow (param){
-  var param_parent = param;
-  if( param_parent.className == "selectionColor"  ){
-    param_parent.classList.remove("selectionColor");
-  }
+  var param_parent = $(param);
+  var checkbox = param_parent.find('input.collection_selection')
+  param_parent.toggleClass("selected");
+
+  if (param_parent.hasClass("selected") )
+  { checkbox.prop('checked','checked'); }
   else
-  {
-    param_parent.classList.add("selectionColor");
-  }
-};
+  { checkbox.prop('checked',null); }
+}
 
 function showSearchForm(){
   $(".search_form form").show();
@@ -21,10 +21,6 @@ function  hideSearchForm(){
   $(".search_form a#hide").hide();
 }
 
-
-
-
-//$(document).ready(function () {
 
 
 
