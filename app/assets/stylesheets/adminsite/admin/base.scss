@@ -504,6 +504,7 @@ body.adminsite {
 
   table tr.selected{
     background-color: #d9e4ec;
+    &:nth-child(odd) {background-color: #D1DCE4}
     .select_row {
       background-color: rgba(117, 117, 214, 0.91);
     }
