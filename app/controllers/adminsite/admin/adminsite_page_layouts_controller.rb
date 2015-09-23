@@ -38,5 +38,4 @@ class Adminsite::Admin::AdminsitePageLayoutsController < Adminsite::Admin::Resou
     super
   end
 
-  # self.register_routes
 end

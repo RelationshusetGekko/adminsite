@@ -13,6 +13,4 @@ class Adminsite::Admin::RhgController < Adminsite::Admin::IframeController
     end
   end
 
-  # self.register_routes
-
 end

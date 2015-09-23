@@ -12,5 +12,10 @@ module Adminsite
       @configuration ||= Configuration.new
     end
     alias :config :configuration
+
+    def register_routes(rails_router)
+      Adminsite::Admin::CrudController.descendants.each{|d| d.register_routes(rails_router) }
+      rails_router
+    end
   end
 end

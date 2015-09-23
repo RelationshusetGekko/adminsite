@@ -21,7 +21,5 @@ module Adminsite
       super
     end
 
-    # self.register_routes
-
   end
 end

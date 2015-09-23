@@ -20,6 +20,4 @@ class Adminsite::Admin::ProfilesController < Adminsite::Admin::ResourcesControll
     super
   end
 
-    # self.register_routes
-
 end

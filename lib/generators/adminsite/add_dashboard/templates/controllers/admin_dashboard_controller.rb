@@ -8,9 +8,6 @@ private
 
   class << self
 
-
   end
-
-  # self.register_routes
 
 end

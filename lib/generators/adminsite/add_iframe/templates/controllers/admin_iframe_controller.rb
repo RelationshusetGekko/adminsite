@@ -13,6 +13,4 @@ class Adminsite::Admin::<%= @controller_name.camelize.gsub('::','') %>Controller
     end
   end
 
-  # self.register_routes
-
 end

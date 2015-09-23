@@ -3,7 +3,7 @@ Adminsite::Engine.routes.draw do
              :controllers => { :sessions => "adminsite/admin_user_sessions" }
 
   namespace Adminsite.config.admin_namespace, as: :admin, module: :admin do
-    Adminsite::Admin::CrudController.descendants.each(&:register_routes)
+    Adminsite.register_routes(self)
 
     root      :to => 'adminsite_pages#index'
   end

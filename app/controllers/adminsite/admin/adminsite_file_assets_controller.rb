@@ -54,6 +54,4 @@ class Adminsite::Admin::AdminsiteFileAssetsController < Adminsite::Admin::Resour
     Adminsite::FileAsset
   end
 
-  # self.register_routes
-
 end

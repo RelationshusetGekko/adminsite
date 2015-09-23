@@ -126,9 +126,9 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
       (string.split('/') - namespaces).join('/')
     end
 
-    def register_routes
+    def register_routes(rails_router)
       return if self == Adminsite::Admin::ResourcesController
-      super
+      super(rails_router)
     end
 
     def resource_class

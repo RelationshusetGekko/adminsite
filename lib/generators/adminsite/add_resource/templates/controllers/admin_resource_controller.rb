@@ -20,6 +20,4 @@ class Adminsite::Admin::<%= @resource_class.gsub('::','') %>sController < Admins
     super
   end
 
-    # self.register_routes
-
 end
