@@ -7,8 +7,9 @@
   %p
     = submit_tag 'Add'
 
+= render :partial => 'adminsite/admin/resources/search_form'
 
-= render :file => 'adminsite/admin/resources/index'
+= render :partial => 'adminsite/admin/resources/list'
 
 //- content_for :header_left do
 //  Listing adminsite/file assets
