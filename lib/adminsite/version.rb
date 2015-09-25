@@ -1,3 +1,3 @@
 module Adminsite
-  VERSION = "2.0.0.rc9" unless defined?(Adminsite::VERSION)
+  VERSION = "2.0.0.rc10" unless defined?(Adminsite::VERSION)
 end
