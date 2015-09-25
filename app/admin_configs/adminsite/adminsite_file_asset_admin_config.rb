@@ -17,6 +17,10 @@ module Adminsite
       [ ]
     end
 
+    def attributes_search
+      attributes_index
+    end
+
     def default_member_actions
       [ :show, :destroy ]
     end

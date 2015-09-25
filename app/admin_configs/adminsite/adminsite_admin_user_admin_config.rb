@@ -23,6 +23,10 @@ module Adminsite
       ]
     end
 
+    def attributes_search
+      attributes_index
+    end
+
     def actions_index
       [ :new ]
     end

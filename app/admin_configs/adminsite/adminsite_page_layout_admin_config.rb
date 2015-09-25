@@ -19,6 +19,10 @@ module Adminsite
         :destroy]
     end
 
+    def attributes_search
+      attributes_index
+    end
+
     def label_attribute
       :title
     end

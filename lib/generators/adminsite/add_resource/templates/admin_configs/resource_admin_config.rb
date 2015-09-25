@@ -31,8 +31,16 @@ module Adminsite
     #   [ :new ]
     # end
 
+    # def attributes_search
+    #   attributes_index
+    # end
+
     # def label_attribute
     #   :title
+    # end
+
+    # def scopes
+    #   [:all]
     # end
 
   end
