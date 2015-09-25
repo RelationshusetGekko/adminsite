@@ -1,40 +1,41 @@
-.search_form
-  - show_search_form = @ransack_params.present?
-  %a#show{onClick: 'showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
-  %a#hide{onClick: 'hideSearchForm();', style: "#{'display:none' unless show_search_form}" } Hide Filters
-  = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless show_search_form}"} ) do |f|
-    = hidden_field_tag :admin_menu, params[:admin_menu]
-    %div{id: "#{controller_name}-search"}
-      %ul
-        - resource_admin_config.attributes_search.each do |search_attr|
-          - if (column = column_of_attr(search_attr)).present?
-            %li
-              - p_value = (params[:p] || {})[search_attr]
-              - input_type = input_type_of_column(column)
-              - predicates = ransack_predicate_input_type(input_type)
-              - show_predicate_select = predicates.count > 1
-              - field_value = (params[:q] || {})["#{search_attr}_#{p_value}"]
-              = f.label("#{search_attr}")
+- if resource_admin_config.attributes_search.any?
+  .search_form
+    - show_search_form = @ransack_params.present?
+    %a#show{onClick: 'showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
+    %a#hide{onClick: 'hideSearchForm();', style: "#{'display:none' unless show_search_form}" } Hide Filters
+    = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless show_search_form}"} ) do |f|
+      = hidden_field_tag :admin_menu, params[:admin_menu]
+      %div{id: "#{controller_name}-search"}
+        %ul
+          - resource_admin_config.attributes_search.each do |search_attr|
+            - if (column = column_of_attr(search_attr)).present?
+              %li
+                - p_value = (params[:p] || {})[search_attr]
+                - input_type = input_type_of_column(column)
+                - predicates = ransack_predicate_input_type(input_type)
+                - show_predicate_select = predicates.count > 1
+                - field_value = (params[:q] || {})["#{search_attr}_#{p_value}"]
+                = f.label("#{search_attr}")
 
-              - if show_predicate_select
-                - html_options = {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; "}
-                = f.predicate_select({:only => predicates, :selected => p_value, :compounds => false}, html_options )
-              - case input_type
-              - when :boolean
-                = select_tag("q[#{search_attr}_eq]", options_for_select([ "true", "false" ], field_value), include_blank: true)
-              - else
                 - if show_predicate_select
-                  = f.search_field(search_attr, value: field_value )
-                  :javascript
-                    predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
-                    predicate_obj.onchange();
+                  - html_options = {name: "p[#{search_attr}]" , onchange: "document.getElementById('q_#{search_attr}').name = 'q[#{search_attr}_' + this.value + ']' ; "}
+                  = f.predicate_select({:only => predicates, :selected => p_value, :compounds => false}, html_options )
+                - case input_type
+                - when :boolean
+                  = select_tag("q[#{search_attr}_eq]", options_for_select([ "true", "false" ], field_value), include_blank: true)
                 - else
-                  = f.search_field("#{search_attr}_#{predicates.first}", value: field_value )
+                  - if show_predicate_select
+                    = f.search_field(search_attr, value: field_value )
+                    :javascript
+                      predicate_obj = document.getElementsByName('p[#{search_attr}]')[0];
+                      predicate_obj.onchange();
+                  - else
+                    = f.search_field("#{search_attr}_#{predicates.first}", value: field_value )
 
 
 
-      .actions
-        = f.submit "Search"
-        = link_to "Reset" , admin_resource_path(nil)
+        .actions
+          = f.submit "Search"
+          = link_to "Reset" , admin_resource_path(nil)
 
 
