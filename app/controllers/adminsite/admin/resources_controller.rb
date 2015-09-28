@@ -49,7 +49,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   def index
     @q = resources.order(order_params).ransack(params[:q])
     @resources = @q.result.page(params[:page])
-    @ransack_params = params.slice(:q, :p)
+    @ransack_params = ransack_params
     render :json => @resources if api_call?
   end
 
@@ -64,6 +64,10 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   def resource_class_underscore
     @resource_class_underscore ||= resource_class.to_s.underscore.gsub('/','_')
+  end
+
+  def ransack_params
+    params.slice(:q, :p).each{|k,v| v.delete_if {|key, value| value.blank? }}
   end
 
   def current_admin_menu
