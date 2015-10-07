@@ -84,6 +84,11 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   protected
 
+  def self.content_menu_label
+    pattern = "^#{resource_class.to_s.deconstantize.split('::').join('|^')}"
+    super.gsub(/#{pattern}/,'')
+  end
+
   def api_call?
     request.xhr? || request.format.to_sym == :json
   end

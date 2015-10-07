@@ -66,32 +66,46 @@ module Admin::AdminsiteApplicationHelper
     raw ['<ul>', msgs, '</ul>'].flatten.join
   end
 
+  def recognize_path(path)
+    return {} if path.try(:strip).blank?
+    begin
+      return Adminsite::Engine.routes.recognize_path(path) # '/admin/profiles'
+      return Rails.application.routes.recognize_path(path)
+    rescue Exception => e
+    end
+  end
+
   def current_admin_menu
     @current_admin_menu ||= params[:admin_menu]
   end
 
-  def menu_item(label, url, child_controllers = [], klasses = nil, method = nil, admin_menu = label)
+  def menu_item(label, url, child_controller_names = [], klasses = nil, method = nil, admin_menu = label)
     link = link_to(label, "#{url}?admin_menu=#{admin_menu}", method: method, )
     result = raw "<li class='#{html_classes(url, nil, klasses, admin_menu, label )}'>#{link}</li>"
 
-    if current_url?(url, label) || ( child_controller_active?(child_controllers) && current_admin_menu == admin_menu)
-      child_controllers.each do |child_controller|
-        child_menu = content_menu_item(child_controller, admin_menu, nil, nil )
+    if current_url?(url, label) || ( child_controller_active?(child_controller_names) && current_admin_menu == admin_menu)
+      child_controller_names.each do |child_controller_name|
+        child_menu = content_menu_item(child_controller_name, admin_menu, nil, nil )
         content_for(:content_menu, child_menu)
       end
     end
     result
   end
 
-  def content_menu_item(current_controller, admin_menu, klasses, method )
-    if current_controller != current_controller.pluralize
-      url = eval("admin_#{current_controller}_index_path")
+  def content_menu_label(url, controller_name)
+    menu_controller = recognize_path(url)[:controller]
+    return controller_name.titlecase if menu_controller.blank?
+    eval("#{menu_controller}_controller".classify).content_menu_label
+  end
+
+  def content_menu_item(controller_name, admin_menu, klasses, method )
+    if controller_name != controller_name.pluralize
+      url = eval("admin_#{controller_name}_index_path")
     else
-      url = eval("admin_#{current_controller}_path")
+      url = eval("admin_#{controller_name}_path")
     end
-    label = current_controller.titlecase
-    link = link_to(label, "#{url}?admin_menu=#{admin_menu}", method: method, )
-    raw "<li class='#{html_classes(url, current_controller, klasses, admin_menu )}'>#{link}</li>"
+    link = link_to(content_menu_label(url, controller_name), "#{url}?admin_menu=#{admin_menu}", method: method, )
+    raw "<li class='#{html_classes(url, controller_name, klasses, admin_menu )}'>#{link}</li>"
   end
 
   def current_url?(url, label = '')
@@ -102,15 +116,15 @@ module Admin::AdminsiteApplicationHelper
     end
   end
 
-  def child_controller_active?(child_controllers)
-    child_controllers.include?(controller.controller_name)
+  def child_controller_active?(child_controller_names)
+    child_controller_names.include?(controller.controller_name)
   end
 
-  def html_classes(url, current_controller, klasses = nil, admin_menu = '', label = '')
+  def html_classes(url, controller_name, klasses = nil, admin_menu = '', label = '')
     result = []
     result |= [klasses].flatten if klasses.present?
     result |= ['current'] if current_url?(url, admin_menu)
-    result |= ['active']  if current_admin_menu == label || current_controller == controller.controller_name
+    result |= ['active']  if current_admin_menu == label || controller_name == controller.controller_name
     result.join(' ')
   end
 
