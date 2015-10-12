@@ -29,8 +29,10 @@ class Adminsite::ContentsController < ApplicationController
 
   def content_params
     { :authenticity_token => form_authenticity_token,
+      :authenticity_param => request_forgery_protection_token,
       :notice => flash[:notice],
-      :error  => flash[:error] }
+      :error  => flash[:error]
+    }
   end
 
   def fallback_format
@@ -48,6 +50,7 @@ class Adminsite::ContentsController < ApplicationController
     if defined?(liquid_params)
       @liquid_attributes = content_params.merge(liquid_params)
     else
+      @liquid_attributes = content_params
       Rails.logger.warn("Please define liquid_params in your application controller")
     end
     Rails.logger.debug("Content params: #{@liquid_attributes.inspect}")
