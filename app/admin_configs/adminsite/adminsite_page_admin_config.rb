@@ -17,7 +17,7 @@ module Adminsite
         :requires_login,
         :cacheable,
         :page_layout,
-        :body
+        :body => {:input_html => {:class => 'code html'}}
       ]
     end
 

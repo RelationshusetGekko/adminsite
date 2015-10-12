@@ -10,7 +10,7 @@ module Adminsite
 
     def attributes_edit
       [ :title,
-        :body
+        :body => {:input_html => {:class => 'code html'}}
       ]
     end
 

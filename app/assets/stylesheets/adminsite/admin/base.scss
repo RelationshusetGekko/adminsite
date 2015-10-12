@@ -455,7 +455,8 @@ body.adminsite {
   }
 
   form.formtastic {
-   width:   560px;
+    width:   560px;
+    float: left;
 
 
     & > div {

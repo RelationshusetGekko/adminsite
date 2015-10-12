@@ -16,20 +16,20 @@
 class window.B56Admin
 
 B56Admin.initCodeEditor = ->
-  $("textarea.code.html").each ->
+  $("body.adminsite textarea.code.html").each ->
     CodeMirror.fromTextArea $(this)[0],
       mode: "text/html"
       autoCloseTags: true
       lineNumbers: true
     return
 
-  $("textarea.code.ruby").each ->
+  $("body.adminsite textarea.code.ruby").each ->
     CodeMirror.fromTextArea $(this)[0],
       mode: "ruby"
       lineNumbers: true
     return
 
-  $("textarea.code.js").each ->
+  $("body.adminsite textarea.code.js").each ->
     CodeMirror.fromTextArea $(this)[0],
       mode: "text/javascript"
       matchBrackets: true
