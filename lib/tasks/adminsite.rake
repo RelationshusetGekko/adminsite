@@ -10,7 +10,7 @@ namespace :adminsite do
     if Rails.env.development?
       password = "password"
     else
-      password = Digest::MD5.hexdigest(Time.now.to_s)[0..5]
+      password = Digest::MD5.hexdigest(Time.now.to_s)[0..9]
     end
 
     Adminsite::AdminUser.create!( :name                  => name,
