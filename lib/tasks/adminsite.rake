@@ -97,10 +97,14 @@ namespace :adminsite do
       task :dump => :environment do
         FileUtils.mkdir_p(path_to_seed_sub_dir)
         File.open("#{Rails.root}/db/seeds/page_layouts.yml", 'w') do |file|
-          attributes = PageLayout.all.map{|page_layout|
+          attributes = Adminsite::PageLayout.all.map{|page_layout|
             page_layout.attributes.except('id', 'created_at', 'updated_at')
           }
-          YAML::dump(attributes, file)
+          begin
+            file.write attributes.to_yaml
+          rescue Exception => e
+            raise "#{e.message}:\n#{attributes.inspect}"
+          end
         end
       end
 
@@ -118,7 +122,7 @@ namespace :adminsite do
       desc "Load pages from seeds"
       task :load => :environment do
         YAML::load_file("#{Rails.root}/db/seeds/pages.yml").each do |page|
-          page_layout = PageLayout.find_by_title(page["page_layout_title"])
+          page_layout = Adminsite::PageLayout.find_by_title(page["page_layout_title"])
           Adminsite::Page.create!(page.except("page_layout_title").merge({:page_layout_id => page_layout.id}))
         end
       end
@@ -127,10 +131,10 @@ namespace :adminsite do
       task :dump => :environment do
         File.open("#{Rails.root}/db/seeds/pages.yml", 'w') do |file|
           FileUtils.mkdir_p(path_to_seed_sub_dir)
-          attributes = Page.all.map{|page|
+          attributes = Adminsite::Page.all.map{|page|
             page.attributes.except('id', 'created_at', 'updated_at', 'page_layout_id').merge({'page_layout_title' => page.page_layout.title})
           }
-          YAML::dump(attributes, file)
+          file.write attributes.to_yaml
         end
       end
 
