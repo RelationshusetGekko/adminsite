@@ -9,15 +9,17 @@ class Asset < Liquid::Tag
   end
 end
 
-class Adminsite::LiquidTag < Liquid::Tag
-  protected
+module Adminsite
+  class LiquidTag < Liquid::Tag
+    protected
 
-  def controller
-    Adminsite::ContentsController
-  end
+    def controller
+      Adminsite::ContentsController
+    end
 
-  def helpers
-    @helpers ||= controller.helpers
+    def helpers
+      @helpers ||= controller.helpers
+    end
   end
 end
 
