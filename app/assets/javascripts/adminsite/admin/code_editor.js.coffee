@@ -37,5 +37,4 @@ B56Admin.initCodeEditor = ->
       lineNumbers: true
     return
 
-$(document).ready ->
-  B56Admin.initCodeEditor()
+$(document).on('page:change', B56Admin.initCodeEditor)

@@ -7,6 +7,7 @@
 .formtastic
   %table
     - resource_admin_config.attributes_show.each do |attr|
+      - attr = attr.keys.first if attr.is_a?(Hash)
       %tr
         %th
           = "#{attr.to_s.titlecase}:"

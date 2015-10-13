@@ -325,9 +325,9 @@ body.adminsite {
   }
   #page-assets-list, #syntax-help {
     width: 290px;
-    padding: 9px;
+    padding: 20px;
     float: left;
-    margin-left: 10px;
+    margin: 10px;
     background-color: #eeeeee;
   }
   .clear {
@@ -455,15 +455,17 @@ body.adminsite {
   }
 
   form.formtastic {
-    width:   560px;
-    float: left;
-
-
     & > div {
+      width: 800px;
+      float: left;
       background-color: #eee;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 5px;
+    }
+    fieldset > ol {
+      width: 800px;
+      float: left;
     }
   }
 
