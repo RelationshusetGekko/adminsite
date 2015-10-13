@@ -28,7 +28,6 @@ module Adminsite
             admin_config_class = admin_default_config_class(class_name.to_s)
             register_admin_configs(class_name.to_s, admin_config_class)
           end
-          # puts "all_registered_admin_configs: #{Adminsite::AdminConfig::Base.all_registered_admin_configs.inspect}"
           eval(admin_config_class).new(class_name)
         end
 
