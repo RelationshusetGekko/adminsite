@@ -10,8 +10,8 @@ Adminsite::Engine.routes.draw do
 
   get '/:page_url(.:format)(/:id)' => 'contents#show',
       :constraints => lambda { |req|
-                                Adminsite::Page.find_by_url( [req.params[:page_url], "#{req.params[:page_url]}.#{req.params[:format] || 'html'} "]).present? &&
-                                 ( req.params[:id].nil? || req.params[:id].try(:match, /\A[0-9]*\z/).present? )
+                                Adminsite::ContentsController.find_page_by_url(req.params[:page_url], req.params[:format]).present? &&
+                                 ( req.params[:id].nil? || req.params[:id].try(:match, /\A[0-9a-zA-Z]*\z/).present? )
                               }
 
 end
