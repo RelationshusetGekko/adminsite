@@ -29,8 +29,19 @@ class Adminsite::Page < ActiveRecord::Base
 
   def cleanup_cached
     return if self.url.blank?
-    logger.info("Removing cached page at: #{cache_dir}/#{self.url}")
-    FileUtils.rm("#{cache_dir}/#{self.url}") if File.exist?("#{cache_dir}/#{self.url}")
+    logger.info("Removing cached page for: #{self.url}")
+    cache_file_path = "#{cache_dir}/#{self.url}"
+    if !remove_cache_file(cache_file_path)
+      remove_cache_file("#{cache_file_path}.html")
+    end
+  end
+
+  def remove_cache_file(file_path)
+    if File.exist?(file_path)
+      logger.info("Removing cached page at: #{file_path}")
+      FileUtils.rm(file_path)
+      true
+    end
   end
 
   def render(args)
