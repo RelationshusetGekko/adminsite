@@ -2,10 +2,6 @@ class Adminsite::Admin::ProfilesController < Adminsite::Admin::ResourcesControll
 
   private
 
-  def filter_scopes
-    []
-  end
-
   def order_params
     'ID DESC'
   end

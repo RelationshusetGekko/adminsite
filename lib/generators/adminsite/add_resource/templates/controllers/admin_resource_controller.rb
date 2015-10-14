@@ -2,10 +2,6 @@ class Adminsite::Admin::<%= @resource_class.gsub('::','') %>sController < Admins
 
   private
 
-  def filter_scopes
-    []
-  end
-
   def order_params
     'ID DESC'
   end
