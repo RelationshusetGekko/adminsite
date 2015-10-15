@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    adminsite (2.0.0.rc15)
+    adminsite (2.0.0.rc16)
       actionpack-page_caching
       codemirror-rails (>= 4.8)
       devise (~> 3.4)
