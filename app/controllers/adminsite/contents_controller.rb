@@ -24,10 +24,14 @@ class Adminsite::ContentsController < ApplicationController
     end
 
     def find_page_by_url(url, format)
+      page = nil
       urls = ["#{url}.#{format || fallback_format}" ]
       urls.unshift(url) if format.nil?
       urls.push(url) if format == 'html'
-      Adminsite::Page.find_by_url(urls[0]) || (urls[1].present? && Adminsite::Page.find_by_url(urls[1]))
+      urls.each do |full_url|
+        page ||= Adminsite::Page.find_by_url(full_url)
+      end
+      page
     end
   end
 
