@@ -1,6 +1,6 @@
 Adminsite
 =========
-This is a basic Circle Admin Backend interface.
+This is a basic Admin Backend interface.
 
 This support a series of namespaced (`yoursite.com/admin/`) backend with these
 features:
@@ -9,8 +9,7 @@ features:
 - Simple cms for pages (handle html xml files)
 - Simple cms for file assets (handles images and swf files)
 - Page caching
-- Protected pages (agnostic, you need to implement your `current_user` methods)
-- Mosso Cloud Files support
+- Protected pages (agnostic, you need to implement your `authenticate_content_user` methods)
 - Liquid template language
 
 3 steps install
@@ -21,7 +20,7 @@ features:
 
 2. Run
 
-    rails generate adminsite
+    rails generate adminsite:install
 
 3. There is no 3
 You are ready to go!
@@ -29,7 +28,7 @@ You are ready to go!
 
 How does it work.
 ================
-1. Start your web server (ex: `./script/server`)
+1. Start your web server (ex: `rails s`)
 2. Log in at `http://localhost:3000/admin` with admin / password
 3. Create a new page with:
    - name: index page
@@ -37,56 +36,9 @@ How does it work.
    - body: "hello world"
 4. open `http://localhost:3000/`
 
-Adminsite Exporter Generators
-=============================
-You can generate an exporter based on a model. The generator takes care of all
-the process including adding a new tab in the menu and needed routes.
-
-You might want to adjust what the exports should contains,
-you can define multiple style, look in the generated controllers and classes.
-
-1. Run
-
-    `./script/generate admisite_exporter Customer`
-
-2. Add the proper menu item in you view/admin/shared/_menu.html.haml file
-
-    `=menu\_item("Customer Exports", admin\_customer\_exports\_path)`
-
-3. Based on you app setup you might need to add to environments.rb
-
-   `config.gem 'simple\_xlsx\_writer', :lib => 'simple\_xlsx'`
-
-Where Customer is only an example.
-
-Mosso Cloud Files
-=================
-If you want to use Mosso Cloud Files support you should add a
-`config/mosso_cloudfiles.yml` that should look like this:
-
-    development:
-      username: circlerd
-      api_key: SECRET_API
-    test:
-      username: katherine
-      api_key: test
-    production:
-      username: circlerd
-      api_key: SECRET_API
-
-`SECRET_API` is defined into the Mosso control panel and in all the projects we
-have with Mosso integration (copy it from one of them).
-
-Add this into your `config/environments/production.rb`:
-
-    PAPERCLIP_CONTAINER = "my_project_container"
-
-Be sure that `my_project_container` exists for your account.
-
-Add this line into your `config/environment.rb`:
-
-    gem.require 'cloudfiles'
-
+CDN Support
+============
+use 'fog' with paperclip (http://fog.io, https://github.com/thoughtbot/paperclip#storage)
 
 Protected pages
 ===============
@@ -96,7 +48,7 @@ If you want protected pages you need to add in `ApplicationController` a
 This method should return `false` if no user is logged in or `true` if there is
 a user logged in
 
-ex. using Authlogic:
+ex. using Devise:
 
     def authenticate_content_user
       unless current_user
@@ -107,16 +59,28 @@ ex. using Authlogic:
       return true
     end
 
-    def current_user
-      # Place you authentication code here
-    end
-
 
 Rake Tasks
 ==========
 The gem adds these task:
 
     rake db:migrate
+
     rake adminsite:create_admin
+
+    rake adminsite:seed:assets:clear
+    rake adminsite:seed:assets:dump
+    rake adminsite:seed:assets:load
+    rake adminsite:seed:assets:reload
+
+    rake adminsite:seed:page_layouts:clear
+    rake adminsite:seed:page_layouts:dump
+    rake adminsite:seed:page_layouts:load
+    rake adminsite:seed:page_layouts:reload
+
+    rake adminsite:seed:pages:clear
+    rake adminsite:seed:pages:dump
+    rake adminsite:seed:pages:load
+    rake adminsite:seed:pages:reload
 
 These tasks are all executed for you by `rails g | grep adminsite`

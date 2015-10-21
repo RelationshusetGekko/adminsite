@@ -9,21 +9,21 @@ Gem::Specification.new do |s|
   s.authors = ["Robin Wunderlin"]
   s.email = "robin@wunderlin.dk"
   s.homepage = "http://www.rhg.dk"
-  s.summary = "Adminsite"
-  s.description = "Adminsite plugin"
+  s.summary = "Basic Admin Backend interface for Ruby on Rails"
+  s.description = "Basic Admin Backend interface for Ruby on Rails"
 
-  s.files = Dir["[A-Z]*", "{app,config,db,public,lib,generators}/**/*"]+ ["MIT-LICENSE", "Rakefile", "README.markdown"]
+  s.files = Dir["[A-Z]*", "{app,config,db,public,lib,generators}/**/*"]+ ["LICENSE", "Rakefile", "README.markdown"]
   s.extra_rdoc_files = [
     "README.markdown"
   ]
 
-  s.required_ruby_version = '>= 2.1.2'
+  s.required_ruby_version = '>= 2.0.0'
   s.require_paths = ["lib"]
 
   # s.date = "#{Time.now.to_date}"
   s.post_install_message = File.open('USAGE').read
 
-  s.add_runtime_dependency(%q<rails>, ["~> 4.2"])
+  s.add_runtime_dependency(%q<rails>, [">= 4.1"])
   s.add_runtime_dependency(%q<actionpack-page_caching>, [">= 0"])
   s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
 

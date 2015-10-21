@@ -9,10 +9,7 @@ gem 'adminsite'
 Then from your app root type:
 rails generate adminsite
 
-For Mosso Cloud Files integration and Protected pages
+For Cloud Files integration and Protected pages
 please refer to the README file in this gem root folder
-
-Export generator is also available:
-rails generate adminsite_exporter Product
 
 ************************************************************

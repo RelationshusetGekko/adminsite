@@ -25,7 +25,7 @@ namespace :adminsite do
     puts "e-mail:   #{email}"
     puts "password: #{password}"
     puts ""
-    puts "For Mosso Cloud Files integration and Protected pages"
+    puts "For Cloud Files integration and Protected pages"
     puts "please refer to the README file in this gem root folder"
     puts "#{'*'*70}"
   end
