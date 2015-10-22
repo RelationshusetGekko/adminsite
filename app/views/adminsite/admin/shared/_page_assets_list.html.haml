@@ -1,0 +1,6 @@
+- if @file_assets.present? && @file_assets.any?
+  #page-assets-list
+    %h2 Assets
+    %ul
+      - @file_assets.each do |asset|
+        %li= asset.attachment_file_name

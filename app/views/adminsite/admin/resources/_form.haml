@@ -1,0 +1,6 @@
+= f.inputs do
+  - resource_admin_config.attributes_edit.each do |attr|
+    - if attr.is_a?(Hash)
+      = f.input attr.keys.first, attr.values.first
+    - else
+      = f.input attr

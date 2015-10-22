@@ -1,0 +1,13 @@
+- content_for :header_left do
+  = "Listing #{label_resource_class_plural}"
+- if resource_admin_config.actions_index.any?
+  - content_for :header_right do
+    - resource_admin_config.actions_index.each do |action|
+      = send("link_to_#{action}", action.to_s.titlecase)
+    - resource_admin_config.scopes.each do |scope|
+      = link_to "#{scope.to_s.titlecase} (#{resource_class.send(scope).count})", "#{admin_resource_path}&scope=#{scope}"
+
+= render :partial => 'search_form'
+
+= render :partial => 'list'
+

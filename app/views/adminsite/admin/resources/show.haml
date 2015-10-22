@@ -1,0 +1,15 @@
+- content_for :header_left do
+  = "Show #{label_resource_class}: '#{label_resource}'"
+  = link_to_edit @resource if resource_admin_config.default_member_actions.include?(:edit)
+- content_for :header_right do
+  = link_to_back 'Back', admin_resource_path
+
+.formtastic
+  %table
+    - resource_admin_config.attributes_show.each do |attr|
+      - attr = attr.keys.first if attr.is_a?(Hash)
+      %tr
+        %th
+          = "#{attr.to_s.titlecase}:"
+        = display_resource_value(@resource, attr)
+

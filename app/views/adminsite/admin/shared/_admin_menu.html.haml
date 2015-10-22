@@ -1,0 +1,6 @@
+#admin_menu.menu
+  %ul
+    = yield :admin_menu
+  %ul
+    = menu_item 'Log out', destroy_adminsite_admin_user_session_path, [], 'log_out', :delete
+.clearfix

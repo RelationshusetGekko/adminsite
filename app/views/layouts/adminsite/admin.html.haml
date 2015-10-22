@@ -1,0 +1,31 @@
+!!!
+%html{ "lang" => "en" }
+  %head
+    %meta{ "charset" => "utf-8" }
+    %title
+      Administration:
+      = controller.action_name.capitalize
+    = stylesheet_link_tag 'adminsite'
+    = javascript_include_tag 'adminsite'
+  %body.adminsite
+    %h1
+    = render :partial => 'adminsite/admin/shared/admin_menu' if current_adminsite_admin_user.present?
+    = render :partial => 'adminsite/admin/shared/content_menu' if current_adminsite_admin_user.present?
+
+    - if flash[:notice].present?
+      #flashnotice
+        = flash[:notice]
+    - if flash[:error].present? || flash[:alert].present?
+      #flasherror
+        = flash[:error]
+        = flash[:alert]
+
+    #header
+      #header_left
+        %h2
+          = yield :header_left
+      #header_right
+        = yield :header_right
+      .clearfix
+    #wrapper
+      = yield

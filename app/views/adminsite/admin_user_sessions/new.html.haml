@@ -1,0 +1,14 @@
+#login-box
+  = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :id => "loginform" } do |f|
+    %p
+      %label
+        E-mail:
+        %br
+        = f.text_field :email, :type => 'email'
+    %p
+      %label
+        Password:
+        %br
+        = f.password_field :password
+    %p.submit
+      %input{ :type => "submit", :value => "Log in" }

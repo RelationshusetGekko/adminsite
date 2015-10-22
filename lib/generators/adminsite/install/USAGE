@@ -1,0 +1,13 @@
+NAME
+     adminsite - runs all the needed setup for adminsite
+
+SYNOPSIS
+     adminsite
+
+DESCRIPTION
+     runs all the needed setup for adminsite
+
+EXAMPLE
+     rails generate adminsite:install
+
+     This will runs all the needed setup for adminsite.

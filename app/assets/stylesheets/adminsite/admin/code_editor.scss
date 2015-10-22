@@ -1,0 +1,29 @@
+@import "codemirror";
+// @import "codemirror/themes/night";
+
+body.adminsite {
+  .CodeMirror {
+    border: 1px solid #C9D0D6;
+    border-radius: 3px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 0.95em;
+    outline: medium none;
+    width: 72%;
+    // height: 103px;
+    line-height: 15px;
+    padding: 0;
+
+    .CodeMirror-lines {
+      padding: 0;
+    }
+
+    pre {
+      padding: 0;
+    }
+
+    textarea {
+      border: 0;
+      line-height: 15px;
+    }
+  }
+}
