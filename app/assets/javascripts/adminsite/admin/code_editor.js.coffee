@@ -13,9 +13,9 @@
 //= require codemirror/addons/edit/matchtags
 //= require codemirror/addons/edit/trailingspace
 
-class window.B56Admin
+class window.Adminsite
 
-B56Admin.initCodeEditor = ->
+Adminsite.initCodeEditor = ->
   $("body.adminsite textarea.code.html").each ->
     CodeMirror.fromTextArea $(this)[0],
       mode: "text/html"
@@ -37,4 +37,4 @@ B56Admin.initCodeEditor = ->
       lineNumbers: true
     return
 
-$(document).on('page:change', B56Admin.initCodeEditor)
+$(document).on('page:change', Adminsite.initCodeEditor)
