@@ -1,8 +1,8 @@
 - if resource_admin_config.attributes_search.any?
   .search_form
     - show_search_form = @ransack_params[:q].present?
-    %a#show{onClick: 'showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
-    %a#hide{onClick: 'hideSearchForm();', style: "#{'display:none' unless show_search_form}" } Hide Filters
+    %a#show{onClick: 'Adminsite.showSearchForm();', style: "#{'display:none' if show_search_form}"  } Show Filters
+    %a#hide{onClick: 'Adminsite.hideSearchForm();', style: "#{'display:none' unless show_search_form}" } Hide Filters
     = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless show_search_form}"} ) do |f|
       = hidden_field_tag :admin_menu, params[:admin_menu]
       %div{id: "#{controller_name}-search"}
