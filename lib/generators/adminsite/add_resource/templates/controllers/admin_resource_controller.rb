@@ -11,8 +11,7 @@ class Adminsite::Admin::<%= @resource_class.gsub('::','') %>sController < Admins
   end
 
   def resource_admin_config
-    # Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
-    # -> Result: "Adminsite::AdminConfig::#{config_class_name.gsub('::','')}" || Adminsite::AdminConfig::Base
+    # Adminsite::Admin::ResourcesController.resource_admin_config
     super
   end
 

@@ -32,8 +32,11 @@ module Adminsite
     end
 
     def default_member_actions(resource = nil)
-      [ :edit,
-        :destroy]
+      if resource == @current_adminsite_admin_user
+        [ :edit ]
+      else
+        [ :edit, :destroy]
+      end
     end
 
     def label_attribute(resource = nil)

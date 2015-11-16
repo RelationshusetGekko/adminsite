@@ -30,8 +30,7 @@ module Adminsite
     end
 
     def default_member_actions(resource = nil)
-      [ :edit,
-        :destroy]
+      [ :edit, :destroy]
     end
 
     def label_attribute(resource = nil)

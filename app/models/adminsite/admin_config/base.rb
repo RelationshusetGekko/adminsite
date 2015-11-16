@@ -22,13 +22,13 @@ module Adminsite
           config_class
         end
 
-        def admin_config_of_class(class_name, admin_config_class = nil)
+        def admin_config_of_class(class_name, admin_config_class = nil, current_adminsite_admin_user )
           admin_config_class ||= @@admin_configs[class_name.to_s]
           if admin_config_class.blank?
             admin_config_class = admin_default_config_class(class_name.to_s)
             register_admin_configs(class_name.to_s, admin_config_class)
           end
-          eval(admin_config_class).new(class_name)
+          eval(admin_config_class).new(class_name, current_adminsite_admin_user)
         end
 
         def register_admin_configs(class_name, admin_config, override = true)
@@ -90,9 +90,10 @@ module Adminsite
 
       protected
 
-      def initialize(resource_class)
+      def initialize(resource_class, current_adminsite_admin_user)
         require Adminsite::Engine.root.join("app/models/#{resource_class.name.underscore}") unless defined?(resource_class)
         @resource_class = resource_class
+        @current_adminsite_admin_user = current_adminsite_admin_user
       end
 
     end

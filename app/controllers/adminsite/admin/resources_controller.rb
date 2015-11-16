@@ -119,7 +119,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   def resource_admin_config
     return @resource_admin_config if @resource_admin_config.present?
-    @resource_admin_config = Adminsite::AdminConfig::Base.admin_config_of_class(resource_class)
+    @resource_admin_config = Adminsite::AdminConfig::Base.admin_config_of_class(resource_class, nil, current_adminsite_admin_user)
     @resource_admin_config
   end
 
