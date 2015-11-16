@@ -11,7 +11,7 @@ module Adminsite
       ]
     end
 
-    def attributes_edit
+    def attributes_edit(resource = nil)
       [ :title,
         :url,
         :requires_login,
@@ -21,7 +21,7 @@ module Adminsite
       ]
     end
 
-    def attributes_show
+    def attributes_show(resource = nil)
       attributes_edit
     end
 
@@ -29,12 +29,12 @@ module Adminsite
       attributes_index
     end
 
-    def default_member_actions
+    def default_member_actions(resource = nil)
       [ :edit,
         :destroy]
     end
 
-    def label_attribute
+    def label_attribute(resource = nil)
       :title
     end
 

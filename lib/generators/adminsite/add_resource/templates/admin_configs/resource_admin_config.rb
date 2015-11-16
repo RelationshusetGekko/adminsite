@@ -13,15 +13,15 @@ module Adminsite
     #   column_names
     # end
 
-    # def attributes_edit
+    # def attributes_edit(resource = nil)
     #   @attributes_edit ||= (column_names - ignore_columns)
     # end
 
-    # def attributes_show
+    # def attributes_show(resource = nil)
     #   attributes_edit
     # end
 
-    # def default_member_actions
+    # def default_member_actions(resource = nil)
     #   [ :show,
     #     :edit,
     #     :destroy]
@@ -35,7 +35,7 @@ module Adminsite
     #   attributes_index
     # end
 
-    # def label_attribute
+    # def label_attribute(resource = nil)
     #   :title
     # end
 

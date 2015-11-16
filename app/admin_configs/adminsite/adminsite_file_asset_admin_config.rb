@@ -9,7 +9,7 @@ module Adminsite
       ]
     end
 
-    def attributes_show
+    def attributes_show(resource = nil)
       ['attachment.url'] + attributes_edit
     end
 
@@ -21,11 +21,11 @@ module Adminsite
       attributes_index
     end
 
-    def default_member_actions
+    def default_member_actions(resource = nil)
       [ :show, :destroy ]
     end
 
-    def label_attribute
+    def label_attribute(resource = nil)
       :attachment_file_name
     end
   end

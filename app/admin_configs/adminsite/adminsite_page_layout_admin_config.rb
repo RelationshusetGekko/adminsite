@@ -8,13 +8,13 @@ module Adminsite
       ]
     end
 
-    def attributes_edit
+    def attributes_edit(resource = nil)
       [ :title,
         :body => {:input_html => {:class => 'code html'}}
       ]
     end
 
-    def default_member_actions
+    def default_member_actions(resource = nil)
       [ :edit,
         :destroy]
     end
@@ -23,7 +23,7 @@ module Adminsite
       attributes_index
     end
 
-    def label_attribute
+    def label_attribute(resource = nil)
       :title
     end
 
