@@ -7,11 +7,11 @@ class Adminsite::MultiSelectBoxInput < Formtastic::Inputs::SelectInput
     diff_collection = collection.reject{|k,v| builder.object.send(input_name).include?(k) }
     input_wrapping do
       label_html <<
-      raw('<div>') <<
+      raw("<div><span>Available #{(localized_label || humanized_method_name)}:</span><br/>") <<
       select_tag(:collection, options_for_select(diff_collection), input_html_options.merge(:class => 'source', :name=> "#{object_name}[collection][]", :id=> collection_id)) <<
       raw('</div>') <<
       operators_html <<
-      raw('<div>') <<
+      raw("<div><span>Selected #{label_text}:</span><br/>") <<
       builder.select(input_name, builder.object.send(input_name), input_options, input_html_options.merge(:class => 'target') ) <<
       raw('</div>')
     end.html_safe
