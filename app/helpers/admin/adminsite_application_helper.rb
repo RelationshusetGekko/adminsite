@@ -171,4 +171,15 @@ module Admin::AdminsiteApplicationHelper
     link_to resource.title, send("edit_admin_#{resource.class.name.underscore.gsub('/','_')}_path", resource.id, admin_menu: params[:admin_menu])
   end
 
+  def publish_form_input(form, form_input)
+    options = {}
+    if form_input.is_a?(Hash)
+      attr_name = form_input.keys.first
+      options = form_input[attr_name]
+    else
+      attr_name = form_input
+    end
+    form.input(attr_name, options).html_safe
+  end
+
 end

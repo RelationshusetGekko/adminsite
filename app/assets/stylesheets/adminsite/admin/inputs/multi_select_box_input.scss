@@ -1,0 +1,24 @@
+li.multi_select_box.input {
+  > div {
+    float: left;
+  }
+  .operators {
+    padding: 10px;
+    .data-ops {
+      padding: 20px 0;
+      width: 100px;
+      border-bottom: 1px solid #ccc;
+      button {
+        width: 100%;
+      }
+    }
+    .order-ops {
+      padding: 20px 0;
+      width: 40px;
+      float: right;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
