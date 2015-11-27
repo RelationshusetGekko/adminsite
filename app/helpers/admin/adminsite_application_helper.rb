@@ -157,7 +157,7 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def link_to_destroy(resource)
-    link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), admin_resource_path(resource.id), :confirm => 'Are you sure?', :method => :delete
+    link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), admin_resource_path(resource.id), data: { :confirm => 'Are you sure?'} , :method => :delete
   end
 
   def display_resource_value(resource, attr)
