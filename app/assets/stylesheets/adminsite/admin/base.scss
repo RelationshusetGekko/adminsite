@@ -60,7 +60,6 @@ body.adminsite {
     margin-bottom: 8px;
   }
   #wrapper {
-    overflow: auto;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -350,12 +349,14 @@ body.adminsite {
       padding: 0.2em 0.4em;
       font-weight: bold;
     }
-    tr:nth-child(even) {background: #FFF}
-    tr:nth-child(odd) {background: #f4f5f5}
-
+    tbody {
+      tr:nth-child(even) {background: #FFF}
+      tr:nth-child(odd) {background: #f4f5f5}
+    }
     th, td {
       border: 1px solid #cccccc;
       padding: 0.2em 0.4em;
+      vertical-align: top;
     }
     th {
       background: #cccccc;
@@ -363,6 +364,7 @@ body.adminsite {
       text-align: left;
       font-weight: normal;
       font-variant: small-caps;
+      white-space: nowrap;
     }
     tr.old td {
       opacity: 0.5;
