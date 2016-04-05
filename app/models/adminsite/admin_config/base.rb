@@ -80,6 +80,10 @@ module Adminsite
         [ :new ]
       end
 
+      def actions_placement
+        :right
+      end
+
       def label_attribute(resource = nil)
         :title
       end

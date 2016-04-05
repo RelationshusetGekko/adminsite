@@ -1,21 +1,31 @@
 = paginate(@resources, :window => 2)
 
 %table
-  %tr
-    %th
-    - resource_admin_config.attributes_index.each do |attr|
-      %th= sort_link(@q, attr)
-    %th Actions
-  - @resources.each do |resource|
-    %tr{onClick: 'Adminsite.selectedRow(this);'}
-      %td.resource_selection_cell
-        = check_box_tag 'collection_selection[]', resource.id, false, :class => 'collection_selection'
+  %thead
+    %tr
+      - if resource_admin_config.actions_placement == :left
+        %th Actions
+      %th
       - resource_admin_config.attributes_index.each do |attr|
-        = display_resource_value(resource, attr)
-      %td.actions
-        %ul
-          - resource_admin_config.default_member_actions(resource).each do |action|
-            %li= send("link_to_#{action}", resource)
+        %th= sort_link(@q, attr)
+      - if resource_admin_config.actions_placement == :right
+        %th Actions
+  %tbody
+    - @resources.each do |resource|
+      %tr{onclick: 'Adminsite.selectedRow(this);'}
+        - if resource_admin_config.actions_placement == :left
+          %td.actions
+            %ul
+              - resource_admin_config.default_member_actions(resource).each do |action|
+                %li= send("link_to_#{action}", resource)
+        %td.resource_selection_cell
+          = check_box_tag 'collection_selection[]', resource.id, false, :class => 'collection_selection'
+        - resource_admin_config.attributes_index.each do |attr|
+          = display_resource_value(resource, attr)
+        - if resource_admin_config.actions_placement == :right
+          %td.actions
+            %ul
+              - resource_admin_config.default_member_actions(resource).each do |action|
+                %li= send("link_to_#{action}", resource)
 
 = paginate(@resources, :window => 2)
-%br
