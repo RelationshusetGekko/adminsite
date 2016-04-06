@@ -490,34 +490,38 @@ body.adminsite {
   }
 
   .search_form {
-    margin-bottom: 20px;
-
-    form > div {
-      background-color: #eee;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow: auto;
-      .actions {
-        float: left;
+    form {
+      position: absolute;
+      & > div {
+        background-color: #eee;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: auto;
+        box-shadow: 5px 5px 5px 0px rgba(0, 0, 17, 0.7);
+        .actions {
+          float: left;
+        }
       }
     }
+    label {
+      display: inline-block;
+      min-width: 7em;
+    }
     ul {
-      margin: 9px;
-      padding: 9px;
-      li
-      {
+      margin: 0;
+      padding: 0;
+      li {
+        white-space: nowrap;
         min-width: 100px;
-        max-width: 330px;
-        margin-bottom: 20px;
-        margin-right: 40px;
+        max-width: 450px;
+        margin-bottom: 0px;
+        margin-right: 0px;
         list-style: none;
-        float: left;
         height: 35px;
       }
     }
     .actions {
-      // margin-top: 10px;
       clear: both;
       margin: 20px;
     }
@@ -529,7 +533,7 @@ body.adminsite {
     background-color: #cccccc;
   }
 
-  table tr.selected{
+  table tr.selected {
     background-color: #d9e4ec;
     &:nth-child(odd) {background-color: #D1DCE4}
     .select_row {
