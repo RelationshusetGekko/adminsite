@@ -492,15 +492,25 @@ body.adminsite {
   .search_form {
     form {
       position: absolute;
+      top: 177px;
       & > div {
         background-color: #eee;
-        padding: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
         overflow: auto;
         box-shadow: 5px 5px 5px 0px rgba(0, 0, 17, 0.7);
         .actions {
           float: left;
+        }
+      }
+      .titlebar {
+        background-color:#ccc;
+        font-weight: bold;
+        padding: 10px;
+        button {
+          float:right;
+          background-color: transparent;
+          border: none;
         }
       }
     }
@@ -510,7 +520,7 @@ body.adminsite {
     }
     ul {
       margin: 0;
-      padding: 0;
+      padding: 10px;
       li {
         white-space: nowrap;
         min-width: 100px;
@@ -523,7 +533,7 @@ body.adminsite {
     }
     .actions {
       clear: both;
-      margin: 20px;
+      margin: 20px 10px;
     }
   }
 
