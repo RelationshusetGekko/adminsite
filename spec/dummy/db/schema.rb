@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819065953) do
+ActiveRecord::Schema.define(version: 20160411205010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adminsite_admin_user_roles", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "adminsite_admin_user_roles", ["name"], name: "index_adminsite_admin_user_roles_on_name", unique: true, using: :btree
+
+  create_table "adminsite_admin_user_roles_users", force: :cascade do |t|
+    t.integer "admin_user_id",      null: false
+    t.integer "admin_user_role_id", null: false
+  end
+
+  add_index "adminsite_admin_user_roles_users", ["admin_user_id"], name: "index_adminsite_admin_user_roles_users_on_admin_user_id", using: :btree
+  add_index "adminsite_admin_user_roles_users", ["admin_user_role_id"], name: "index_adminsite_admin_user_roles_users_on_admin_user_role_id", using: :btree
 
   create_table "adminsite_admin_users", force: :cascade do |t|
     t.string   "name"

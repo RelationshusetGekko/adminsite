@@ -5,6 +5,8 @@ module Adminsite
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
 
+    has_and_belongs_to_many :admin_user_roles
+
   end
 
 end
