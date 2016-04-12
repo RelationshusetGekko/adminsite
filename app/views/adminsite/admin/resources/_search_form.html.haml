@@ -1,7 +1,7 @@
 - if resource_admin_config.attributes_search.any?
   .search_form
-    %a#show{onClick: 'Adminsite.showSearchForm();', style: "#{'display:none' if @show_search_form}"  } Show Filters
-    %a#hide{onClick: 'Adminsite.hideSearchForm();', style: "#{'display:none' unless @show_search_form}" } Hide Filters
+    %a#show{onclick: 'Adminsite.showSearchForm();', style: "#{'display:none' if @show_search_form}"  } Show Filters
+    %a#hide{onclick: 'Adminsite.hideSearchForm();', style: "#{'display:none' unless @show_search_form}" } Hide Filters
     = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless @show_search_form}"} ) do |f|
       = hidden_field_tag :admin_menu, params[:admin_menu]
       %div{id: "#{controller_name}-search"}
@@ -30,11 +30,6 @@
                       predicate_obj.onchange();
                   - else
                     = f.search_field("#{search_attr}_#{predicates.first}", value: field_value )
-
-
-
         .actions
           = f.submit "Search"
           = link_to "Reset" , admin_resource_path(nil)
-
-

@@ -41,8 +41,8 @@ module Admin::AdminsiteApplicationHelper
     response = ''
     response = '<td>' if add_td_wrappers
     if is_url?(value)
-      response += link_to(value,value, target: :blank)
-      response += "<br/>#{image_tag(value)}" if is_image?(value)
+      response += link_to(value,value, target: '_blank')
+      response += "<br>#{image_tag(value)}" if is_image?(value)
     else
       response += h value
     end
@@ -154,7 +154,7 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def link_to_show(resource)
-    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), target: :blank
+    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), target: '_blank'
   end
 
   def link_to_edit(resource)
