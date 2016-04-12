@@ -13,10 +13,11 @@ namespace :adminsite do
       password = Digest::MD5.hexdigest(Time.now.to_s)[0..9]
     end
 
-    Adminsite::AdminUser.create!( :name                  => name,
+    admin_user = Adminsite::AdminUser.create!( :name     => name,
                                   :email                 => email,
                                   :password              => password,
                                   :password_confirmation => password)
+    admin_user.admin_user_roles << Adminsite::AdminUserRole.find_by_name('admin')
     puts "#{'*'*70}"
     puts "Done! You can access the admin interface at http://yourapp_url/admin"
     puts "I have created an administrator with these credentials:"
