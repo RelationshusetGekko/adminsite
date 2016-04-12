@@ -1,6 +1,4 @@
 class Adminsite::Admin::BaseController < Adminsite::AdminApplicationController
-  layout 'adminsite/admin'
-
   newrelic_ignore if defined?(NewRelic)
 
   protected
