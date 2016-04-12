@@ -5,5 +5,13 @@ module Adminsite
 
     validates :name, presence: true, uniqueness: true
 
+    before_validation :downcase_name
+
+    protected
+
+    def downcase_name
+      self.name = name.try(:downcase)
+    end
+
   end
 end
