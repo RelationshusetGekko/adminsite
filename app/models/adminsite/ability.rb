@@ -20,6 +20,7 @@ module Adminsite
           # can :read, Adminsite::FileAsset
         end
         can :manage, Adminsite::AdminUserSessionsController
+        can :read, Adminsite::Admin::DashboardController
       end
     end
   end

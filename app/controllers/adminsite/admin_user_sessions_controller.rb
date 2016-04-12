@@ -12,7 +12,7 @@ class Adminsite::AdminUserSessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    params[:redirect_to] || session["adminsite_admin_user_return_to"] || admin_dashboard_index_path
+    params[:redirect_to] || session["adminsite_admin_user_return_to"] || admin_dashboard_index_path(admin_menu: 'Dashboard')
   end
 
 
