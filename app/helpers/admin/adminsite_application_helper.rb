@@ -85,7 +85,9 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def menu_item(label, url, child_controller_names = [], klasses = nil, method = nil, admin_menu = label)
-    link = link_to(label, "#{url}?admin_menu=#{admin_menu}", method: method, )
+    html_options = {method: method}
+    html_options[:title] = current_adminsite_admin_user.email if klasses == 'log_out'
+    link = link_to(label, "#{url}?admin_menu=#{admin_menu}", html_options)
     result = raw "<li class='#{html_classes(url, nil, klasses, admin_menu, label )}'>#{link}</li>"
 
     if current_url?(url, label) || ( child_controller_active?(child_controller_names) && current_admin_menu == admin_menu)
