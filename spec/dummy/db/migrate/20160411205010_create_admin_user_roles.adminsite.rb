@@ -13,7 +13,7 @@ class CreateAdminUserRoles < ActiveRecord::Migration
     add_index :adminsite_admin_user_roles_users, :admin_user_id
     add_index :adminsite_admin_user_roles_users, :admin_user_role_id
 
-    Adminsite::AdminUserRole.create name: 'admin'
+    Adminsite::AdminUserRole.create [{name: 'admin'}, {name: 'editor'},{name: 'customer'}]
   end
 end
 
