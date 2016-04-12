@@ -17,6 +17,7 @@ class Adminsite::AdminApplicationController < ActionController::Base
 
   def authorize!(action, subject, *args)
     subject = subject.call(self) if subject.is_a?(Proc)
+    puts "#{self}#authorize!(#{action}, #{subject}, #{args.inspect})" if Rails.env.development?
     super(action, subject, *args)
   end
 
