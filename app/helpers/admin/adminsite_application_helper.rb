@@ -106,6 +106,8 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def content_menu_item(controller_name, admin_menu, klasses, method )
+    controller_class = eval("Adminsite::Admin::" + "#{controller_name}_controller".classify)
+    return '' if !can?(:read, controller_class.new.resource_class)
     if controller_name != controller_name.pluralize
       url = eval("admin_#{controller_name}_index_path")
     else
