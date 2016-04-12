@@ -1,6 +1,5 @@
 - content_for :header_left do
   Dashboard
 
-
-Override Me !!!
-please override in '/app/views/adminsite/admin/#{controller_name}/index.html.haml'
+- if Rails.env.development?
+  please override in '/app/views/adminsite/admin/#{controller_name}/index.html.haml'

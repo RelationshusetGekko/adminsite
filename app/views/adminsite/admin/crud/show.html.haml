@@ -3,7 +3,8 @@
 - content_for :header_right do
   = link_to_back 'Back', url_for(controller: controller_name, action: :index )
 
-please override in '/app/views/adminsite/admin/#{controller_name}/show.html.haml'
+- if Rails.env.development?
+  please override in '/app/views/adminsite/admin/#{controller_name}/show.html.haml'
 
 //.formtastic
 //  %table

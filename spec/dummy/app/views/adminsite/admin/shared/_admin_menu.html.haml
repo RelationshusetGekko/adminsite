@@ -1,5 +1,6 @@
 #admin_menu.menu
   %ul
+    = menu_item 'Dashboard', admin_dashboard_index_path , ['dashboard']
     = yield :admin_menu
 
     = menu_item 'IFrames', admin_rhg_index_path, ['rhg']
