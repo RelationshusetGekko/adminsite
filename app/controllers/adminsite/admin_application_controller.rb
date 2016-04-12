@@ -12,7 +12,7 @@ class Adminsite::AdminApplicationController < ActionController::Base
   check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to admin_root_url, :alert => exception.message
+    render text: exception.message
   end
 
   protected
