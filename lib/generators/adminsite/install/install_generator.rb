@@ -32,6 +32,9 @@ module Adminsite
           "\n  get '/:page_url(.:format)' => 'adminsite/contents#render_404'\n"
         end
 
+        puts "Setting up CanCan"
+        copy_file 'app/models/adminsite/ability.rb', 'app/models/adminsite/ability.rb'
+
         # Locales
         copy_file "config/locales/adminsite.da.yml", 'config/locales/adminsite.da.yml'
         copy_file "config/locales/adminsite.en.yml", 'config/locales/adminsite.en.yml'
