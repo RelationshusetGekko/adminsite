@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    adminsite (3.0.0)
+    adminsite (3.1.0)
       actionpack-page_caching
       cancancan (~> 1.10)
       codemirror-rails (>= 4.8)
@@ -213,6 +213,3 @@ DEPENDENCIES
   rspec
   shoulda
   simplecov (>= 0.10.0)
-
-BUNDLED WITH
-   1.10.6
