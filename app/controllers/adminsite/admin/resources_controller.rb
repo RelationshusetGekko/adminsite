@@ -63,6 +63,10 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     self.class.resource_class
   end
 
+  def authorize_resource_class
+    resource_class
+  end
+
   def resource_class_underscore
     @resource_class_underscore ||= resource_class.to_s.underscore.gsub('/','_')
   end

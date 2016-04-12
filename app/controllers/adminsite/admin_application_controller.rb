@@ -8,7 +8,7 @@ class Adminsite::AdminApplicationController < ActionController::Base
   before_filter :authenticate_adminsite_admin_user!
 
   include ::CanCan::ControllerAdditions
-  authorize_resource class: lambda { |context| context.resource_class }
+  authorize_resource class: lambda { |context| context.authorize_resource_class }
   # check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -21,7 +21,7 @@ class Adminsite::AdminApplicationController < ActionController::Base
     super(action, subject, *args)
   end
 
-  def resource_class
+  def authorize_resource_class
     self
   end
 

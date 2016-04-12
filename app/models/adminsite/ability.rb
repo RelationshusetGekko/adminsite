@@ -9,16 +9,17 @@ module Adminsite
         when :admin
           can :manage, :all
         when :editor
-          can :read, Adminsite::Page
-          can :read, Adminsite::PageLayout
-          can :read, Adminsite::FileAsset
-          can :read, Adminsite::AdminUser
-          can :read, Adminsite::AdminUserRole
+          can :read,   Adminsite::Page
+          can :read,   Adminsite::PageLayout
+          can :read,   Adminsite::FileAsset
+          can :read,   Adminsite::AdminUser
+          can :read,   Adminsite::AdminUserRole
         when :customer
           # can :read, Adminsite::Page
           # can :read, Adminsite::PageLayout
           # can :read, Adminsite::FileAsset
         end
+        can :manage, Adminsite::AdminUserSessionsController
       end
     end
   end

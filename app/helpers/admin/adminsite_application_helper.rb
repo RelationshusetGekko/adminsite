@@ -85,16 +85,29 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def menu_item(label, url, child_controller_names = [], klasses = nil, method = nil, admin_menu = label)
-    html_options = {method: method}
-    html_options[:title] = current_adminsite_admin_user.email if klasses == 'log_out'
-    link = link_to(label, "#{url}?admin_menu=#{admin_menu}", html_options)
-    result = raw "<li class='#{html_classes(url, nil, klasses, admin_menu, label )}'>#{link}</li>"
+    result = ''
+    child_menus = []
+
+    child_controller_names_authorized = child_controller_names.select do |child_controller_name|
+      controller_class_name = "#{child_controller_name}_controller".classify
+      controller_class = eval("defined?(Adminsite::" + "#{controller_class_name}) ? Adminsite::#{controller_class_name} : Adminsite::Admin::#{controller_class_name}".classify)
+      can?(:read, controller_class.new.authorize_resource_class)
+    end
 
     if current_url?(url, label) || ( child_controller_active?(child_controller_names) && current_admin_menu == admin_menu)
-      child_controller_names.each do |child_controller_name|
-        child_menu = content_menu_item(child_controller_name, admin_menu, nil, nil )
-        content_for(:content_menu, child_menu)
+      child_controller_names_authorized.each do |child_controller_name|
+        child_menus << content_menu_item(child_controller_name, admin_menu, nil, nil )
       end
+    end
+    child_menus = child_menus.compact
+
+    if child_controller_names_authorized.count > 0
+      html_options = {method: method}
+      html_options[:title] = current_adminsite_admin_user.email if klasses == 'log_out'
+      link = link_to(label, "#{url}?admin_menu=#{admin_menu}", html_options)
+      result = raw "<li class='#{html_classes(url, nil, klasses, admin_menu, label )}'>#{link}</li>"
+
+      content_for(:content_menu, child_menus.join("\n").html_safe )
     end
     result
   end
@@ -106,8 +119,6 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def content_menu_item(controller_name, admin_menu, klasses, method )
-    controller_class = eval("Adminsite::Admin::" + "#{controller_name}_controller".classify)
-    return '' if !can?(:read, controller_class.new.resource_class)
     if controller_name != controller_name.pluralize
       url = eval("admin_#{controller_name}_index_path")
     else
