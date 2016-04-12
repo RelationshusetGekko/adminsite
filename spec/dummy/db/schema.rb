@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160411205010) do
 
   add_index "adminsite_admin_user_roles", ["name"], name: "index_adminsite_admin_user_roles_on_name", unique: true, using: :btree
 
-  create_table "adminsite_admin_user_roles_users", force: :cascade do |t|
+  create_table "adminsite_admin_user_roles_users", id: false, force: :cascade do |t|
     t.integer "admin_user_id",      null: false
     t.integer "admin_user_role_id", null: false
   end
