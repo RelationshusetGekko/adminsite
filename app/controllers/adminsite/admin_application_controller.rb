@@ -8,6 +8,9 @@ class Adminsite::AdminApplicationController < ActionController::Base
   before_filter :authenticate_adminsite_admin_user!
   authorize_resource
   # check_authorization
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to admin_root_url, :alert => exception.message
+  end
 
   protected
 
