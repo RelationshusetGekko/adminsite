@@ -4,6 +4,7 @@ module Adminsite
     def attributes_index
       [ :name,
         :email,
+        :admin_user_roles,
         :updated_at
       ]
     end
@@ -12,7 +13,8 @@ module Adminsite
       [ :name,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :admin_user_roles
       ]
     end
 

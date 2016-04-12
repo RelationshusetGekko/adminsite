@@ -36,16 +36,21 @@ module Admin::AdminsiteApplicationHelper
     end
   end
 
-  def format_response_value(value)
+  def format_response_value(value, add_td_wrappers = true)
     value = value.url if defined?(PictureUploader) && value.is_a?(PictureUploader)
-    response = '<td>'
+    response = ''
+    response = '<td>' if add_td_wrappers
     if is_url?(value)
       response += link_to(value,value, target: :blank)
       response += "<br/>#{image_tag(value)}" if is_image?(value)
     else
       response += h value
     end
-    response + '</td>'
+    if add_td_wrappers
+      response + '</td>'
+    else
+      response
+    end
   end
 
   def is_url?(value)
@@ -160,11 +165,17 @@ module Admin::AdminsiteApplicationHelper
     link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), admin_resource_path(resource.id), data: { :confirm => 'Are you sure?'} , :method => :delete
   end
 
-  def display_resource_value(resource, attr)
+  def display_resource_value(resource, attr, add_td_wrappers = true)
     value = nil
     attr.to_s.split('.').each{|a| value = (value || resource).send(a) }
     value = display_referenced_resource(value) if value.is_a?(ActiveRecord::Base)
-    format_response_value(value).html_safe
+    if value.is_a?(ActiveRecord::Associations::CollectionProxy)
+      value = value.collect do |r|
+        label = Adminsite::AdminConfig::Base.admin_config_of_class(r.class, nil, current_adminsite_admin_user).label_attribute(r)
+        display_resource_value(r, label, false)
+      end.join(', ')
+    end
+    format_response_value(value, add_td_wrappers).html_safe
   end
 
   def display_referenced_resource(resource)

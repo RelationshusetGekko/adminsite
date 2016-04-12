@@ -2,8 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class Adminsite::AdminApplicationController < ActionController::Base
+  include ::CanCan::ControllerAdditions
   helper :all, "admin/adminsite_application"
   layout 'adminsite/admin'
   before_filter :authenticate_adminsite_admin_user!
-
+  # authorize_resource
+  check_authorization
+  
 end

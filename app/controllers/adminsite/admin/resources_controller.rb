@@ -85,6 +85,10 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   protected
 
+  def resource_class_with_parent
+    resource_class
+  end
+
   def api_call?
     request.xhr? || request.format.to_sym == :json
   end
