@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<domainatrix>, [">= 0"])
 
   s.add_runtime_dependency(%q<devise>, ["~> 3.4"])
+  s.add_runtime_dependency(%q<cancancan>, ["~> 1.10"])
   s.add_runtime_dependency(%q<kaminari>, [">= 0.15.0"])
   s.add_runtime_dependency(%q<ransack>, [">= 1.3"])
 
