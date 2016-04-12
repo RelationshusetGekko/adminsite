@@ -5,7 +5,7 @@ module Adminsite
     def initialize(user)
       user ||= AdminUser.new
       user.admin_user_roles.each do |role|
-        case role.to_sym
+        case role.name.to_sym
         when :admin
           can :manage, :all
         when :editor
