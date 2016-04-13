@@ -50,7 +50,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     @q = resources.order(order_params).ransack(params[:q])
     @resources = @q.result.page(params[:page])
     @ransack_params = ransack_params
-    @show_search_form = @ransack_params[:q].try(:except, :s).present?
+    @search_params  = @ransack_params[:q].try(:except, :s)
+    @show_search_form = @search_params.present?
     render :json => @resources if api_call?
   end
 

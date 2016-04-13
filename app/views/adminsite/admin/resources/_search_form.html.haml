@@ -15,7 +15,7 @@
                 - input_type = input_type_of_column(column)
                 - predicates = ransack_predicate_input_type(input_type)
                 - show_predicate_select = predicates.count > 1
-                - field_value = (@ransack_params[:q] || {})["#{search_attr}_#{p_value}"]
+                - field_value = (@search_params || {})["#{search_attr}_#{p_value}"]
                 = f.label("#{search_attr}")
 
                 - if show_predicate_select

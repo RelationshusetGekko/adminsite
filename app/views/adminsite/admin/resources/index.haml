@@ -8,14 +8,19 @@
     #scopes
       - resource_admin_config.scopes.each do |scope|
         = link_to "#{scope.to_s.titlecase} (#{resource_class.send(scope).count})", "#{admin_resource_path}&scope=#{scope}", class: :scope
-    - if @ransack_params[:q].present?
+    - if @search_params.present?
       #applied_filters_wrapper
         %label Applied Filters:
         %ul#applied_filters
-          - @ransack_params[:q].map do |q|
-            %li
-              = q.join ' '
-              %button{type: 'button', "data-filter" => "&q[#{q.first}]=#{q.last}" } ×
+          - @search_params.map do |q|
+            - op = q.first.split('_').last
+            - column = q.first.chomp("_#{op}")
+            - value = q.last
+            %li.applied.filter
+              = column.gsub('_',' ').capitalize
+              = "#{Ransack::Translate.predicate(op)}:"
+              = "'#{value}'"
+              %button{type: 'button', "data-filter-column" => column, "data-filter-value" => q.last, "data-filter-op" => op } ×
 
 = render :partial => 'search_form'
 
