@@ -1,7 +1,8 @@
 - content_for :header_left do
   = "New #{label_resource_class}"
 - content_for :header_right do
-  = link_to_back 'Back', admin_resource_path
+  #new_actions
+    = link_to_back
 
 = error_messages_for @resource
 

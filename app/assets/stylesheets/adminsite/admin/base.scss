@@ -109,10 +109,10 @@ body.adminsite {
       &:hover {
         background-color: rgba(0, 0, 0, 0.7);
       }
-      &.add, &.back {
+      &.add, &.back, &.new {
         padding-left: 18px;
       }
-      &.add {
+      &.add, &.new {
         background-image: asset-url('adminsite/admin/add.png');
       }
       &.back {

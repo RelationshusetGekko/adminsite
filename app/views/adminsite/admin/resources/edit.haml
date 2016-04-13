@@ -2,7 +2,8 @@
   = "Edit #{label_resource_class}: '#{label_resource}'"
   = link_to_show @resource if resource_admin_config.default_member_actions(@resource).include?(:show)
 - content_for :header_right do
-  = link_to_back 'Back', admin_resource_path
+  #edit_actions
+    = link_to_back
 
 = error_messages_for @resource
 
