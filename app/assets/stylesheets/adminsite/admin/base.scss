@@ -119,6 +119,28 @@ body.adminsite {
         background-image: asset-url('adminsite/admin/arrow_left.png');
       }
     }
+    label {
+      display: inline;
+      margin: 0 0 0 1em;
+    }
+    #applied_filters {
+      list-style-type: none;
+      display: inline;
+      margin: 0;
+      padding: 0 5px 0 0;
+      li {
+        border: 1px solid #ccc;
+        border-radius: 10px 0 0 10px;
+        display: inline;
+        margin: 0 5px;
+        padding: 3px 3px 3px 10px;
+      }
+      button {
+        background-color: transparent;
+        border: 0;
+        font-weight: bold;
+      }
+    }
   }
   .clearfix {
     zoom: 1;

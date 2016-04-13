@@ -6,8 +6,14 @@
       = send("link_to_#{action}", action.to_s.titlecase)
     - resource_admin_config.scopes.each do |scope|
       = link_to "#{scope.to_s.titlecase} (#{resource_class.send(scope).count})", "#{admin_resource_path}&scope=#{scope}"
+    - if @ransack_params[:q].present?
+      %label Applied Filters:
+      %ul#applied_filters
+        - @ransack_params[:q].map do |q|
+          %li
+            = q.join ' '
+            %button{type: 'button', "data-filter" => "&q[#{q.first}]=#{q.last}" } ×
 
 = render :partial => 'search_form'
 
 = render :partial => 'list'
-
