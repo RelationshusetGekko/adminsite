@@ -2,26 +2,10 @@
   = "Listing #{label_resource_class_plural}"
 - if resource_admin_config.actions_index.any?
   - content_for :header_right do
-    #index_actions
+    #action_bar
       - resource_admin_config.actions_index.each do |action|
         = send("link_to_#{action}", action.to_s.titlecase)
-    #scopes
-      - resource_admin_config.scopes.each do |scope|
-        = link_to "#{scope.to_s.titlecase} (#{resource_class.send(scope).count})", "#{admin_resource_path}&scope=#{scope}", class: :scope
-    - if @search_params.present?
-      #applied_filters_wrapper
-        %label Applied Filters:
-        %ul#applied_filters
-          - @search_params.map do |q|
-            - op = q.first.split('_').last
-            - column = q.first.chomp("_#{op}")
-            - value = q.last
-            %li.applied.filter
-              = column.gsub('_',' ').capitalize
-              = "#{Ransack::Translate.predicate(op)}:"
-              = "'#{value}'"
-              %button{type: 'button', "data-filter-column" => column, "data-filter-value" => q.last, "data-filter-op" => op } ×
+    = render partial: 'filters'
+    = render partial: 'search_form'
 
-= render :partial => 'search_form'
-
-= render :partial => 'list'
+= render partial: 'list'

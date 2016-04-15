@@ -18,12 +18,8 @@
         = flash[:error]
         = flash[:alert]
 
-    #header
-      #header_left
-        %h2
-          = yield :header_left
-      #header_right
-        = yield :header_right
-      .clearfix
+    %header
+      %h2= yield :header_left
+    = yield(:header_right)
     #wrapper
       = yield

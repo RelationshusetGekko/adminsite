@@ -1,5 +1,5 @@
 jQuery(document).on 'page:change', ->
-  close_btns = $('body.adminsite #applied_filters button').on "click", ->
+  close_btns = $('body.adminsite #search_filters ul button').on "click", ->
       btn = jQuery(this)
       op = btn.attr('data-filter-op')
       value = btn.attr('data-filter-value')

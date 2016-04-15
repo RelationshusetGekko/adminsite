@@ -67,15 +67,13 @@ body.adminsite {
     border-width: 1px 0 0;
     height: 0;
   }
-  #header {
+  header {
     margin: 0;
     padding: 20px;
     background-color: #e7e7e7;
     background: -moz-linear-gradient(bottom, #fff, #f0f0f0 17%, #fff 18%, #c0c0c0 19%, #e7e7e7 20%, #e7e7e7);
     background: -webkit-gradient(linear, left bottom, left top, from(#fff), color-stop(17%, #f0f0f0), color-stop(18%, #fff), color-stop(19%, #c0c0c0), color-stop(20%, #e7e7e7), to(#e7e7e7));
     border-top: 6px solid #595959;
-  }
-  #header_left {
     h2 {
       font-size: 135%;
       margin: 0;
@@ -85,9 +83,9 @@ body.adminsite {
       background: #e7e7e7;
     }
   }
-  #header_right {
+  #action_bar {
     font-size: 85%;
-    margin-top: 0.2em;
+    margin: 0.2em 20px 1.5em;
     a {
       background-color: rgba(0, 0, 0, 0.2);
       background-repeat: no-repeat;
@@ -111,19 +109,51 @@ body.adminsite {
         background-image: asset-url('adminsite/admin/arrow_left.png');
       }
     }
+  }
+  #filters {
+    border: 1px solid #ccc;
+    margin: 0.2em 20px 1.5em;
+    & > div {
+      margin:0;
+    }
+    legend {
+      margin:0;
+      padding: 0 0.3em;
+    }
     label {
       display: inline;
-      margin: 0 0 0 1em;
-    }
-    #applied_filters {
-      list-style-type: none;
-      display: inline;
       margin: 0;
+    }
+    ul {
+      display: inline;
+      list-style-type: none;
+      margin: 0;
+      li {
+        display: inline;
+      }
+    }
+    #scopes {
+      margin-bottom: 1em;
+      li {
+        border-left: 1px solid black;
+        padding: 0 0.5em;
+        &:first-child {
+          border-left: 0;
+          padding-left: 0;
+        }
+        .count {
+          color: #ccc;
+        }
+        a:link, a:visited {
+          text-decoration: none;
+        }
+      }
+    }
+    #search_filters ul {
       padding: 0 5px 0 0;
       li {
         border: 1px solid #ccc;
         border-radius: 10px 0 0 10px;
-        display: inline;
         margin: 0 5px;
         padding: 3px 3px 3px 10px;
       }
@@ -134,6 +164,7 @@ body.adminsite {
       }
     }
   }
+
   .clearfix {
     zoom: 1;
     &:before {
@@ -448,15 +479,15 @@ body.adminsite {
     .submit {
       float: right;
     }
-    &#loginform .submit {
-      float: none;
-      text-align: right;
-    }
     p {
       margin-bottom: 24px;
     }
   }
   #loginform {
+    .submit {
+      float: none;
+      text-align: right;
+    }
     #adminsite_admin_user_email, #adminsite_admin_user_password {
       -moz-background-clip: border;
       -moz-background-inline-policy: continuous;
@@ -488,30 +519,29 @@ body.adminsite {
     }
   }
 
-  .search_form {
-    form {
-      position: absolute;
-      top: 177px;
-      & > div {
-        background-color: #eee;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        overflow: auto;
-        box-shadow: 5px 5px 5px 0px rgba(0, 0, 17, 0.7);
-        .actions {
-          float: left;
-        }
+  form.search {
+    position: absolute;
+    top: 240px;
+    left: 110px;
+    border: 1px solid #595959;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 17, 0.7);
+    .titlebar {
+      background-color: #e7e7e7;
+      border-bottom: 1px solid #e3e3e3;
+      font-weight: bold;
+      padding: 10px;
+      button {
+        float:right;
+        background-color: transparent;
+        border: none;
+        font-size: 120%;
+        margin-top: -2px;
       }
-      .titlebar {
-        background-color:#ccc;
-        font-weight: bold;
-        padding: 10px;
-        button {
-          float:right;
-          background-color: transparent;
-          border: none;
-        }
-      }
+    }
+    .content {
+      background-color: #eee;
+      padding: 10px;
     }
     label {
       display: inline-block;
@@ -519,7 +549,7 @@ body.adminsite {
     }
     ul {
       margin: 0;
-      padding: 10px;
+      padding: 0;
       li {
         white-space: nowrap;
         min-width: 100px;
@@ -529,10 +559,6 @@ body.adminsite {
         list-style: none;
         height: 35px;
       }
-    }
-    .actions {
-      clear: both;
-      margin: 20px 10px;
     }
   }
 
