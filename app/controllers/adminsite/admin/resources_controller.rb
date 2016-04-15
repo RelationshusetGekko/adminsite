@@ -99,7 +99,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def find_resource
-    @resource ||= resources.find(params[:id])
+    @resource ||= scope_resources.find(params[:id])
   end
 
   def scope_resources
