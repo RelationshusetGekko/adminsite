@@ -3,11 +3,11 @@
   #scopes
     - if resource_admin_config.actions_index.any?
       %label Predefined filters:
-      %ul<
+      %ul
         - resource_admin_config.scopes.each do |scope|
           - scope_label = "#{scope.to_s.titlecase} <span class=\"count\">(#{resource_class.send(scope).count})</span>".html_safe
           - scope_path = "#{admin_resource_path}&scope=#{scope}"
-          <li>#{link_to scope_label, scope_path}</li>
+          %li #{link_to scope_label, scope_path}
   - if resource_admin_config.attributes_search.any?
     #search_filters
       %label |
