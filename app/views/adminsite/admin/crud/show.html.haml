@@ -1,8 +1,8 @@
 - content_for :header_left do
   = controller_name
 - content_for :header_right do
-  #show_actions
-    = link_to_back 'Back', url_for(controller: controller_name, action: :index )
+  #action_bar
+    = link_to_back
 
 - if Rails.env.development?
   please override in '/app/views/adminsite/admin/#{controller_name}/show.html.haml'

@@ -4,6 +4,7 @@
   - content_for :header_left do
     = "Listing #{label_resource_class_plural}"
   - content_for :header_right do
-    = link_to_new "New #{label_resource_class}"
+    #action_bar
+      = link_to_new "New #{label_resource_class}"
   There are no page layouts. Go ahead and
-  #{link_to 'add the first one', new_admin_adminsite_page_layout_path}.
+  #{link_to 'add the first one', admin_resource_path(nil, :new)}.
