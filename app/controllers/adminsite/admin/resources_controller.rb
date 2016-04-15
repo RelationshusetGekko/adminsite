@@ -48,7 +48,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   def index
     @q = scope_resources.ransack(params[:q])
-    @resources = @q.result.page(params[:page])
+    @resources = @q.result.order(order_params).page(params[:page])
     @ransack_params = ransack_params
     @search_params  = @ransack_params[:q].try(:except, :s)
     @show_search_form = @search_params.present?
@@ -107,7 +107,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
       eval("resource_class.#{filter_scopes.join('.')}")
     else
       self.class.resource_class.all
-    end.order(order_params)
+    end
   end
 
   def resource_params
