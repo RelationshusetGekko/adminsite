@@ -47,24 +47,24 @@ module Admin::AdminsiteApplicationHelper
     label_resource_class.pluralize
   end
 
-  def link_to_back(text, path = admin_resource_path)
-    link_to text, path, :class => 'back'
+  def link_to_back(text = 'Back', path = admin_resource_path)
+    link_to text, path, :class => 'action back'
   end
 
   def link_to_new(text, path = admin_resource_path(nil, :new) )
-    link_to text, path, :class => 'add'
+    link_to text, path, :class => 'action new'
   end
 
-  def link_to_show(resource)
-    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), target: '_blank' if can?(:read, resource)
+  def link_to_show(resource, text = '')
+    link_to h(text) + image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action show'
   end
 
-  def link_to_edit(resource)
-    link_to image_tag('adminsite/admin/pencil.png', :size => '16x16'), admin_resource_path(resource.id, :edit) if can?(:edit, resource)
+  def link_to_edit(resource, text = '')
+    link_to h(text) + image_tag('adminsite/admin/pencil.png', :size => '16x16'), admin_resource_path(resource.id, :edit), :class => 'resource_action edit' if can?(:edit, resource)
   end
 
   def link_to_destroy(resource)
-    link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), admin_resource_path(resource.id), data: { :confirm => 'Are you sure?'} , :method => :delete if can?(:destroy, resource)
+    link_to image_tag('adminsite/admin/cross.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action destroy', data: { :confirm => 'Are you sure?'} , :method => :delete if can?(:destroy, resource)
   end
 
   def display_resource_value(resource, attr, add_td_wrappers = true)

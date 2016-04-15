@@ -1,10 +1,11 @@
 - if resource_admin_config.attributes_search.any?
-  .search_form
-    %a#show{onclick: 'Adminsite.showSearchForm();', style: "#{'display:none' if @show_search_form}"  } Show Filters
-    %a#hide{onclick: 'Adminsite.hideSearchForm();', style: "#{'display:none' unless @show_search_form}" } Hide Filters
-    = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { style: "#{'display:none' unless @show_search_form}"} ) do |f|
-      = hidden_field_tag :admin_menu, params[:admin_menu]
-      %div{id: "#{controller_name}-search"}
+  = search_form_for(@q, :url => admin_resource_path(nil), method: :get, html: { class: 'search', style: 'display:none' } ) do |f|
+    = hidden_field_tag :admin_menu, params[:admin_menu]
+    %div{id: "#{controller_name}-search"}
+      .titlebar
+        Filters
+        %button{ type: 'button', onclick: 'Adminsite.hideSearchForm();'} ×
+      .content
         %ul
           - resource_admin_config.attributes_search.each do |search_attr|
             - if (column = column_of_attr(search_attr)).present?
@@ -13,7 +14,7 @@
                 - input_type = input_type_of_column(column)
                 - predicates = ransack_predicate_input_type(input_type)
                 - show_predicate_select = predicates.count > 1
-                - field_value = (@ransack_params[:q] || {})["#{search_attr}_#{p_value}"]
+                - field_value = (@search_params || {})["#{search_attr}_#{p_value}"]
                 = f.label("#{search_attr}")
 
                 - if show_predicate_select

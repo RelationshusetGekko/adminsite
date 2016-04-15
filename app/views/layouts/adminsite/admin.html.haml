@@ -1,10 +1,8 @@
 !!!
-%html{ "lang" => "en" }
+%html{ lang: "en" }
   %head
-    %meta{ "charset" => "utf-8" }
-    %title
-      Administration:
-      = controller.action_name.capitalize
+    %meta{ charset: "utf-8" }
+    %title Administration: #{controller.action_name.capitalize}
     = stylesheet_link_tag 'adminsite'
     = javascript_include_tag 'adminsite'
   %body.adminsite
@@ -20,12 +18,8 @@
         = flash[:error]
         = flash[:alert]
 
-    #header
-      #header_left
-        %h2
-          = yield :header_left
-      #header_right
-        = yield :header_right
-      .clearfix
+    %header
+      %h2= yield :header_left
+    = yield(:header_right)
     #wrapper
       = yield

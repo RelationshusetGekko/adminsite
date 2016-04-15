@@ -39,8 +39,9 @@ da:
       update_needs_confirmation: "Din konto er blevet opdateret, men vi er nødt til at bekræfte din nye email. Check venligst din mail og klik på bekræftelses linket for at bekræfte din nye email."
       updated: "Din konto er opdateret."
     sessions:
-      signed_in: "Du er nu logget ind."
-      signed_out: "Du er nu logget ud."
+      signed_in: " "
+      signed_out: " "
+      already_signed_out: " "
     unlocks:
       send_instructions: 'Om få minutter vil du modtage en email med instruktioner om genåbning af din konto.'
       send_paranoid_instructions: 'Hvis din e-mail adresse findes i vores database vil du modtage in e-mail med instutioner om hvordan du kan låse din konto op.'
