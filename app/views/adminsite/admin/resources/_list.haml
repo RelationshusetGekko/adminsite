@@ -14,18 +14,13 @@
     - @resources.each do |resource|
       %tr{onclick: 'Adminsite.selectedRow(this);'}
         - if resource_admin_config.actions_placement == :left
-          %td.actions.resource_actions
-            %ul
-              - resource_admin_config.default_member_actions(resource).each do |action|
-                %li= send("link_to_#{action}", resource)
+          = render partial: 'list_actions', locals: {resource: resource }
         %td.resource_selection_cell
           = check_box_tag 'collection_selection[]', resource.id, false, :class => 'collection_selection'
         - resource_admin_config.attributes_index.each do |attr|
           = display_resource_value(resource, attr)
         - if resource_admin_config.actions_placement == :right
-          %td.actions.resource_actions
-            %ul
-              - resource_admin_config.default_member_actions(resource).each do |action|
-                %li= send("link_to_#{action}", resource)
+          = render partial: 'list_actions', locals: {resource: resource }
 
 = paginate(@resources, :window => 2)
+
