@@ -93,7 +93,7 @@ body.adminsite {
       &:hover {
         background-color: rgba(0, 0, 0, 0.7);
       }
-      &.add, &.back, &.new {
+      &.add, &.back, &.new, &.refresh {
         padding-left: 18px;
       }
       &.add, &.new {
@@ -101,6 +101,9 @@ body.adminsite {
       }
       &.back {
         background-image: asset-url('adminsite/admin/arrow_left.png');
+      }
+      &.refresh {
+        background-image: asset-url('adminsite/admin/arrow_refresh.png');
       }
     }
   }

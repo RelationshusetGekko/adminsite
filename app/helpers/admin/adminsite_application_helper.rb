@@ -47,13 +47,16 @@ module Admin::AdminsiteApplicationHelper
     label_resource_class.pluralize
   end
 
+  def link_to_refresh(text, path, options = {} )
+    link_to text, path, {:class => 'action refresh'}.merge(options)
+  end
+
   def link_to_back(text = 'Back', path = admin_resource_path)
     link_to text, path, :class => 'action back'
   end
 
   def link_to_new(text, path = admin_resource_path(nil, :new) )
-    controller_class = "#{params[:controller]}_controller".classify.constantize
-    link_to text, path, :class => 'action new' if can?(:new, controller_class.new.authorize_resource_class)
+    link_to text, path, :class => 'action new' if can?(:new, controller.authorize_resource_class)
   end
 
   def link_to_show(resource, text = '')
