@@ -56,7 +56,7 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def link_to_show(resource)
-    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action show', target: '_blank'
+    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action show'
   end
 
   def link_to_edit(resource)
