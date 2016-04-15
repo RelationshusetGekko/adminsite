@@ -128,6 +128,7 @@ body.adminsite {
       display: inline;
       list-style-type: none;
       margin: 0;
+      padding: 0;
       li {
         display: inline;
       }
@@ -526,9 +527,11 @@ body.adminsite {
     border: 1px solid #595959;
     border-radius: 5px;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 17, 0.7);
+    margin: 0 0 15px;
     .titlebar {
       background-color: #e7e7e7;
       border-bottom: 1px solid #e3e3e3;
+      border-radius: 5px 5px 0 0;
       font-weight: bold;
       padding: 10px;
       button {
