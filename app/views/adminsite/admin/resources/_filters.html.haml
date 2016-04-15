@@ -5,7 +5,7 @@
       %label Predefined filters:
       %ul
         - resource_admin_config.scopes.each do |scope|
-          %li
+          %li<
             = link_to "#{scope.to_s.titlecase} <span class=\"count\">(#{resource_class.send(scope).count})</span>".html_safe, "#{admin_resource_path}&scope=#{scope}"
   - if resource_admin_config.attributes_search.any?
     #search_filters
@@ -20,7 +20,7 @@
             - op = q.first.split('_').last
             - column = q.first.chomp("_#{op}")
             - value = q.last
-            %li
+            %li<
               #{column.gsub('_',' ').capitalize} |
               #{Ransack::Translate.predicate(op)}: |
               '#{value}' |
