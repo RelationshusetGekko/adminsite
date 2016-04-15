@@ -55,12 +55,12 @@ module Admin::AdminsiteApplicationHelper
     link_to text, path, :class => 'action new'
   end
 
-  def link_to_show(resource)
-    link_to image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action show'
+  def link_to_show(resource, text = '')
+    link_to h(text) + image_tag('adminsite/admin/magnifier.png', :size => '16x16'), admin_resource_path(resource.id), :class => 'resource_action show'
   end
 
-  def link_to_edit(resource)
-    link_to image_tag('adminsite/admin/pencil.png', :size => '16x16'), admin_resource_path(resource.id, :edit), :class => 'resource_action edit' if can?(:edit, resource)
+  def link_to_edit(resource, text = '')
+    link_to h(text) + image_tag('adminsite/admin/pencil.png', :size => '16x16'), admin_resource_path(resource.id, :edit), :class => 'resource_action edit' if can?(:edit, resource)
   end
 
   def link_to_destroy(resource)

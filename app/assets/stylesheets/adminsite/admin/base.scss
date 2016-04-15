@@ -21,9 +21,6 @@ body.adminsite {
     &:hover, &:active {
       outline: none;
     }
-    &:hover img {
-      background: #fff;
-    }
   }
   .left {
     float: left;
@@ -78,9 +75,6 @@ body.adminsite {
       font-size: 135%;
       margin: 0;
       padding: 0;
-    }
-    a:hover img {
-      background: #e7e7e7;
     }
   }
   #action_bar {
