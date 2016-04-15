@@ -47,7 +47,7 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def index
-    @q = resources.order(order_params).ransack(params[:q])
+    @q = scope_resources.ransack(params[:q])
     @resources = @q.result.page(params[:page])
     @ransack_params = ransack_params
     @search_params  = @ransack_params[:q].try(:except, :s)
@@ -80,12 +80,12 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     @current_admin_menu ||= params[:admin_menu]
   end
 
-  def admin_resource_path(id = nil, action = nil)
+  def admin_resource_path(id = nil, action = nil, options = {})
     path = self.class.remove_namespace(params[:controller], ['adminsite'])
     path = path.gsub('/','_')
     path = path.singularize if (action || id).present? && action.to_s != 'search'
     path = "#{action}_#{path}" if action.present?
-    send("#{path}_path", id, admin_menu: current_admin_menu)
+    send("#{path}_path", id, {admin_menu: current_admin_menu}.merge(options) )
   end
 
   protected
@@ -102,12 +102,12 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     @resource ||= resources.find(params[:id])
   end
 
-  def resources
-    if filter_scopes.present?
+  def scope_resources
+     if filter_scopes.present?
       eval("resource_class.#{filter_scopes.join('.')}")
     else
       self.class.resource_class.all
-    end
+    end.order(order_params)
   end
 
   def resource_params
