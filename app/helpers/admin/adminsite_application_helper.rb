@@ -52,7 +52,8 @@ module Admin::AdminsiteApplicationHelper
   end
 
   def link_to_new(text, path = admin_resource_path(nil, :new) )
-    link_to text, path, :class => 'action new'
+    controller_class = "#{params[:controller]}_controller".classify.constantize
+    link_to text, path, :class => 'action new' if can?(:new, controller_class.new.authorize_resource_class)
   end
 
   def link_to_show(resource, text = '')
