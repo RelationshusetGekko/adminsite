@@ -33,7 +33,7 @@ module Adminsite
         end
 
         puts "Setting up CanCan"
-        copy_file 'app/models/adminsite/ability.rb', 'app/models/adminsite/ability.rb'
+        copy_file "#{Adminsite::Engine.root}/app/models/adminsite/ability.rb", 'app/models/adminsite/ability.rb'
 
         # Locales
         copy_file "config/locales/adminsite.da.yml", 'config/locales/adminsite.da.yml'
