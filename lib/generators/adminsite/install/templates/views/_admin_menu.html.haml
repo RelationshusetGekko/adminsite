@@ -1,8 +1,9 @@
 #admin_menu.menu
   %ul
     = yield :admin_menu
+    = menu_item 'Dashboard', admin_dashboard_index_path , ['dashboard']
     = menu_item 'CMS',            admin_adminsite_pages_path,           ['adminsite_pages', 'adminsite_file_assets', 'adminsite_page_layouts']
     = menu_item 'System',         admin_adminsite_admin_users_path,     ['adminsite_admin_users']
   %ul
-    = menu_item 'Log out', destroy_adminsite_admin_user_session_path, [], 'log_out', :delete
-.clearfix
+    = menu_item 'Log out', destroy_adminsite_admin_user_session_path, ['admin_user_sessions'], 'log_out', :delete
+  .clearfix
