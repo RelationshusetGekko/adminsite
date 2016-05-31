@@ -7,7 +7,7 @@
         - resource_admin_config.scopes.each do |scope|
           - scope_label = "#{scope.to_s.titlecase} <span class=\"count\">(#{resource_class.send(scope).ransack(params[:q]).result.count})</span>".html_safe
           - scope_path = "#{admin_resource_path(nil,nil,@ransack_params )}&scope=#{scope}"
-          - if @scopes.include?(scope.to_sym)
+          - if @scopes.try(:include?, scope.to_sym) || scope.to_sym == (params[:scope].try(:to_sym) || :all)
             - li_class = 'active'
           - else
             - li_class = nil
