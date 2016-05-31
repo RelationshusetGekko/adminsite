@@ -120,7 +120,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
 
   def filter_scopes
     return [] if params[:scope].blank?
-    resource_admin_config.scopes & params[:scope].split(',').collect{|s| s.to_sym }
+    scopes = params[:scope].split(',').collect(&:to_sym)
+    @scopes = resource_admin_config.scopes.collect(&:to_sym) & scopes
   end
 
   def order_params
@@ -132,7 +133,6 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
     @resource_admin_config = Adminsite::AdminConfig::Base.admin_config_of_class(resource_class, nil, current_adminsite_admin_user)
     @resource_admin_config
   end
-
 
   class << self
 
