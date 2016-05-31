@@ -6,7 +6,7 @@
     = stylesheet_link_tag 'adminsite'
     = javascript_include_tag 'adminsite'
   %body.adminsite
-    %h1
+    %h1= Adminsite.config.title
     = render :partial => 'adminsite/admin/shared/admin_menu' if current_adminsite_admin_user.present?
     = render :partial => 'adminsite/admin/shared/content_menu' if current_adminsite_admin_user.present?
 
