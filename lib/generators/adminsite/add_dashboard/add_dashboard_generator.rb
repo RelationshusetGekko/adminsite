@@ -15,6 +15,8 @@ module Adminsite
 
         template  "views/index.html.haml", "app/views/adminsite/admin/dashboard/index.html.haml"
 
+        template  "views/index.html.haml", "app/views/adminsite/admin/dashboard/index.html.haml"
+
         # Content-Menu
         inject_into_file "app/views/adminsite/admin/shared/_admin_menu.html.haml", :after => /\= yield :admin_menu\n/ do\
         # "\n    = menu_item 'IFrameMgt', admin_#Dashboard_index_path, ['#{@file_name}']\n"

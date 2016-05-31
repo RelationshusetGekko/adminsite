@@ -35,6 +35,9 @@ module Adminsite
         puts "Setting up CanCan"
         copy_file "#{Adminsite::Engine.root}/app/models/adminsite/ability.rb", 'app/models/adminsite/ability.rb'
 
+        # initializers
+        template 'config/initializers/adminsite.rb', 'config/initializers/adminsite.rb'
+
         # Locales
         copy_file "config/locales/adminsite.da.yml", 'config/locales/adminsite.da.yml'
         copy_file "config/locales/adminsite.en.yml", 'config/locales/adminsite.en.yml'
