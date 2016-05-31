@@ -119,7 +119,8 @@ class Adminsite::Admin::ResourcesController < Adminsite::Admin::CrudController
   end
 
   def filter_scopes
-    return [] if params[:scope].blank?
+    @scopes ||= []
+    return @scopes if params[:scope].blank?
     scopes = params[:scope].split(',').collect(&:to_sym)
     @scopes = resource_admin_config.scopes.collect(&:to_sym) & scopes
   end
